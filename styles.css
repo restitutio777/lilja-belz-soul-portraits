@@ -502,6 +502,48 @@ a { color: inherit; }
 .kontakt-text { color: var(--ink-soft); max-width: 46ch; margin: 0 0 2rem; }
 .kontakt-hint { margin: 1.25rem 0 0; font-size: 0.85rem; color: var(--ink-faint); letter-spacing: 0.02em; }
 
+/* ---------- Flow connectors (the thread through the journey) ---------- */
+/* Soft visual bridges between sections. A hairline draws downward on scroll,
+   meets a small clay node, and a quiet italic phrase leads the eye onward. */
+.flow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding-block: clamp(2rem, 5.5vh, 3.75rem);
+  text-align: center;
+}
+.flow-line {
+  width: 1px;
+  height: clamp(3rem, 8vh, 5.5rem);
+  background: linear-gradient(to bottom, transparent, var(--clay));
+  transform: scaleY(0);
+  transform-origin: top center;
+  transition: transform 1.2s var(--ease-out);
+}
+.flow.is-visible .flow-line { transform: scaleY(1); }
+.flow-node {
+  width: 6px;
+  height: 6px;
+  margin-top: -3px;
+  border-radius: 50%;
+  background: var(--clay);
+  transform: scale(0);
+  transition: transform 0.55s var(--ease-out) 0.75s;
+}
+.flow.is-visible .flow-node { transform: scale(1); }
+.flow-word {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 350;
+  font-size: clamp(1.1rem, 0.98rem + 0.6vw, 1.45rem);
+  line-height: 1.32;
+  letter-spacing: -0.01em;
+  color: var(--clay-deep);
+  max-width: 26ch;
+}
+.flow-close .flow-word { color: var(--ink); }
+
 /* ---------- Footer ---------- */
 .site-footer {
   background: var(--night-2);
@@ -637,4 +679,5 @@ a { color: inherit; }
   .gallery-item img { transition: filter 0.3s var(--ease-out); }
   .gallery-item:hover img { transform: none; }
   .scroll-cue span { animation: none; }
+  .flow-line, .flow-node { transform: none !important; transition: none; }
 }
