@@ -296,16 +296,10 @@ a { color: inherit; }
 .hero-br { display: none; }
 @media (min-width: 861px) { .hero-br { display: inline; } }
 .hero-lead {
-  margin: 1.6rem 0 0;
+  margin: 1.7rem 0 0;
   font-size: clamp(1.05rem, 1rem + 0.4vw, 1.2rem);
   color: var(--ink-soft);
   max-width: 42ch;
-}
-.hero-actions {
-  margin-top: 2.2rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.9rem;
 }
 .hero-media {
   margin: 0;
@@ -316,30 +310,43 @@ a { color: inherit; }
   width: 100%;
   aspect-ratio: 4 / 5;
   object-fit: cover;
+  object-position: center 28%;
   filter: grayscale(0.12) contrast(1.02) saturate(0.96);
 }
 
+/* Scroll cue, the start of the journey thread. Mirrors the flow connectors:
+   a quiet italic label above a hairline that draws gently downward. */
 .scroll-cue {
-  display: grid;
-  place-items: center;
-  width: 30px;
-  height: 48px;
-  margin: clamp(2.5rem, 5vh, 4rem) auto 0;
-  border: 1px solid var(--line);
-  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+  width: max-content;
+  margin: clamp(2.75rem, 6vh, 4.5rem) auto 0;
+  text-decoration: none;
 }
-.scroll-cue span {
-  width: 3px;
-  height: 8px;
-  border-radius: 3px;
-  background: var(--clay);
-  animation: cue 1.8s var(--ease-out) infinite;
+.scroll-cue-word {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 350;
+  font-size: 0.98rem;
+  letter-spacing: 0.01em;
+  color: var(--clay-deep);
+  transition: color 0.3s var(--ease-out);
+}
+.scroll-cue:hover .scroll-cue-word { color: var(--ink); }
+.scroll-cue-line {
+  width: 1px;
+  height: clamp(2.5rem, 6vh, 3.75rem);
+  background: linear-gradient(to bottom, var(--clay), transparent);
+  transform-origin: top center;
+  animation: cue 2.4s var(--ease-out) infinite;
 }
 @keyframes cue {
-  0% { transform: translateY(-5px); opacity: 0; }
-  40% { opacity: 1; }
-  80% { transform: translateY(7px); opacity: 0; }
-  100% { opacity: 0; }
+  0% { transform: scaleY(0); opacity: 0; }
+  25% { opacity: 1; }
+  65% { transform: scaleY(1); opacity: 1; }
+  100% { transform: scaleY(1); opacity: 0; }
 }
 
 /* ---------- Intro ---------- */
@@ -502,6 +509,48 @@ a { color: inherit; }
 .kontakt-text { color: var(--ink-soft); max-width: 46ch; margin: 0 0 2rem; }
 .kontakt-hint { margin: 1.25rem 0 0; font-size: 0.85rem; color: var(--ink-faint); letter-spacing: 0.02em; }
 
+/* ---------- Flow connectors (the thread through the journey) ---------- */
+/* Soft visual bridges between sections. A hairline draws downward on scroll,
+   meets a small clay node, and a quiet italic phrase leads the eye onward. */
+.flow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding-block: clamp(2rem, 5.5vh, 3.75rem);
+  text-align: center;
+}
+.flow-line {
+  width: 1px;
+  height: clamp(3rem, 8vh, 5.5rem);
+  background: linear-gradient(to bottom, transparent, var(--clay));
+  transform: scaleY(0);
+  transform-origin: top center;
+  transition: transform 1.2s var(--ease-out);
+}
+.flow.is-visible .flow-line { transform: scaleY(1); }
+.flow-node {
+  width: 6px;
+  height: 6px;
+  margin-top: -3px;
+  border-radius: 50%;
+  background: var(--clay);
+  transform: scale(0);
+  transition: transform 0.55s var(--ease-out) 0.75s;
+}
+.flow.is-visible .flow-node { transform: scale(1); }
+.flow-word {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 350;
+  font-size: clamp(1.1rem, 0.98rem + 0.6vw, 1.45rem);
+  line-height: 1.32;
+  letter-spacing: -0.01em;
+  color: var(--clay-deep);
+  max-width: 26ch;
+}
+.flow-close .flow-word { color: var(--ink); }
+
 /* ---------- Footer ---------- */
 .site-footer {
   background: var(--night-2);
@@ -601,8 +650,7 @@ a { color: inherit; }
   .hero-grid { grid-template-columns: 1fr; }
   .hero-copy { max-width: none; order: 1; }
   .hero-media { order: 2; }
-  .hero-media img { aspect-ratio: 4 / 5; max-height: 72vh; }
-  .scroll-cue { display: none; }
+  .hero-media img { aspect-ratio: 4 / 5; max-height: 76vh; }
 }
 
 @media (max-width: 760px) {
@@ -622,7 +670,6 @@ a { color: inherit; }
   .step { grid-template-columns: 1fr; gap: 0.5rem; }
   .step-num { font-size: 2rem; }
   .fact { grid-template-columns: 1fr; gap: 0.3rem; }
-  .hero-actions .btn { flex: 1 1 auto; }
 }
 
 /* ---------- Reduced motion ---------- */
@@ -636,5 +683,6 @@ a { color: inherit; }
   .reveal { opacity: 1 !important; transform: none !important; transition: none; }
   .gallery-item img { transition: filter 0.3s var(--ease-out); }
   .gallery-item:hover img { transform: none; }
-  .scroll-cue span { animation: none; }
+  .scroll-cue-line { animation: none; transform: scaleY(1); opacity: 1; }
+  .flow-line, .flow-node { transform: none !important; transition: none; }
 }
