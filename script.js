@@ -34,6 +34,46 @@
     revealEls.forEach(function (el) { io.observe(el); });
   }
 
+  /* ---- Scroll spy: mark the section you are reading in the header nav ---- */
+  var navLinks = Array.prototype.slice.call(
+    document.querySelectorAll(".nav a:not(.nav-cta)")
+  );
+  if (navLinks.length && "IntersectionObserver" in window) {
+    var linkFor = {};
+    var watched = [];
+    navLinks.forEach(function (link) {
+      var id = (link.getAttribute("href") || "").replace(/^#/, "");
+      var section = id && document.getElementById(id);
+      if (section) {
+        linkFor[id] = link;
+        watched.push(section);
+      }
+    });
+
+    var setActive = function (id) {
+      navLinks.forEach(function (link) {
+        link.classList.toggle("is-active", link === linkFor[id]);
+      });
+    };
+
+    var spy = new IntersectionObserver(
+      function (entries) {
+        // Choose the section closest to the top of the viewport that is in view
+        var best = null;
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            if (!best || entry.boundingClientRect.top < best.boundingClientRect.top) {
+              best = entry;
+            }
+          }
+        });
+        if (best) setActive(best.target.id);
+      },
+      { rootMargin: "-45% 0px -50% 0px", threshold: 0 }
+    );
+    watched.forEach(function (section) { spy.observe(section); });
+  }
+
   /* ---- Mobile navigation (accessible dialog-style overlay) ---- */
   var toggle = document.querySelector(".nav-toggle");
   var panel = document.getElementById("mobile-nav");
