@@ -64,6 +64,10 @@ body::after {
 
 img { display: block; max-width: 100%; height: auto; }
 
+/* Quieter line breaks: avoid orphans in copy, balance short headings */
+p { text-wrap: pretty; }
+h1, h2, h3 { text-wrap: balance; }
+
 a { color: inherit; }
 
 ::selection { background: oklch(0.585 0.088 44 / 0.22); }
@@ -95,6 +99,7 @@ a { color: inherit; }
   letter-spacing: -0.015em;
   margin: 0.5rem 0 0;
   color: var(--ink);
+  text-wrap: balance;
 }
 .section-title-light { color: var(--night-paper); }
 
@@ -105,6 +110,7 @@ a { color: inherit; }
   line-height: 1.32;
   letter-spacing: -0.01em;
   color: var(--ink);
+  text-wrap: pretty;
 }
 
 .section-note {
@@ -215,6 +221,12 @@ a { color: inherit; }
 }
 .nav a:not(.nav-cta):hover { color: var(--ink); }
 .nav a:not(.nav-cta):hover::after { transform: scaleX(1); }
+/* Active section, set by the scroll spy. A quiet hairline marks where you are. */
+.nav a:not(.nav-cta).is-active { color: var(--ink); }
+.nav a:not(.nav-cta).is-active::after {
+  transform: scaleX(1);
+  background: var(--clay-deep);
+}
 .nav-cta {
   padding: 0.6rem 1.2rem;
   border: 1px solid var(--line);
@@ -305,6 +317,8 @@ a { color: inherit; }
   margin: 0;
   overflow: hidden;
   border-radius: var(--radius);
+  /* Whisper-soft, warm shadow to lift the portrait off the paper */
+  box-shadow: 0 1.5rem 3.5rem -1.75rem oklch(0.255 0.014 55 / 0.28);
 }
 .hero-media img {
   width: 100%;

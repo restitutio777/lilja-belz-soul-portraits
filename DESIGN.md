@@ -38,6 +38,7 @@ Strategy: restrained, warm tinted neutrals plus one earthy clay accent. One deep
 - Scroll reveal: opacity and translateY, ease-out-expo, gentle stagger. No layout animation.
 - Image hover: subtle scale plus desaturate to full color.
 - Sticky header gains paper background and hairline on scroll.
+- Scroll spy: the header nav marks the section in view with a quiet clay hairline.
 - Full prefers-reduced-motion support.
 
 ## Image treatment
