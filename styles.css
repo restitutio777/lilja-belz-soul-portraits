@@ -391,13 +391,22 @@ a { color: inherit; }
   overflow: hidden;
   border-radius: var(--radius);
   break-inside: avoid;
-  background: var(--paper-2);
+  background-color: var(--paper-2);
+  /* Blurred low-quality placeholder shown until the full image loads */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 .gallery-item img {
   width: 100%;
   filter: grayscale(0.22) sepia(0.06) contrast(1.02) saturate(0.92);
-  transition: transform 1.1s var(--ease-out), filter 0.9s var(--ease-out);
+  transition: transform 1.1s var(--ease-out), filter 0.9s var(--ease-out),
+              opacity 0.8s var(--ease-out);
 }
+/* Blur-up: keep the sharp image hidden until loaded so the LQIP shows through.
+   Gated on .js so images stay visible when scripts do not run. */
+.js .gallery-item img { opacity: 0; }
+.js .gallery-item img.is-loaded { opacity: 1; }
 .gallery-item:hover img {
   transform: scale(1.035);
   filter: grayscale(0) sepia(0) contrast(1.02) saturate(1.02);
@@ -746,7 +755,7 @@ a { color: inherit; }
   }
   /* Suppress motion (transforms, reveals) but keep gentle color feedback */
   .reveal { opacity: 1 !important; transform: none !important; transition: none; }
-  .gallery-item img { transition: filter 0.3s var(--ease-out); }
+  .gallery-item img { transition: filter 0.3s var(--ease-out), opacity 0.5s var(--ease-out); }
   .gallery-item:hover img { transform: none; }
   .scroll-cue-line { animation: none; transform: scaleY(1); opacity: 1; }
   .flow-line, .flow-node { transform: none !important; transition: none; }

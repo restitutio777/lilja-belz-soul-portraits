@@ -46,6 +46,11 @@ Strategy: restrained, warm tinted neutrals plus one earthy clay accent. One deep
 Unify mixed source photos with a subtle warm desaturation baseline; restore full color on
 hover in the gallery. Adds a quiet, fine art cohesion.
 
+Portfolio uses blur-up loading: each gallery figure carries a tiny inline LQIP (a ~24px
+blurred JPEG data URI) as its background; the full image fades in over it once loaded.
+Gated on a .js class so images stay visible without scripts. Reduced motion keeps the fade
+but drops the hover scale.
+
 ## Bans honored
 No side-stripe borders, no gradient text, no decorative glassmorphism, no hero-metric
 template, no identical icon-card grids, no modals, no em dashes in copy.
