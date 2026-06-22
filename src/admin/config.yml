@@ -12,7 +12,7 @@ backend:
   name: github
   repo: restitutio777/lilja-belz-soul-portraits
   branch: main
-  # base_url: https://your-authenticator.workers.dev
+  base_url: https://soulportraits-six.vercel.app
 
 # Where uploaded images are stored and how they are referenced on the site.
 media_folder: src/images

@@ -37,33 +37,35 @@ Repository" wählen und den Projektordner freigeben. Änderungen landen sofort i
 ## 2. Online-Bearbeitung für die Fotografin (GitHub-Login)
 
 Damit die Fotografin von überall ohne Code arbeiten kann, braucht Sveltia einen
-kleinen OAuth-Vermittler. Empfohlen ist der offizielle, kostenlose
-**Sveltia CMS Authenticator** auf Cloudflare Workers.
+OAuth-Vermittler. Der ist hier **direkt als Vercel-Funktion eingebaut**
+(`api/auth.js` + `api/callback.js`) – kein Cloudflare nötig, alles läuft auf der
+Vercel-Domain. Die Endpunkte `/auth` und `/callback` sind in `vercel.json` geroutet.
+
+Es bleiben drei einmalige Schritte:
 
 1. **GitHub OAuth App anlegen** unter
    GitHub → Settings → Developer settings → OAuth Apps → *New OAuth App*:
    - *Homepage URL*: die Live-Domain (z. B. `https://soulportraits-six.vercel.app`)
-   - *Authorization callback URL*: `https://<dein-worker>.workers.dev/callback`
-   - `Client ID` und ein erzeugtes `Client Secret` notieren.
-2. **Authenticator deployen:** dem Repo
-   [`sveltia/sveltia-cms-auth`](https://github.com/sveltia/sveltia-cms-auth) folgen
-   (Deploy auf Cloudflare Workers). `GITHUB_CLIENT_ID` und `GITHUB_CLIENT_SECRET`
-   als Worker-Secrets setzen.
-3. **`base_url` eintragen:** in `src/admin/config.yml` die auskommentierte Zeile
-   aktivieren und auf die Worker-URL setzen:
-   ```yaml
-   backend:
-     name: github
-     repo: restitutio777/lilja-belz-soul-portraits
-     branch: main
-     base_url: https://<dein-worker>.workers.dev
-   ```
+   - *Authorization callback URL*: `https://<deine-domain>/callback`
+   - `Client ID` notieren und ein `Client Secret` erzeugen.
+2. **Env-Variablen in Vercel setzen** (Project → Settings → Environment Variables):
+   - `OAUTH_GITHUB_CLIENT_ID` = die Client ID
+   - `OAUTH_GITHUB_CLIENT_SECRET` = das Client Secret
+   - Danach einmal neu deployen, damit die Variablen aktiv sind.
+3. **`base_url` prüfen:** in `src/admin/config.yml` steht
+   `base_url: https://<deine-domain>` – auf die echte Live-Domain setzen, falls
+   sie abweicht (sie muss zur Homepage-URL der OAuth App passen).
 
 Danach öffnet die Fotografin `https://deine-domain/admin/`, meldet sich mit GitHub an
 und bearbeitet die Inhalte. Jeder Speichervorgang ist ein Git-Commit; Vercel deployt.
 
 > Tipp: Lege der Fotografin einen GitHub-Account an und gib ihm nur **Schreibrechte
 > auf dieses eine Repo** (als Collaborator). Mehr Zugriff braucht sie nicht.
+>
+> Wer lieber keinen eigenen OAuth-Endpunkt betreibt, kann stattdessen den
+> [`sveltia-cms-auth`](https://github.com/sveltia/sveltia-cms-auth)-Worker auf
+> Cloudflare deployen und `base_url` darauf zeigen lassen – dann werden die
+> `api/`-Funktionen nicht gebraucht.
 
 ## 3. Als Produkt für weitere Fotografen wiederverwenden
 
