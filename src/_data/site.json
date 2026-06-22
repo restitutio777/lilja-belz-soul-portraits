@@ -1,7 +1,7 @@
 {
   "brand": {
     "name": "Lilja Belz",
-    "tagline": "Soul Portraits 4 U",
+    "tagline": "Soul Portraits",
     "email": "hallo@liljabelz.de"
   },
   "meta": {
@@ -38,13 +38,6 @@
     "flow_intro": "Sieh, was in solchen Momenten entsteht",
     "items": [
       {
-        "image": "images/p01.jpg",
-        "width": 1400,
-        "height": 2100,
-        "alt": "Junge Frau lacht herzlich, Aufnahme im Abendlicht",
-        "placeholder": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEABIMDRANCxIQDhAUExIVGywdGxgYGzYnKSAsQDlEQz85Pj1HUGZXR0thTT0+WXlaYWltcnNyRVV9hnxvhWZwcm4BExQUGxcbNB0dNG5JPklubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubv/AABEIACQAGAMBEQACEQEDEQH/xAGiAAABBQEBAQEBAQAAAAAAAAAAAQIDBAUGBwgJCgsQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+gEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoLEQACAQIEBAMEBwUEBAABAncAAQIDEQQFITEGEkFRB2FxEyIygQgUQpGhscEJIzNS8BVictEKFiQ04SXxFxgZGiYnKCkqNTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqCg4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2dri4+Tl5ufo6ery8/T19vf4+fr/2gAMAwEAAhEDEQA/AKLLPaFVmi61Nx2J3vZFQboDt9adx8pHNHNNF5iwErS5g5S5qt0l6UdAQF60WBMfdyRjTt3bFZ31N7aFLTtWmSLGN6DtVqJi5EF1fLEvlIB71TZ00KKlqynPfSy23k/w1FtbnTOiraC6TMUYxt0NWmcVSk4lKeXM5NJmtGdhvmikdPtUPtZD9oBFNHLWncZccHigxgV80Glyxa8ZPemjGZ//2Q=="
-      },
-      {
         "image": "images/p12.jpg",
         "width": 1400,
         "height": 1750,
@@ -78,20 +71,6 @@
         "height": 2100,
         "alt": "Elegante Aufnahme einer Frau mit wehendem Haar im Studio",
         "placeholder": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEABIMDRANCxIQDhAUExIVGywdGxgYGzYnKSAsQDlEQz85Pj1HUGZXR0thTT0+WXlaYWltcnNyRVV9hnxvhWZwcm4BExQUGxcbNB0dNG5JPklubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubv/AABEIACQAGAMBEQACEQEDEQH/xAGiAAABBQEBAQEBAQAAAAAAAAAAAQIDBAUGBwgJCgsQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+gEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoLEQACAQIEBAMEBwUEBAABAncAAQIDEQQFITEGEkFRB2FxEyIygQgUQpGhscEJIzNS8BVictEKFiQ04SXxFxgZGiYnKCkqNTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqCg4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2dri4+Tl5ufo6ery8/T19vf4+fr/2gAMAwEAAhEDEQA/AOZC0wJPLYDJU4pXCw0rTEKOopMpGvJ5b2iqCM4rJM2aujPli8s1qncxasUp32gYoYkSR3WGUE8VDiXcu3AwFOeoqoikZM53LTJIs9DQBq+eJYUA6gUIbZnnmgRLdRIkMZUYJqUU0MtSeRVoln//2Q=="
-      },
-      {
-        "image": "images/p03.jpg",
-        "width": 1400,
-        "height": 2100,
-        "alt": "Freundliches Studioporträt eines Mannes",
-        "placeholder": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEABIMDRANCxIQDhAUExIVGywdGxgYGzYnKSAsQDlEQz85Pj1HUGZXR0thTT0+WXlaYWltcnNyRVV9hnxvhWZwcm4BExQUGxcbNB0dNG5JPklubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubv/AABEIACQAGAMBEQACEQEDEQH/xAGiAAABBQEBAQEBAQAAAAAAAAAAAQIDBAUGBwgJCgsQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+gEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoLEQACAQIEBAMEBwUEBAABAncAAQIDEQQFITEGEkFRB2FxEyIygQgUQpGhscEJIzNS8BVictEKFiQ04SXxFxgZGiYnKCkqNTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqCg4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2dri4+Tl5ufo6ery8/T19vf4+fr/2gAMAwEAAhEDEQA/ACebyFGPvNwK0bsZRVyveRahbwifgr1xWftDb2ehasbgXVuH7961TuYtWG3VuJghzgqamexVPcdetItp5ZlByK50db2INMj8m3PPU10x2OOe5YVg4K5oeqCO5k6hO4YRgZIPWsUjpctCeC7/AHQQjBFbI5WL5+EyKQzOmbbJ5m78KLLcd2SW7Blz60CHoxPFAEEqBpMkUAOBx0oA/wD/2Q=="
-      },
-      {
-        "image": "images/p06.jpg",
-        "width": 1400,
-        "height": 2100,
-        "alt": "Lachende Person in Jeansjacke, Aufnahme auf der Straße",
-        "placeholder": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEABIMDRANCxIQDhAUExIVGywdGxgYGzYnKSAsQDlEQz85Pj1HUGZXR0thTT0+WXlaYWltcnNyRVV9hnxvhWZwcm4BExQUGxcbNB0dNG5JPklubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubv/AABEIACQAGAMBEQACEQEDEQH/xAGiAAABBQEBAQEBAQAAAAAAAAAAAQIDBAUGBwgJCgsQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+gEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoLEQACAQIEBAMEBwUEBAABAncAAQIDEQQFITEGEkFRB2FxEyIygQgUQpGhscEJIzNS8BVictEKFiQ04SXxFxgZGiYnKCkqNTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqCg4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2dri4+Tl5ufo6ery8/T19vf4+fr/2gAMAwEAAhEDEQA/AM9Diu1nlRY2Q/MKRaJhgikMrqasxRdgWHyj5gye1Y83vWOxU1ycxVZvmO3pWpzN6kIO3k1RNi7BEXUydFArBx9652Rl7litIQzHbW5xtakKPzyM0ikjSScCz4HPpUdTb7JnO43HAxVmTK5YhSR1qG9C0tSNbubpurLmZ0uKHeYzHJNWmYSSuf/Z"
       }
     ]
   },
@@ -138,9 +117,9 @@
   "about": {
     "eyebrow": "Über mich",
     "title": "Lilja Belz",
-    "image": "images/31b29d7d5607ff90fa07221c0e421cd2-496503.jpg",
-    "image_width": 280,
-    "image_height": 280,
+    "image": "images/lilja.jpg",
+    "image_width": 204,
+    "image_height": 192,
     "image_alt": "Lilja Belz, Porträtfotografin",
     "paragraphs": [
       "Ich fotografiere Menschen, weil mich interessiert, wer sie wirklich sind, nicht, wie sie auszusehen haben. Mich berührt der Moment, in dem jemand die Schultern senkt, kurz vergisst, beobachtet zu werden, und einfach da ist.",
