@@ -57,8 +57,8 @@ collections:
             widget: object
             fields:
               - { label: Eyebrow, name: eyebrow, widget: string }
-              - { label: Titel, Zeile 1, name: title_line1, widget: string }
-              - { label: Titel, Zeile 2, name: title_line2, widget: string }
+              - { label: "Titel, Zeile 1", name: title_line1, widget: string }
+              - { label: "Titel, Zeile 2", name: title_line2, widget: string }
               - { label: Einleitung, name: lead, widget: text }
               - { label: Bild, name: image, widget: image }
               - { label: Bildbreite (px), name: image_width, widget: number, value_type: int }
