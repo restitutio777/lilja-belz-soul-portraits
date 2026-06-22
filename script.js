@@ -4,6 +4,18 @@
 
   var prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+  /* ---- Gallery blur-up: fade each portrait in over its LQIP placeholder ---- */
+  document.documentElement.classList.add("js");
+  Array.prototype.slice.call(document.querySelectorAll(".gallery-item img")).forEach(function (img) {
+    if (img.complete && img.naturalWidth > 0) {
+      img.classList.add("is-loaded");
+    } else {
+      var done = function () { img.classList.add("is-loaded"); };
+      img.addEventListener("load", done);
+      img.addEventListener("error", done);
+    }
+  });
+
   /* ---- Header background on scroll ---- */
   var header = document.querySelector(".site-header");
   function onScroll() {
