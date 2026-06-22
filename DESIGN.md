@@ -30,6 +30,7 @@ Strategy: restrained, warm tinted neutrals plus one earthy clay accent. One deep
 - Asymmetric hero (text / tall 4:5 portrait).
 - Portfolio: CSS columns masonry, 3 / 2 / 1 across breakpoints.
 - Ablauf: numbered editorial rows with hairline dividers, large serif numerals (no cards).
+- Raum: asymmetric editorial collage, copy plus a square detail stacked beside one tall image.
 - About: deep band, photo plus text plus pull quote.
 - Beratung: two columns, definition list of facts (no cards).
 - Generous, varied vertical rhythm.
