@@ -1,0 +1,188 @@
+# Sveltia CMS configuration.
+# Docs: https://sveltiacms.app/en/docs
+#
+# Local editing (no login needed): run `npm run dev`, open http://localhost:8080/admin/
+# in a Chromium browser (Chrome, Edge, Brave), and grant access to this folder.
+#
+# Online editing for the photographer: deploy the free Sveltia CMS Authenticator
+# (https://github.com/sveltia/sveltia-cms-auth) on Cloudflare Workers, then set
+# `base_url` below to its URL. See SETUP.md for the full walkthrough.
+
+backend:
+  name: github
+  repo: restitutio777/lilja-belz-soul-portraits
+  branch: main
+  # base_url: https://your-authenticator.workers.dev
+
+# Where uploaded images are stored and how they are referenced on the site.
+media_folder: src/images
+public_folder: images
+
+# A calmer editor: no raw Markdown toolbar surprises, just the fields that matter.
+collections:
+  - name: site
+    label: Website
+    description: Texte und Bilder der gesamten Seite.
+    files:
+      - name: content
+        label: Seiteninhalte
+        file: src/_data/site.json
+        format: json
+        description: Alle Inhalte der Startseite an einem Ort.
+        fields:
+          - label: Marke
+            name: brand
+            widget: object
+            fields:
+              - { label: Name, name: name, widget: string }
+              - { label: Untertitel, name: tagline, widget: string }
+              - { label: E-Mail, name: email, widget: string }
+
+          - label: Meta & SEO
+            name: meta
+            widget: object
+            collapsed: true
+            fields:
+              - { label: Seitentitel, name: title, widget: string }
+              - { label: Beschreibung (Suchmaschine), name: description, widget: text }
+              - { label: Seiten-URL, name: site_url, widget: string, hint: "Volle URL ohne abschließenden Schrägstrich, z. B. https://example.de" }
+              - { label: Theme-Farbe, name: theme_color, widget: string }
+              - { label: OG-Titel (Social), name: og_title, widget: string }
+              - { label: OG-Beschreibung (Social), name: og_description, widget: text }
+              - { label: OG-Bild Alt-Text, name: og_image_alt, widget: string }
+              - { label: Twitter-Beschreibung, name: twitter_description, widget: text }
+
+          - label: Hero (Startbereich)
+            name: hero
+            widget: object
+            fields:
+              - { label: Eyebrow, name: eyebrow, widget: string }
+              - { label: Titel, Zeile 1, name: title_line1, widget: string }
+              - { label: Titel, Zeile 2, name: title_line2, widget: string }
+              - { label: Einleitung, name: lead, widget: text }
+              - { label: Bild, name: image, widget: image }
+              - { label: Bildbreite (px), name: image_width, widget: number, value_type: int }
+              - { label: Bildhöhe (px), name: image_height, widget: number, value_type: int }
+              - { label: Bild Alt-Text, name: image_alt, widget: string }
+
+          - label: Worum es geht
+            name: intro
+            widget: object
+            fields:
+              - { label: Eyebrow, name: eyebrow, widget: string }
+              - label: Absätze
+                name: paragraphs
+                widget: list
+                field: { label: Absatz, name: text, widget: text }
+
+          - label: Portfolio
+            name: portfolio
+            widget: object
+            fields:
+              - { label: Eyebrow, name: eyebrow, widget: string }
+              - { label: Titel, name: title, widget: string }
+              - { label: Notiz, name: note, widget: text }
+              - { label: Übergangstext (davor), name: flow_intro, widget: string }
+              - label: Bilder
+                name: items
+                widget: list
+                summary: "{{fields.alt}}"
+                fields:
+                  - { label: Bild, name: image, widget: image }
+                  - { label: Alt-Text, name: alt, widget: string }
+                  - { label: Breite (px), name: width, widget: number, value_type: int }
+                  - { label: Höhe (px), name: height, widget: number, value_type: int }
+                  - { label: Blur-up-Platzhalter, name: placeholder, widget: hidden }
+
+          - label: Ablauf
+            name: ablauf
+            widget: object
+            fields:
+              - { label: Eyebrow, name: eyebrow, widget: string }
+              - { label: Titel, name: title, widget: string }
+              - { label: Übergangstext (davor), name: flow_intro, widget: string }
+              - label: Schritte
+                name: steps
+                widget: list
+                summary: "{{fields.title}}"
+                fields:
+                  - { label: Titel, name: title, widget: string }
+                  - { label: Text, name: text, widget: text }
+
+          - label: Der Raum
+            name: raum
+            widget: object
+            fields:
+              - { label: Eyebrow, name: eyebrow, widget: string }
+              - { label: Titel, name: title, widget: string }
+              - { label: Übergangstext (davor), name: flow_intro, widget: string }
+              - label: Absätze
+                name: paragraphs
+                widget: list
+                field: { label: Absatz, name: text, widget: text }
+              - label: Bild, Detail
+                name: image_detail
+                widget: object
+                fields:
+                  - { label: Bild, name: image, widget: image }
+                  - { label: Breite (px), name: width, widget: number, value_type: int }
+                  - { label: Höhe (px), name: height, widget: number, value_type: int }
+                  - { label: Alt-Text, name: alt, widget: string }
+              - label: Bild, groß
+                name: image_main
+                widget: object
+                fields:
+                  - { label: Bild, name: image, widget: image }
+                  - { label: Breite (px), name: width, widget: number, value_type: int }
+                  - { label: Höhe (px), name: height, widget: number, value_type: int }
+                  - { label: Alt-Text, name: alt, widget: string }
+
+          - label: Über mich
+            name: about
+            widget: object
+            fields:
+              - { label: Eyebrow, name: eyebrow, widget: string }
+              - { label: Titel, name: title, widget: string }
+              - { label: Bild, name: image, widget: image }
+              - { label: Bildbreite (px), name: image_width, widget: number, value_type: int }
+              - { label: Bildhöhe (px), name: image_height, widget: number, value_type: int }
+              - { label: Bild Alt-Text, name: image_alt, widget: string }
+              - label: Absätze
+                name: paragraphs
+                widget: list
+                field: { label: Absatz, name: text, widget: text }
+              - { label: Zitat, name: quote, widget: text }
+
+          - label: Begleitung & Rahmen
+            name: beratung
+            widget: object
+            fields:
+              - { label: Eyebrow, name: eyebrow, widget: string }
+              - { label: Titel, name: title, widget: string }
+              - { label: Einleitung, name: intro, widget: text }
+              - label: Eckdaten
+                name: facts
+                widget: list
+                summary: "{{fields.term}}"
+                fields:
+                  - { label: Begriff, name: term, widget: string }
+                  - { label: Beschreibung, name: description, widget: text }
+
+          - label: Kontakt
+            name: kontakt
+            widget: object
+            fields:
+              - { label: Eyebrow, name: eyebrow, widget: string }
+              - { label: Titel, name: title, widget: string }
+              - { label: Übergangstext (davor), name: flow_intro, widget: string }
+              - { label: Text, name: text, widget: text }
+              - { label: Hinweis, name: hint, widget: string }
+
+          - label: Fußzeile & Recht
+            name: footer
+            widget: object
+            collapsed: true
+            fields:
+              - { label: Impressum & Datenschutz (HTML), name: impressum_html, widget: text, hint: "Rechtstext als HTML. Vor Veröffentlichung vollständig ausfüllen." }
+              - { label: Copyright, name: copyright, widget: string }
+              - { label: Bildnachweis, name: credit, widget: string }

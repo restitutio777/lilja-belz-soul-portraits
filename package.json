@@ -1,0 +1,13 @@
+{
+  "name": "soul-portraits",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Editorial one-page portfolio for portrait photographers. Static site (Eleventy) with a small Git-based CMS (Sveltia) at /admin.",
+  "scripts": {
+    "dev": "eleventy --serve",
+    "build": "eleventy"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0"
+  }
+}
