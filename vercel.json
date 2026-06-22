@@ -4,10 +4,6 @@
   "outputDirectory": "_site",
   "cleanUrls": true,
   "trailingSlash": false,
-  "rewrites": [
-    { "source": "/auth", "destination": "/api/auth" },
-    { "source": "/callback", "destination": "/api/callback" }
-  ],
   "headers": [
     {
       "source": "/images/(.*)",

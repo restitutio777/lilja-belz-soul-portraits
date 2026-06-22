@@ -1,5 +1,5 @@
 // Eleventy config. Renders the static site from src/ into _site/.
-// Content lives in src/_data/content.json and is edited through /admin (Sveltia CMS).
+// Content lives in src/_data/site.json (a custom editing backend will write to it).
 module.exports = function (eleventyConfig) {
   // Copy static assets through untouched, preserving their paths.
   eleventyConfig.addPassthroughCopy("src/styles.css");
@@ -10,8 +10,6 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/robots.txt");
   eleventyConfig.addPassthroughCopy("src/sitemap.xml");
   eleventyConfig.addPassthroughCopy("src/images");
-  // admin/index.html is rendered as a template; copy the CMS config alongside it.
-  eleventyConfig.addPassthroughCopy("src/admin/config.yml");
 
   return {
     dir: {
