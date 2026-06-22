@@ -11,6 +11,10 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/sitemap.xml");
   eleventyConfig.addPassthroughCopy("src/images");
 
+  // Custom admin UI: copied verbatim, not processed as templates.
+  eleventyConfig.addPassthroughCopy("src/admin");
+  eleventyConfig.ignores.add("src/admin/**");
+
   return {
     dir: {
       input: "src",
