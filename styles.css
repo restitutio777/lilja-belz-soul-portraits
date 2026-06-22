@@ -438,6 +438,45 @@ a { color: inherit; }
 }
 .step-body p { margin: 0; color: var(--ink-soft); }
 
+/* ---------- Der Raum ---------- */
+.raum { padding-block: clamp(4.5rem, 11vh, 8.5rem); }
+.raum-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    "text   main"
+    "detail main";
+  column-gap: clamp(2rem, 5vw, 4.5rem);
+  row-gap: clamp(1.75rem, 4vw, 3.25rem);
+  align-items: start;
+}
+.raum-text { grid-area: text; max-width: 44ch; align-self: center; }
+.raum-text .section-title { margin-bottom: 1.5rem; }
+.raum-text p { margin: 0; color: var(--ink-soft); }
+.raum-text p + p { margin-top: 1.2rem; }
+
+.raum-media {
+  margin: 0;
+  overflow: hidden;
+  border-radius: var(--radius);
+  background: var(--paper-2);
+}
+/* Soft warm desaturation to unify the room photos with the portraits */
+.raum-media img {
+  width: 100%;
+  display: block;
+  filter: grayscale(0.16) sepia(0.05) contrast(1.02) saturate(0.94);
+}
+.raum-detail { grid-area: detail; }
+.raum-detail img { aspect-ratio: 1 / 1; object-fit: cover; }
+/* The tall room image stretches to meet the stacked text and detail beside it */
+.raum-main {
+  grid-area: main;
+  align-self: stretch;
+  box-shadow: 0 1.5rem 3.5rem -1.75rem oklch(0.255 0.014 55 / 0.28);
+}
+.raum-main img { height: 100%; object-fit: cover; object-position: center; }
+
 /* ---------- About (deep band) ---------- */
 .about {
   background: var(--night);
@@ -665,6 +704,18 @@ a { color: inherit; }
   .hero-copy { max-width: none; order: 1; }
   .hero-media { order: 2; }
   .hero-media img { aspect-ratio: 4 / 5; max-height: 76vh; }
+
+  .raum-grid {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "text"
+      "main"
+      "detail";
+  }
+  .raum-text { align-self: start; max-width: none; }
+  .raum-main { align-self: auto; }
+  .raum-main img { height: auto; aspect-ratio: 4 / 5; }
+  .raum-detail img { aspect-ratio: 3 / 2; }
 }
 
 @media (max-width: 760px) {
