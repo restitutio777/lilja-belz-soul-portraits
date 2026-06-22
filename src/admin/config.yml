@@ -8,11 +8,13 @@
 # (https://github.com/sveltia/sveltia-cms-auth) on Cloudflare Workers, then set
 # `base_url` below to its URL. See SETUP.md for the full walkthrough.
 
+# Preview-Test: liest/schreibt den Feature-Branch und nutzt die Preview-Domain.
+# Vor dem Livegang auf  branch: main  und die Produktions-Domain umstellen.
 backend:
   name: github
   repo: restitutio777/lilja-belz-soul-portraits
-  branch: main
-  base_url: https://soulportraits-six.vercel.app
+  branch: claude/tender-babbage-fsjnc1
+  base_url: https://soulportraits-git-claude-tender-babbage-fsjnc1-bolteds-projects.vercel.app
 
 # Where uploaded images are stored and how they are referenced on the site.
 media_folder: src/images
