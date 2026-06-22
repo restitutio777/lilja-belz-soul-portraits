@@ -46,9 +46,12 @@ Open `/admin` on the deployed site, sign in, edit, Save. Saving commits to
 > The `api/` functions only run on Vercel, not in `npm run dev` (which serves
 > the static build only). To run the whole thing locally, use `vercel dev`.
 
-## Scope of this first version
+## What's editable
 
-Editable now: brand (name, tagline, email), hero (eyebrow, two title lines,
-lead) and contact (text, hint). All other fields in `site.json` are preserved
-untouched on save. Next steps: cover the remaining text sections, then image
-upload (committing files to `src/images/` via the same GitHub API).
+The whole site: brand, meta/SEO, hero, intro, portfolio (with image list),
+process steps, the room, about, guidance facts, contact and footer/legal.
+
+**Images** are uploaded straight from the editor: the browser reads the file,
+derives its pixel dimensions and a tiny blur-up placeholder automatically, and
+the file is committed to `src/images/` via `POST /api/upload`. The new path is
+stored in `site.json`. (Endpoint: `api/upload.js`.)

@@ -17,8 +17,9 @@ function repo() {
   return process.env.CONTENT_REPO || "restitutio777/lilja-belz-soul-portraits";
 }
 function branch() {
-  // Defaults to the current working branch so saving rebuilds the preview.
-  return process.env.CONTENT_BRANCH || "claude/tender-babbage-fsjnc1";
+  // The branch the admin reads from and commits to. Set CONTENT_BRANCH to
+  // override (e.g. a feature branch for preview testing).
+  return process.env.CONTENT_BRANCH || "main";
 }
 
 // --- JSON response helper ---
@@ -105,6 +106,19 @@ async function readContent() {
   return { json: JSON.parse(text), sha: data.sha };
 }
 
+// Commit an arbitrary file (e.g. an uploaded image). base64Content is the
+// file's bytes already base64-encoded. Pass sha to update an existing file.
+async function putFile(repoPath, base64Content, message, sha) {
+  const body = { message, content: base64Content, branch: branch() };
+  if (sha) body.sha = sha;
+  const res = await gh(`/repos/${repo()}/contents/${encodeURI(repoPath)}`, {
+    method: "PUT",
+    body: JSON.stringify(body),
+  });
+  if (!res.ok) throw new Error(`GitHub upload failed: ${res.status} ${await res.text()}`);
+  return res.json();
+}
+
 async function writeContent(contentObj, sha, message) {
   const text = JSON.stringify(contentObj, null, 2) + "\n";
   const res = await gh(`/repos/${repo()}/contents/${CONTENT_PATH}`, {
@@ -139,6 +153,7 @@ module.exports = {
   readContent,
   readPublicContent,
   writeContent,
+  putFile,
   readBody,
   SESSION_TTL,
 };

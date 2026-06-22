@@ -139,3 +139,53 @@ button {
 
 .error { color: var(--error); font-size: .9rem; margin: 0; }
 [hidden] { display: none !important; }
+
+/* nested objects & lists */
+.obj-card {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 12px;
+  background: #fff;
+}
+.obj-title {
+  font-size: .78rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+.obj-card-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+.obj-card-title { font-family: "Fraunces", Georgia, serif; font-size: 1rem; }
+.list-block { margin-bottom: 16px; }
+.list-row { display: flex; gap: 8px; align-items: flex-start; margin-bottom: 8px; }
+.list-row textarea { min-height: 64px; }
+
+button.mini {
+  font-size: .8rem;
+  padding: 7px 12px;
+  background: transparent;
+  border: 1px solid var(--line);
+  color: var(--ink);
+}
+button.mini:hover { border-color: var(--clay); color: var(--clay); }
+button.mini.danger { color: var(--error); border-color: #e7cdc8; }
+button.mini.danger:hover { background: #fbeae7; border-color: var(--error); }
+
+/* image field */
+.image-field { margin-bottom: 16px; }
+.image-label {
+  display: block; margin-bottom: 8px;
+  font-size: .82rem; letter-spacing: .06em; text-transform: uppercase; color: var(--muted);
+}
+.image-row { display: flex; gap: 14px; align-items: flex-start; }
+.thumb {
+  width: 84px; height: 84px; object-fit: cover;
+  border-radius: 8px; border: 1px solid var(--line); background: #efe8dc;
+}
+.thumb.empty { display: inline-block; }
+.image-meta { display: flex; flex-direction: column; gap: 8px; align-items: flex-start; }
+.image-path { font-size: .82rem; color: var(--muted); word-break: break-all; }
+.image-status { font-size: .82rem; color: var(--muted); }
+.image-status.ok { color: #4a7a4a; }
+.image-status.err { color: var(--error); }
