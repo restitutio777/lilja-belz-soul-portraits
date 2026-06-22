@@ -6,20 +6,23 @@ const COOKIE = "sp_session";
 const CONTENT_PATH = "src/_data/site.json";
 const SESSION_TTL = 60 * 60 * 8; // 8 hours
 
-// Fallback so the admin works out of the box on the preview. For production,
-// set AUTH_SECRET as an environment variable to override this public default.
-const DEFAULT_SECRET = "soulportraits-dev-secret-change-me";
+// Session signing secret. No fallback: if AUTH_SECRET is unset the backend
+// fails closed (no logins, no valid sessions). Set it per deployment.
 function secret() {
-  return process.env.AUTH_SECRET || DEFAULT_SECRET;
+  return process.env.AUTH_SECRET || null;
 }
 
+// Repo and branch default to Vercel's injected Git system variables, so a
+// forked copy works with zero config. Override with CONTENT_REPO / CONTENT_BRANCH.
 function repo() {
-  return process.env.CONTENT_REPO || "restitutio777/lilja-belz-soul-portraits";
+  if (process.env.CONTENT_REPO) return process.env.CONTENT_REPO;
+  const owner = process.env.VERCEL_GIT_REPO_OWNER;
+  const slug = process.env.VERCEL_GIT_REPO_SLUG;
+  if (owner && slug) return `${owner}/${slug}`;
+  return "restitutio777/lilja-belz-soul-portraits";
 }
 function branch() {
-  // The branch the admin reads from and commits to. Set CONTENT_BRANCH to
-  // override (e.g. a feature branch for preview testing).
-  return process.env.CONTENT_BRANCH || "main";
+  return process.env.CONTENT_BRANCH || process.env.VERCEL_GIT_COMMIT_REF || "main";
 }
 
 // --- JSON response helper ---
@@ -45,14 +48,17 @@ function b64url(buf) {
   return Buffer.from(buf).toString("base64").replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
 }
 function sign(payloadObj) {
+  const key = secret();
+  if (!key) throw new Error("AUTH_SECRET is not set");
   const payload = b64url(JSON.stringify(payloadObj));
-  const mac = b64url(crypto.createHmac("sha256", secret()).update(payload).digest());
+  const mac = b64url(crypto.createHmac("sha256", key).update(payload).digest());
   return `${payload}.${mac}`;
 }
 function verify(token) {
-  if (!token || !token.includes(".")) return null;
+  const key = secret();
+  if (!key || !token || !token.includes(".")) return null;
   const [payload, mac] = token.split(".");
-  const expected = b64url(crypto.createHmac("sha256", secret()).update(payload).digest());
+  const expected = b64url(crypto.createHmac("sha256", key).update(payload).digest());
   const a = Buffer.from(mac);
   const b = Buffer.from(expected);
   if (a.length !== b.length || !crypto.timingSafeEqual(a, b)) return null;
