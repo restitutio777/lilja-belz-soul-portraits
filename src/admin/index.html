@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex" />
+  <title>Inhalte verwalten · Soul Portraits</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..500;1,9..144,300..400&family=Hanken+Grotesk:wght@300;400;500;600&display=swap" />
+  <link rel="stylesheet" href="/admin/admin.css" />
+</head>
+<body>
+  <div class="wrap">
+    <header class="bar">
+      <div class="brand">
+        <span class="brand-name">Lilja Belz</span>
+        <span class="brand-sub">Inhalte verwalten</span>
+      </div>
+      <button id="logout" class="ghost" hidden>Abmelden</button>
+    </header>
+
+    <!-- LOGIN -->
+    <section id="login" class="card" hidden>
+      <h1>Anmelden</h1>
+      <p class="muted">Melde dich an, um die Inhalte der Website zu bearbeiten.</p>
+      <form id="login-form" novalidate>
+        <label>E-Mail
+          <input type="email" name="email" autocomplete="username" required />
+        </label>
+        <label>Passwort
+          <input type="password" name="password" autocomplete="current-password" required />
+        </label>
+        <p id="login-error" class="error" hidden></p>
+        <button type="submit" class="primary">Anmelden</button>
+      </form>
+    </section>
+
+    <!-- EDITOR -->
+    <section id="editor" hidden>
+      <div id="fields"></div>
+      <div class="actions">
+        <button id="save" class="primary">Speichern</button>
+        <span id="status" class="status" aria-live="polite"></span>
+      </div>
+      <p class="muted small">Nach dem Speichern wird die Website automatisch neu veröffentlicht (kann ein bis zwei Minuten dauern).</p>
+    </section>
+
+    <div id="boot" class="muted">Lädt …</div>
+  </div>
+
+  <script src="/admin/admin.js" defer></script>
+</body>
+</html>

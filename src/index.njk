@@ -1,0 +1,286 @@
+---
+permalink: /index.html
+---
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{{ site.meta.title }}</title>
+  <meta name="description" content="{{ site.meta.description }}" />
+  <meta name="author" content="{{ site.brand.name }}" />
+  <meta name="theme-color" content="{{ site.meta.theme_color }}" />
+  <link rel="canonical" href="{{ site.meta.site_url }}/" />
+
+  <!-- Open Graph / social -->
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="de_DE" />
+  <meta property="og:site_name" content="{{ site.brand.name }}" />
+  <meta property="og:title" content="{{ site.meta.og_title }}" />
+  <meta property="og:description" content="{{ site.meta.og_description }}" />
+  <meta property="og:url" content="{{ site.meta.site_url }}/" />
+  <meta property="og:image" content="{{ site.meta.site_url }}/og.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="{{ site.meta.og_image_alt }}" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="{{ site.meta.og_title }}" />
+  <meta name="twitter:description" content="{{ site.meta.twitter_description }}" />
+  <meta name="twitter:image" content="{{ site.meta.site_url }}/og.jpg" />
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+
+  <!-- Preload the hero portrait, the largest contentful paint, for a calmer first load -->
+  <link rel="preload" as="image" href="{{ site.hero.image }}" fetchpriority="high" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..500;1,9..144,300..400&family=Hanken+Grotesk:wght@300;400;500;600&display=swap" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..500;1,9..144,300..400&family=Hanken+Grotesk:wght@300;400;500;600&display=swap" /></noscript>
+
+  <link rel="stylesheet" href="styles.css" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "{{ site.brand.name }}, {{ site.brand.tagline }}",
+    "description": "Feinfühlige Porträtfotografie. Soul Portraits sind eine Begegnung vor der Kamera, in der Menschen sich selbst wieder näherkommen.",
+    "image": "{{ site.meta.site_url }}/{{ site.hero.image }}",
+    "url": "{{ site.meta.site_url }}/",
+    "areaServed": "DE",
+    "priceRange": "auf Anfrage",
+    "founder": { "@type": "Person", "name": "{{ site.brand.name }}", "jobTitle": "Porträtfotografin" }
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
+
+  <header class="site-header" id="top">
+    <div class="shell header-inner">
+      <a class="wordmark" href="#top" aria-label="{{ site.brand.name }}, zur Startseite">
+        <span class="wordmark-name">{{ site.brand.name }}</span>
+        <span class="wordmark-sub">{{ site.brand.tagline }}</span>
+      </a>
+
+      <nav class="nav" aria-label="Hauptnavigation">
+        <a href="#portfolio">Portfolio</a>
+        <a href="#ablauf">Ablauf</a>
+        <a href="#raum">Raum</a>
+        <a href="#ueber">Über mich</a>
+        <a href="#beratung">Begleitung</a>
+        <a href="#kontakt" class="nav-cta">Kontakt</a>
+      </nav>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Menü öffnen">
+        <span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="mobile-nav" id="mobile-nav" role="dialog" aria-modal="true" aria-label="Navigation" hidden>
+    <nav aria-label="Mobile Navigation">
+      <a href="#portfolio">Portfolio</a>
+      <a href="#ablauf">Ablauf</a>
+      <a href="#raum">Raum</a>
+      <a href="#ueber">Über mich</a>
+      <a href="#beratung">Begleitung</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+  </div>
+
+  <main id="main">
+
+    <!-- HERO -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="shell hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow reveal">{{ site.hero.eyebrow }}</p>
+          <h1 class="hero-title reveal" id="hero-title">{{ site.hero.title_line1 }}<br class="hero-br" /> {{ site.hero.title_line2 }}</h1>
+          <p class="hero-lead reveal">{{ site.hero.lead }}</p>
+        </div>
+        <figure class="hero-media reveal">
+          <img src="{{ site.hero.image }}" width="{{ site.hero.image_width }}" height="{{ site.hero.image_height }}" alt="{{ site.hero.image_alt }}" fetchpriority="high" decoding="async" />
+        </figure>
+      </div>
+      <a class="scroll-cue" href="#intro" aria-label="Weiter nach unten, zur Einführung">
+        <span class="scroll-cue-word">Beginne hier</span>
+        <span class="scroll-cue-line" aria-hidden="true"></span>
+      </a>
+    </section>
+
+    <!-- INTRO / PHILOSOPHIE -->
+    <section class="intro" id="intro" aria-labelledby="intro-title">
+      <div class="shell intro-grid">
+        <p class="eyebrow reveal" id="intro-title">{{ site.intro.eyebrow }}</p>
+        <div class="intro-body">
+          <p class="lead reveal">{{ site.intro.paragraphs[0] }}</p>
+          <p class="reveal">{{ site.intro.paragraphs[1] }}</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FLOW, Intro zu Portfolio -->
+    <div class="flow reveal">
+      <span class="flow-line" aria-hidden="true"></span>
+      <span class="flow-node" aria-hidden="true"></span>
+      <span class="flow-word">{{ site.portfolio.flow_intro }}</span>
+    </div>
+
+    <!-- PORTFOLIO -->
+    <section class="portfolio" id="portfolio" aria-labelledby="portfolio-title">
+      <div class="shell">
+        <div class="section-head reveal">
+          <p class="eyebrow">{{ site.portfolio.eyebrow }}</p>
+          <h2 class="section-title" id="portfolio-title">{{ site.portfolio.title }}</h2>
+          <p class="section-note">{{ site.portfolio.note }}</p>
+        </div>
+
+        <div class="gallery">
+{%- for item in site.portfolio.items %}
+          <figure class="gallery-item reveal"{% if item.placeholder %} style="background-image:url('{{ item.placeholder }}')"{% endif %}><img loading="lazy" decoding="async" width="{{ item.width }}" height="{{ item.height }}" src="{{ item.image }}" alt="{{ item.alt }}" /></figure>
+{%- endfor %}
+        </div>
+      </div>
+    </section>
+
+    <!-- FLOW, Portfolio zu Ablauf -->
+    <div class="flow reveal">
+      <span class="flow-line" aria-hidden="true"></span>
+      <span class="flow-node" aria-hidden="true"></span>
+      <span class="flow-word">{{ site.ablauf.flow_intro }}</span>
+    </div>
+
+    <!-- ABLAUF -->
+    <section class="ablauf" id="ablauf" aria-labelledby="ablauf-title">
+      <div class="shell">
+        <div class="section-head reveal">
+          <p class="eyebrow">{{ site.ablauf.eyebrow }}</p>
+          <h2 class="section-title" id="ablauf-title">{{ site.ablauf.title }}</h2>
+        </div>
+
+        <ol class="steps">
+{%- for step in site.ablauf.steps %}
+          <li class="step reveal">
+            <span class="step-num" aria-hidden="true">{% if loop.index < 10 %}0{% endif %}{{ loop.index }}</span>
+            <div class="step-body">
+              <h3>{{ step.title }}</h3>
+              <p>{{ step.text }}</p>
+            </div>
+          </li>
+{%- endfor %}
+        </ol>
+      </div>
+    </section>
+
+    <!-- FLOW, Ablauf zu Raum -->
+    <div class="flow reveal">
+      <span class="flow-line" aria-hidden="true"></span>
+      <span class="flow-node" aria-hidden="true"></span>
+      <span class="flow-word">{{ site.raum.flow_intro }}</span>
+    </div>
+
+    <!-- DER RAUM -->
+    <section class="raum" id="raum" aria-labelledby="raum-title">
+      <div class="shell raum-grid">
+        <div class="raum-text reveal">
+          <p class="eyebrow">{{ site.raum.eyebrow }}</p>
+          <h2 class="section-title" id="raum-title">{{ site.raum.title }}</h2>
+          <p>{{ site.raum.paragraphs[0] }}</p>
+          <p>{{ site.raum.paragraphs[1] }}</p>
+        </div>
+        <figure class="raum-media raum-detail reveal">
+          <img loading="lazy" decoding="async" width="{{ site.raum.image_detail.width }}" height="{{ site.raum.image_detail.height }}" src="{{ site.raum.image_detail.image }}" alt="{{ site.raum.image_detail.alt }}" />
+        </figure>
+        <figure class="raum-media raum-main reveal">
+          <img loading="lazy" decoding="async" width="{{ site.raum.image_main.width }}" height="{{ site.raum.image_main.height }}" src="{{ site.raum.image_main.image }}" alt="{{ site.raum.image_main.alt }}" />
+        </figure>
+      </div>
+    </section>
+
+    <!-- ÜBER MICH (deep band) -->
+    <section class="about" id="ueber" aria-labelledby="about-title">
+      <div class="shell about-grid">
+        <figure class="about-media reveal">
+          <img loading="lazy" decoding="async" src="{{ site.about.image }}" width="{{ site.about.image_width }}" height="{{ site.about.image_height }}" alt="{{ site.about.image_alt }}" />
+        </figure>
+        <div class="about-copy">
+          <p class="eyebrow eyebrow-light reveal">{{ site.about.eyebrow }}</p>
+          <h2 class="section-title section-title-light reveal" id="about-title">{{ site.about.title }}</h2>
+          <p class="reveal">{{ site.about.paragraphs[0] }}</p>
+          <p class="reveal">{{ site.about.paragraphs[1] }}</p>
+          <blockquote class="about-quote reveal">{{ site.about.quote }}</blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- BERATUNG / RAHMEN -->
+    <section class="beratung" id="beratung" aria-labelledby="beratung-title">
+      <div class="shell beratung-grid">
+        <div class="beratung-intro reveal">
+          <p class="eyebrow">{{ site.beratung.eyebrow }}</p>
+          <h2 class="section-title" id="beratung-title">{{ site.beratung.title }}</h2>
+          <p>{{ site.beratung.intro }}</p>
+        </div>
+
+        <dl class="facts">
+{%- for fact in site.beratung.facts %}
+          <div class="fact reveal">
+            <dt>{{ fact.term }}</dt>
+            <dd>{{ fact.description }}</dd>
+          </div>
+{%- endfor %}
+        </dl>
+      </div>
+    </section>
+
+    <!-- FLOW, Beratung zu Kontakt (Closing) -->
+    <div class="flow flow-close reveal">
+      <span class="flow-line" aria-hidden="true"></span>
+      <span class="flow-node" aria-hidden="true"></span>
+      <span class="flow-word">{{ site.kontakt.flow_intro }}</span>
+    </div>
+
+    <!-- KONTAKT -->
+    <section class="kontakt" id="kontakt" aria-labelledby="kontakt-title">
+      <div class="shell kontakt-inner reveal">
+        <p class="eyebrow">{{ site.kontakt.eyebrow }}</p>
+        <h2 class="section-title" id="kontakt-title">{{ site.kontakt.title }}</h2>
+        <p class="kontakt-text">{{ site.kontakt.text }}</p>
+        <a class="btn btn-primary btn-lg" href="mailto:{{ site.brand.email }}?subject=Soul%20Portrait%20Anfrage">{{ site.brand.email }}</a>
+        <p class="kontakt-hint">{{ site.kontakt.hint }}</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-grid">
+      <div class="footer-brand">
+        <span class="wordmark-name">{{ site.brand.name }}</span>
+        <span class="wordmark-sub">{{ site.brand.tagline }}</span>
+      </div>
+      <nav class="footer-nav" aria-label="Fußzeile">
+        <a href="#portfolio">Portfolio</a>
+        <a href="#ablauf">Ablauf</a>
+        <a href="#ueber">Über mich</a>
+        <a href="#kontakt">Kontakt</a>
+      </nav>
+    </div>
+
+    <!-- Pflichtangaben für DE. Bitte ergänzen. -->
+    <div class="shell footer-legal" id="impressum">
+      <details>
+        <summary>Impressum &amp; Datenschutz</summary>
+        <div class="legal-body">
+          {{ site.footer.impressum_html | safe }}
+        </div>
+      </details>
+      <p class="copyright">{{ site.footer.copyright | safe }} {{ site.brand.name }} <span class="credit">{{ site.footer.credit }}</span></p>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
