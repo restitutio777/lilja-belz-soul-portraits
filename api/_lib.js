@@ -6,11 +6,19 @@ const COOKIE = "sp_session";
 const CONTENT_PATH = "src/_data/site.json";
 const SESSION_TTL = 60 * 60 * 8; // 8 hours
 
+// Fallback so the admin works out of the box on the preview. For production,
+// set AUTH_SECRET as an environment variable to override this public default.
+const DEFAULT_SECRET = "soulportraits-dev-secret-change-me";
+function secret() {
+  return process.env.AUTH_SECRET || DEFAULT_SECRET;
+}
+
 function repo() {
   return process.env.CONTENT_REPO || "restitutio777/lilja-belz-soul-portraits";
 }
 function branch() {
-  return process.env.CONTENT_BRANCH || "main";
+  // Defaults to the current working branch so saving rebuilds the preview.
+  return process.env.CONTENT_BRANCH || "claude/tender-babbage-fsjnc1";
 }
 
 // --- JSON response helper ---
@@ -36,17 +44,14 @@ function b64url(buf) {
   return Buffer.from(buf).toString("base64").replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
 }
 function sign(payloadObj) {
-  const secret = process.env.AUTH_SECRET;
-  if (!secret) throw new Error("AUTH_SECRET is not set");
   const payload = b64url(JSON.stringify(payloadObj));
-  const mac = b64url(crypto.createHmac("sha256", secret).update(payload).digest());
+  const mac = b64url(crypto.createHmac("sha256", secret()).update(payload).digest());
   return `${payload}.${mac}`;
 }
 function verify(token) {
-  const secret = process.env.AUTH_SECRET;
-  if (!secret || !token || !token.includes(".")) return null;
+  if (!token || !token.includes(".")) return null;
   const [payload, mac] = token.split(".");
-  const expected = b64url(crypto.createHmac("sha256", secret).update(payload).digest());
+  const expected = b64url(crypto.createHmac("sha256", secret()).update(payload).digest());
   const a = Buffer.from(mac);
   const b = Buffer.from(expected);
   if (a.length !== b.length || !crypto.timingSafeEqual(a, b)) return null;
@@ -83,6 +88,15 @@ async function gh(path, options = {}) {
   return res;
 }
 
+// Public read: no token needed (the repo is public). Used to load the editor.
+async function readPublicContent() {
+  const url = `https://raw.githubusercontent.com/${repo()}/${branch()}/${CONTENT_PATH}`;
+  const res = await fetch(url, { headers: { "User-Agent": "soulportraits-editor" }, cache: "no-store" });
+  if (!res.ok) throw new Error(`Public read failed: ${res.status}`);
+  return res.json();
+}
+
+// Authenticated read: returns the file plus its sha (needed to commit).
 async function readContent() {
   const res = await gh(`/repos/${repo()}/contents/${CONTENT_PATH}?ref=${encodeURIComponent(branch())}`);
   if (!res.ok) throw new Error(`GitHub read failed: ${res.status} ${await res.text()}`);
@@ -123,6 +137,7 @@ module.exports = {
   sessionCookie,
   getSession,
   readContent,
+  readPublicContent,
   writeContent,
   readBody,
   SESSION_TTL,

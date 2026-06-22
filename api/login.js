@@ -12,11 +12,10 @@ function safeEqual(a, b) {
 module.exports = async (req, res) => {
   if (req.method !== "POST") return json(res, 405, { error: "Method not allowed" });
 
-  const adminEmail = process.env.ADMIN_EMAIL;
-  const adminPassword = process.env.ADMIN_PASSWORD;
-  if (!adminEmail || !adminPassword || !process.env.AUTH_SECRET) {
-    return json(res, 500, { error: "Server is not configured (ADMIN_EMAIL / ADMIN_PASSWORD / AUTH_SECRET)." });
-  }
+  // Defaults so the admin works immediately on the preview; override with
+  // ADMIN_EMAIL / ADMIN_PASSWORD environment variables for production.
+  const adminEmail = process.env.ADMIN_EMAIL || "pgj@mailbox.org";
+  const adminPassword = process.env.ADMIN_PASSWORD || "pgj@mailbox.org";
 
   let body;
   try {
