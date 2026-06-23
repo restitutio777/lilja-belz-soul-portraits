@@ -212,15 +212,20 @@ function renderImage(spec, obj, parent) {
   else thumb.classList.add("empty");
   const right = el("div", "image-meta");
   const path = el("div", "image-path", obj[spec.key] || "— kein Bild —");
+  const info = el("div", "image-dims");
+  const cur = currentDims(obj, spec);
+  if (cur) info.textContent = cur; else info.hidden = true;
   const status = el("span", "image-status");
   const file = el("input");
   file.type = "file";
   file.accept = "image/*";
   const btn = el("button", "mini", "Bild wählen / ersetzen");
   btn.type = "button";
+  btn.title = "Große Bilder werden automatisch auf max. " + IMG_MAX_EDGE + " px verkleinert und als WebP optimiert.";
   btn.addEventListener("click", () => file.click());
-  file.addEventListener("change", () => handleImage(file, spec, obj, { thumb, path, status }));
+  file.addEventListener("change", () => handleImage(file, spec, obj, { thumb, path, info, status }));
   right.appendChild(path);
+  right.appendChild(info);
   right.appendChild(btn);
   right.appendChild(status);
   right.appendChild(file);
@@ -231,8 +236,60 @@ function renderImage(spec, obj, parent) {
   parent.appendChild(wrap);
 }
 
+function currentDims(obj, spec) {
+  const w = spec.widthKey && obj[spec.widthKey];
+  const h = spec.heightKey && obj[spec.heightKey];
+  return (w && h) ? `${w} × ${h} px` : "";
+}
+
+// --- image processing ------------------------------------------------------
+const IMG_MAX_EDGE = 2400;   // longest side in px — anything larger is downscaled
+const IMG_MIN_EDGE = 1200;   // below this we warn (may look soft when enlarged)
+const IMG_QUALITY = 0.82;    // re-encode quality for lossy formats
+// Vector and animated formats are uploaded untouched (a canvas would rasterise
+// or flatten them).
+const IMG_PASSTHROUGH = ["image/svg+xml", "image/gif"];
+
+function fmtBytes(n) {
+  if (n == null) return "";
+  if (n < 1024) return n + " B";
+  if (n < 1048576) return Math.round(n / 1024) + " KB";
+  return (n / 1048576).toFixed(1) + " MB";
+}
+function dataURLBytes(u) {
+  const i = u.indexOf(",");
+  const b64 = i >= 0 ? u.slice(i + 1) : u;
+  return Math.floor((b64.length * 3) / 4);
+}
+function extForType(type) {
+  return type === "image/webp" ? "webp"
+    : type === "image/png" ? "png"
+    : type === "image/gif" ? "gif"
+    : type === "image/svg+xml" ? "svg" : "jpg";
+}
+function withExt(name, ext) {
+  const dot = name.lastIndexOf(".");
+  return (dot > 0 ? name.slice(0, dot) : name) + "." + ext;
+}
+function readAsDataURL(file) {
+  return new Promise((resolve, reject) => {
+    const r = new FileReader();
+    r.onload = () => resolve(r.result);
+    r.onerror = () => reject(r.error || new Error("Datei konnte nicht gelesen werden."));
+    r.readAsDataURL(file);
+  });
+}
+function loadImage(src) {
+  return new Promise((resolve, reject) => {
+    const im = new Image();
+    im.onload = () => resolve(im);
+    im.onerror = () => reject(new Error("Bild konnte nicht gelesen werden."));
+    im.src = src;
+  });
+}
+
+// ~24px wide blurred LQIP as a JPEG data URL (the front-end blur-up source).
 function dataURLtoSmall(img) {
-  // ~24px wide blurred LQIP as a JPEG data URL
   const w = 24, h = Math.max(1, Math.round((img.naturalHeight / img.naturalWidth) * w));
   const c = document.createElement("canvas");
   c.width = w; c.height = h;
@@ -240,41 +297,82 @@ function dataURLtoSmall(img) {
   try { return c.toDataURL("image/jpeg", 0.4); } catch { return ""; }
 }
 
+// Downscale to IMG_MAX_EDGE and re-encode (WebP, JPEG fallback) via canvas.
+function reencode(img) {
+  const sw = img.naturalWidth, sh = img.naturalHeight;
+  const scale = Math.min(1, IMG_MAX_EDGE / Math.max(sw, sh));
+  const w = Math.max(1, Math.round(sw * scale));
+  const h = Math.max(1, Math.round(sh * scale));
+  const c = document.createElement("canvas");
+  c.width = w; c.height = h;
+  const ctx = c.getContext("2d");
+  ctx.imageSmoothingEnabled = true;
+  ctx.imageSmoothingQuality = "high";
+  ctx.drawImage(img, 0, 0, w, h);
+  let type = "image/webp";
+  let dataURL = c.toDataURL(type, IMG_QUALITY);
+  if (dataURL.slice(0, 15) !== "data:image/webp") { // browser can't encode WebP
+    type = "image/jpeg";
+    dataURL = c.toDataURL(type, IMG_QUALITY);
+  }
+  return { dataURL, width: w, height: h, type, bytes: dataURLBytes(dataURL) };
+}
+
 async function handleImage(fileInput, spec, obj, ui) {
   const f = fileInput.files && fileInput.files[0];
   if (!f) return;
-  ui.status.textContent = "Lädt hoch …";
   ui.status.className = "image-status";
-  const reader = new FileReader();
-  reader.onload = async () => {
-    const dataURL = reader.result;
-    const img = new Image();
-    img.onload = async () => {
-      if (spec.widthKey) obj[spec.widthKey] = img.naturalWidth;
-      if (spec.heightKey) obj[spec.heightKey] = img.naturalHeight;
-      if (spec.placeholderKey) obj[spec.placeholderKey] = dataURLtoSmall(img);
-      try {
-        const res = await fetch("/api/upload", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ filename: f.name, dataBase64: dataURL }),
-        });
-        const out = await res.json().catch(() => ({}));
-        if (!res.ok) { ui.status.textContent = out.error || "Upload fehlgeschlagen."; ui.status.classList.add("err"); return; }
-        obj[spec.key] = out.path;
-        ui.thumb.src = "/" + out.path;
-        ui.thumb.classList.remove("empty");
-        ui.path.textContent = out.path;
-        ui.status.textContent = "Hochgeladen ✓";
-        ui.status.classList.add("ok");
-      } catch {
-        ui.status.textContent = "Netzwerkfehler beim Upload.";
-        ui.status.classList.add("err");
-      }
-    };
-    img.src = dataURL;
-  };
-  reader.readAsDataURL(f);
+  ui.status.textContent = "Verarbeite Bild …";
+  try {
+    const srcURL = await readAsDataURL(f);
+    const img = await loadImage(srcURL);
+    const srcW = img.naturalWidth, srcH = img.naturalHeight, srcBytes = f.size;
+
+    if (spec.placeholderKey) obj[spec.placeholderKey] = dataURLtoSmall(img);
+
+    // Optimise raster images; pass vectors/GIFs (and undecodable files) through.
+    let up = { dataURL: srcURL, width: srcW, height: srcH, type: f.type || "image/jpeg", bytes: srcBytes, optimized: false };
+    if (!IMG_PASSTHROUGH.includes(f.type) && srcW && srcH) {
+      const opt = reencode(img);
+      const downscaled = Math.max(srcW, srcH) > IMG_MAX_EDGE;
+      // Keep the optimised version only when it helps (smaller, or resized).
+      if (downscaled || opt.bytes < srcBytes) up = Object.assign(opt, { optimized: true });
+    }
+
+    ui.status.textContent = "Lädt hoch …";
+    const res = await fetch("/api/upload", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ filename: withExt(f.name, extForType(up.type)), dataBase64: up.dataURL }),
+    });
+    const out = await res.json().catch(() => ({}));
+    if (!res.ok) { ui.status.textContent = out.error || "Upload fehlgeschlagen."; ui.status.classList.add("err"); return; }
+
+    obj[spec.key] = out.path;
+    if (spec.widthKey) obj[spec.widthKey] = up.width;
+    if (spec.heightKey) obj[spec.heightKey] = up.height;
+
+    ui.thumb.src = "/" + out.path;
+    ui.thumb.classList.remove("empty");
+    ui.path.textContent = out.path;
+
+    // Dimensions / size (with before→after when optimised, plus a small warning).
+    let line = `${up.width} × ${up.height} px · ${extForType(up.type).toUpperCase()} · ${fmtBytes(up.bytes)}`;
+    if (up.optimized && (up.width !== srcW || up.height !== srcH || up.bytes < srcBytes)) {
+      line += `  (von ${srcW} × ${srcH} px, ${fmtBytes(srcBytes)})`;
+    }
+    if (f.type !== "image/svg+xml" && up.width && Math.max(up.width, up.height) < IMG_MIN_EDGE) {
+      line += "  ⚠ klein – auf großen Bildschirmen evtl. unscharf";
+    }
+    ui.info.textContent = line;
+    ui.info.hidden = false;
+
+    ui.status.textContent = up.optimized ? "Optimiert & hochgeladen ✓" : "Hochgeladen ✓";
+    ui.status.classList.add("ok");
+  } catch (err) {
+    ui.status.textContent = (err && err.message) || "Fehler beim Verarbeiten des Bildes.";
+    ui.status.classList.add("err");
+  }
 }
 
 // --- views -----------------------------------------------------------------

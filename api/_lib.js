@@ -78,6 +78,47 @@ function getSession(req) {
   return verify(readCookie(req, COOKIE));
 }
 
+// --- login throttle (in-memory, best-effort) -------------------------------
+// Serverless instances are ephemeral and several may run at once, so this
+// limiter is per warm instance, not global. It still raises the cost of a
+// brute-force attempt a lot, with zero infrastructure. For hard guarantees,
+// back it with a shared store (Vercel KV / Upstash Redis).
+const LOGIN_ATTEMPTS = new Map(); // ip -> { count, first, blockedUntil }
+const LOGIN_MAX = 6;                     // failed tries allowed in the window
+const LOGIN_WINDOW_MS = 15 * 60 * 1000;  // counting window
+const LOGIN_BLOCK_MS = 15 * 60 * 1000;   // lockout once the limit is hit
+
+function clientIp(req) {
+  const xff = req.headers["x-forwarded-for"];
+  if (xff) return String(xff).split(",")[0].trim();
+  return (req.socket && req.socket.remoteAddress) || "unknown";
+}
+
+// Read-only: is this IP currently locked out? -> { blocked, retryAfter? }
+function loginBlocked(ip) {
+  const rec = LOGIN_ATTEMPTS.get(ip);
+  if (!rec || !rec.blockedUntil) return { blocked: false };
+  const remaining = rec.blockedUntil - Date.now();
+  if (remaining <= 0) return { blocked: false };
+  return { blocked: true, retryAfter: Math.ceil(remaining / 1000) };
+}
+
+function loginFailed(ip) {
+  const now = Date.now();
+  let rec = LOGIN_ATTEMPTS.get(ip);
+  if (!rec || now - rec.first > LOGIN_WINDOW_MS) rec = { count: 0, first: now, blockedUntil: 0 };
+  rec.count += 1;
+  if (rec.count >= LOGIN_MAX) rec.blockedUntil = now + LOGIN_BLOCK_MS;
+  LOGIN_ATTEMPTS.set(ip, rec);
+  if (LOGIN_ATTEMPTS.size > 5000) { // opportunistic cleanup of stale entries
+    for (const [k, v] of LOGIN_ATTEMPTS) {
+      if (Math.max(v.first, v.blockedUntil || 0) + LOGIN_WINDOW_MS < now) LOGIN_ATTEMPTS.delete(k);
+    }
+  }
+}
+
+function loginSucceeded(ip) { LOGIN_ATTEMPTS.delete(ip); }
+
 // --- GitHub contents API ---
 async function gh(path, options = {}) {
   const token = process.env.CONTENT_GITHUB_TOKEN;
@@ -156,6 +197,10 @@ module.exports = {
   verify,
   sessionCookie,
   getSession,
+  clientIp,
+  loginBlocked,
+  loginFailed,
+  loginSucceeded,
   readContent,
   readPublicContent,
   writeContent,
