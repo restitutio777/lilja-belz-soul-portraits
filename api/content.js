@@ -9,7 +9,12 @@ module.exports = async (req, res) => {
 
   try {
     if (req.method === "GET") {
-      // Token-free: read the public file so the editor loads without any setup.
+      // With a token, read via the API (works for private repos too); otherwise
+      // fall back to the public raw file so a public repo loads without a token.
+      if (process.env.CONTENT_GITHUB_TOKEN) {
+        const { json: content, sha } = await readContent();
+        return json(res, 200, { content, sha });
+      }
       const content = await readPublicContent();
       return json(res, 200, { content, sha: null });
     }

@@ -279,7 +279,13 @@ async function handleImage(fileInput, spec, obj, ui) {
 
 // --- views -----------------------------------------------------------------
 function showLogin() { $("boot").hidden = true; $("editor").hidden = true; $("logout").hidden = true; $("login").hidden = false; }
-function showEditor() { $("boot").hidden = true; $("login").hidden = true; $("logout").hidden = false; renderAll(); $("editor").hidden = false; }
+function showEditor() {
+  $("boot").hidden = true; $("login").hidden = true; $("logout").hidden = false;
+  const name = state.content && state.content.brand && state.content.brand.name;
+  if (name) { $("brand-name").textContent = name; document.title = "Inhalte verwalten · " + name; }
+  renderAll();
+  $("editor").hidden = false;
+}
 
 function setStatus(msg, kind) { const s = $("status"); s.textContent = msg; s.className = "status" + (kind ? " " + kind : ""); }
 

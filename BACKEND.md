@@ -26,12 +26,16 @@ configured branch, which triggers a Vercel deploy.
 
 | Variable | Purpose |
 | --- | --- |
-| `ADMIN_EMAIL` | login email of the single admin |
-| `ADMIN_PASSWORD` | login password |
-| `AUTH_SECRET` | random string for signing the session cookie (e.g. `openssl rand -hex 32`) |
-| `CONTENT_GITHUB_TOKEN` | GitHub token with **Contents: read & write** on this repo |
-| `CONTENT_BRANCH` | branch to commit to. `main` for production; the feature branch while testing on a preview |
-| `CONTENT_REPO` | optional, defaults to `restitutio777/lilja-belz-soul-portraits` |
+| `ADMIN_EMAIL` | login email of the single admin (**required**) |
+| `ADMIN_PASSWORD` | login password (**required**) |
+| `AUTH_SECRET` | random string for signing the session cookie, e.g. `openssl rand -hex 32` (**required**) |
+| `CONTENT_GITHUB_TOKEN` | GitHub token with **Contents: read & write** on this repo (**required to save**) |
+| `CONTENT_BRANCH` | optional. Defaults to the deployed branch (Vercel `VERCEL_GIT_COMMIT_REF`), i.e. `main` in production |
+| `CONTENT_REPO` | optional. Defaults to this project's repo (Vercel `VERCEL_GIT_REPO_OWNER/SLUG`) |
+
+Without `ADMIN_EMAIL` / `ADMIN_PASSWORD` / `AUTH_SECRET` the backend fails closed:
+login is refused. `CONTENT_REPO` / `CONTENT_BRANCH` rarely need setting — they are
+auto-detected from Vercel, which makes forked client copies work with no config.
 
 Create a fine-grained GitHub token (scoped to just this repo, Contents:
 read & write): [github.com/settings/personal-access-tokens/new](https://github.com/settings/personal-access-tokens/new)
