@@ -50,6 +50,9 @@ State as of the last session, so a fresh session can continue cleanly.
 ## Key files
 - `src/_data/site.json` — all content (edited via `/admin`).
 - `src/index.njk` — template; `src/styles.css` — design tokens (`:root`) for branding.
+- `src/robots.njk` / `src/sitemap.njk` — rendered to `/robots.txt` and `/sitemap.xml`;
+  their URLs follow `site.meta.site_url`, so a domain change needs no edits here,
+  only updating `site.meta.site_url` (and pointing the Vercel domain).
 - `api/_lib.js` — auth + GitHub read/write helpers; `api/{login,logout,content,upload}.js`.
 - `.eleventy.js`, `vercel.json` — build & hosting config.
 - `BACKEND.md` — backend + env vars. `RESELLER.md` — per-client setup.
