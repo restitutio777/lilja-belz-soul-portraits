@@ -21,10 +21,20 @@ session is a signed, HttpOnly cookie (HMAC, 8 h). Saving commits to the
 configured branch, which triggers a Vercel deploy.
 
 Failed logins are **rate-limited per IP** (6 tries per 15 min, then a 15 min
-lockout with `429` + `Retry-After`). This is an in-memory limiter in
-`api/_lib.js`, so it is per warm serverless instance rather than global — it
-raises brute-force cost with zero infrastructure; for hard guarantees back it
-with a shared store (Vercel KV / Upstash Redis).
+lockout with `429` + `Retry-After`), implemented in `api/_lib.js`.
+
+- **With `KV_REST_API_URL` + `KV_REST_API_TOKEN` set** (Vercel KV / Upstash
+  Redis), the throttle is backed by that shared store, so the limit is enforced
+  **globally** across all serverless instances and survives cold starts. Add it
+  via Vercel → Storage → KV (or the Upstash integration); the vars are injected
+  automatically, then redeploy. No code or extra dependency needed — the
+  functions call the Redis REST API directly.
+- **Without KV**, it falls back to an in-memory limiter, per warm serverless
+  instance rather than global. This needs zero infrastructure and still raises
+  brute-force cost a lot, so a fresh client clone works out of the box.
+- If a KV call ever errors, the request **degrades to the in-memory limiter**
+  rather than failing the login — the store is best-effort, never a hard
+  dependency for signing in.
 
 ## Environment variables (set in Vercel)
 
@@ -38,6 +48,8 @@ with a shared store (Vercel KV / Upstash Redis).
 | `CONTENT_GITHUB_TOKEN` | GitHub token with **Contents: read & write** on this repo (**required to save**) |
 | `CONTENT_BRANCH` | optional. Defaults to the deployed branch (Vercel `VERCEL_GIT_COMMIT_REF`), i.e. `main` in production |
 | `CONTENT_REPO` | optional. Defaults to this project's repo (Vercel `VERCEL_GIT_REPO_OWNER/SLUG`) |
+| `KV_REST_API_URL` | optional. Vercel KV / Upstash Redis REST endpoint — enables the **global** login throttle (see below). Injected automatically by the Vercel KV / Upstash integration |
+| `KV_REST_API_TOKEN` | optional. Token for the KV REST endpoint. `UPSTASH_REDIS_REST_URL` / `UPSTASH_REDIS_REST_TOKEN` are accepted as aliases |
 
 Without `ADMIN_EMAIL` / `ADMIN_PASSWORD` / `AUTH_SECRET` the backend fails closed:
 login is refused. `CONTENT_REPO` / `CONTENT_BRANCH` rarely need setting — they are

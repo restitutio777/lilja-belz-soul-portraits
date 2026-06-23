@@ -74,8 +74,10 @@ starts cleanly.
   HMAC-signed, HttpOnly/Secure/SameSite=Lax cookie (`AUTH_SECRET`, 8 h).
 - **Fails closed**: missing env vars → login refused (503), no defaults, no
   backdoor. Never reintroduce default credentials or a fallback secret.
-- `/api/login` is **rate-limited** per IP (in-memory, best-effort — see the
-  throttle in `api/_lib.js`).
+- `/api/login` is **rate-limited** per IP (`api/_lib.js`). Global when a shared
+  store is configured (Vercel KV / Upstash via `KV_REST_API_URL` +
+  `KV_REST_API_TOKEN`), otherwise an in-memory per-instance fallback; either way
+  it degrades to in-memory rather than blocking a legit login if the store fails.
 - `CONTENT_GITHUB_TOKEN` is **server-side only**; never expose it to the browser.
   Use a fine-grained token scoped to the single repo (Contents: read & write).
 - Every `api/` route that reads/writes content checks `getSession(req)` first.

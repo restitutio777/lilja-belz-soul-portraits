@@ -25,7 +25,7 @@ module.exports = async (req, res) => {
 
   // Rate-limit failed attempts per IP to slow brute-force guessing.
   const ip = clientIp(req);
-  const gate = loginBlocked(ip);
+  const gate = await loginBlocked(ip);
   if (gate.blocked) {
     res.setHeader("Retry-After", String(gate.retryAfter));
     const mins = Math.max(1, Math.ceil(gate.retryAfter / 60));
@@ -44,10 +44,10 @@ module.exports = async (req, res) => {
   const ok = safeEqual(email, adminEmail.trim().toLowerCase()) && safeEqual(password, adminPassword);
 
   if (!ok) {
-    loginFailed(ip);
+    await loginFailed(ip);
     return json(res, 401, { error: "E-Mail oder Passwort ist falsch." });
   }
-  loginSucceeded(ip);
+  await loginSucceeded(ip);
 
   const token = sign({ email, exp: Math.floor(Date.now() / 1000) + SESSION_TTL });
   res.setHeader("Set-Cookie", sessionCookie(token));
