@@ -1,6 +1,9 @@
 // POST /api/login  { email, password }  -> sets a signed session cookie.
 const crypto = require("crypto");
-const { json, sign, sessionCookie, readBody, SESSION_TTL } = require("./_lib");
+const {
+  json, sign, sessionCookie, readBody, SESSION_TTL,
+  clientIp, loginBlocked, loginFailed, loginSucceeded,
+} = require("./_lib");
 
 function safeEqual(a, b) {
   const ba = Buffer.from(String(a));
@@ -20,6 +23,15 @@ module.exports = async (req, res) => {
     return json(res, 503, { error: "Backend ist nicht konfiguriert (ADMIN_EMAIL, ADMIN_PASSWORD, AUTH_SECRET in Vercel setzen)." });
   }
 
+  // Rate-limit failed attempts per IP to slow brute-force guessing.
+  const ip = clientIp(req);
+  const gate = loginBlocked(ip);
+  if (gate.blocked) {
+    res.setHeader("Retry-After", String(gate.retryAfter));
+    const mins = Math.max(1, Math.ceil(gate.retryAfter / 60));
+    return json(res, 429, { error: `Zu viele Anmeldeversuche. Bitte in ${mins} Minute(n) erneut versuchen.` });
+  }
+
   let body;
   try {
     body = await readBody(req);
@@ -31,7 +43,11 @@ module.exports = async (req, res) => {
   const password = body.password || "";
   const ok = safeEqual(email, adminEmail.trim().toLowerCase()) && safeEqual(password, adminPassword);
 
-  if (!ok) return json(res, 401, { error: "E-Mail oder Passwort ist falsch." });
+  if (!ok) {
+    loginFailed(ip);
+    return json(res, 401, { error: "E-Mail oder Passwort ist falsch." });
+  }
+  loginSucceeded(ip);
 
   const token = sign({ email, exp: Math.floor(Date.now() / 1000) + SESSION_TTL });
   res.setHeader("Set-Cookie", sessionCookie(token));

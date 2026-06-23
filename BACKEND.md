@@ -20,6 +20,12 @@ Auth is a single admin (email + password) held in environment variables; the
 session is a signed, HttpOnly cookie (HMAC, 8 h). Saving commits to the
 configured branch, which triggers a Vercel deploy.
 
+Failed logins are **rate-limited per IP** (6 tries per 15 min, then a 15 min
+lockout with `429` + `Retry-After`). This is an in-memory limiter in
+`api/_lib.js`, so it is per warm serverless instance rather than global — it
+raises brute-force cost with zero infrastructure; for hard guarantees back it
+with a shared store (Vercel KV / Upstash Redis).
+
 ## Environment variables (set in Vercel)
 
 [Vercel → Project → Settings → Environment Variables](https://vercel.com/bolteds-projects/soulportraits/settings/environment-variables)
