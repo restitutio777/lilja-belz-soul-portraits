@@ -319,6 +319,11 @@ a { color: inherit; }
   opacity: 0;
   transition: opacity 0.4s var(--ease-out);
 }
+/* The author `display: grid` above overrides the UA `[hidden] { display:none }`,
+   so without this rule the (opacity:0) overlay stays in the layer and swallows
+   every click on the page content below it — breaking the footer nav and other
+   in-content links. Honour the hidden attribute so it's only hit-testable when open. */
+.mobile-nav[hidden] { display: none; }
 .mobile-nav.open { opacity: 1; }
 .mobile-nav nav { display: flex; flex-direction: column; gap: 1.5rem; text-align: center; }
 .mobile-nav a {
