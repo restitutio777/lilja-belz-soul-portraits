@@ -186,6 +186,7 @@ button.mini.danger:hover { background: #fbeae7; border-color: var(--error); }
 .thumb.empty { display: inline-block; }
 .image-meta { display: flex; flex-direction: column; gap: 8px; align-items: flex-start; }
 .image-path { font-size: .82rem; color: var(--muted); word-break: break-all; }
+.image-dims { font-size: .8rem; color: var(--muted); font-variant-numeric: tabular-nums; }
 .image-status { font-size: .82rem; color: var(--muted); }
 .image-status.ok { color: #4a7a4a; }
 .image-status.err { color: var(--error); }

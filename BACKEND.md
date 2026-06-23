@@ -59,3 +59,11 @@ process steps, the room, about, guidance facts, contact and footer/legal.
 derives its pixel dimensions and a tiny blur-up placeholder automatically, and
 the file is committed to `src/images/` via `POST /api/upload`. The new path is
 stored in `site.json`. (Endpoint: `api/upload.js`.)
+
+Before upload the browser **optimises** the image on a canvas: it downscales
+anything larger than 2400 px on the long edge and re-encodes to WebP (≈82 %
+quality, JPEG fallback), so full-resolution camera files don't bloat the repo
+or the page. Already-small images are kept as-is, and SVG/GIF pass through
+untouched. The editor shows the resulting dimensions, format and size (and a
+warning if the source is under 1200 px); the stored width/height reflect the
+optimised image so the layout stays correct.
