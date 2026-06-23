@@ -174,14 +174,36 @@ function renderField(spec, obj, parent) {
     const arr = obj[spec.key];
     const block = el("div", "list-block");
     block.appendChild(el("div", "obj-title", spec.label));
+    const imgSpec = spec.item.find((s) => s.type === "image");
     arr.forEach((item, i) => {
       const card = el("div", "obj-card");
       const head = el("div", "obj-card-head");
+      // Thumbnail (if the item has an image) so you can see what you're moving/removing
+      if (imgSpec && item[imgSpec.key]) {
+        const th = el("img", "obj-thumb");
+        th.alt = "";
+        th.src = "/" + String(item[imgSpec.key]).replace(/^\//, "");
+        head.appendChild(th);
+      } else if (imgSpec) {
+        head.appendChild(el("span", "obj-thumb empty"));
+      }
       head.appendChild(el("span", "obj-card-title", (item[spec.itemLabel] || "Eintrag " + (i + 1))));
+      // Reorder controls
+      const tools = el("div", "obj-tools");
+      const up = el("button", "mini ghost", "↑");
+      up.type = "button"; up.title = "Nach oben"; up.disabled = i === 0;
+      up.addEventListener("click", () => { arr.splice(i - 1, 0, arr.splice(i, 1)[0]); renderAll(); });
+      const down = el("button", "mini ghost", "↓");
+      down.type = "button"; down.title = "Nach unten"; down.disabled = i === arr.length - 1;
+      down.addEventListener("click", () => { arr.splice(i + 1, 0, arr.splice(i, 1)[0]); renderAll(); });
       const rm = el("button", "mini danger", "Entfernen");
       rm.type = "button";
-      rm.addEventListener("click", () => { arr.splice(i, 1); renderAll(); });
-      head.appendChild(rm);
+      rm.addEventListener("click", () => {
+        if (!window.confirm("Diesen Eintrag wirklich entfernen?")) return;
+        arr.splice(i, 1); renderAll();
+      });
+      tools.appendChild(up); tools.appendChild(down); tools.appendChild(rm);
+      head.appendChild(tools);
       card.appendChild(head);
       renderFields(spec.item, item, card);
       block.appendChild(card);
