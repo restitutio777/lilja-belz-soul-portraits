@@ -19,10 +19,10 @@
     "title_line1": "Gesehen werden,",
     "title_line2": "wie du wirklich bist.",
     "lead": "Ein Soul Portrait ist keine gewöhnliche Fotosession. Es ist eine Begegnung, in der du dir selbst wieder näherkommst, ehrlich, ruhig und ohne Eile.",
-    "image": "images/p07.jpg",
-    "image_width": 1400,
-    "image_height": 1750,
-    "image_alt": "Intimes Nahporträt einer jungen Frau, die ruhig und offen in die Kamera blickt"
+    "image": "images/placeholder-4x5.svg",
+    "image_width": 1600,
+    "image_height": 2000,
+    "image_alt": "Platzhalter – hier ein eigenes Foto einsetzen"
   },
   "intro": {
     "eyebrow": "Worum es geht",
@@ -38,39 +38,39 @@
     "flow_intro": "Sieh, was in solchen Momenten entsteht",
     "items": [
       {
-        "image": "images/p12.jpg",
-        "width": 1400,
-        "height": 1750,
-        "alt": "Ruhiges Studioporträt einer Frau in weichem blauem Licht",
-        "placeholder": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEABIMDRANCxIQDhAUExIVGywdGxgYGzYnKSAsQDlEQz85Pj1HUGZXR0thTT0+WXlaYWltcnNyRVV9hnxvhWZwcm4BExQUGxcbNB0dNG5JPklubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubv/AABEIAB4AGAMBEQACEQEDEQH/xAGiAAABBQEBAQEBAQAAAAAAAAAAAQIDBAUGBwgJCgsQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+gEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoLEQACAQIEBAMEBwUEBAABAncAAQIDEQQFITEGEkFRB2FxEyIygQgUQpGhscEJIzNS8BVictEKFiQ04SXxFxgZGiYnKCkqNTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqCg4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2dri4+Tl5ufo6ery8/T19vf4+fr/2gAMAwEAAhEDEQA/ALOzAyegrpsFyg2oAylUQkDvUvTUE7llCJU3CqWoFySPdEwHcVpYkybeAxSle5NFSNoEwfvGjHDsTFTSj7pc3qMutUt7VSCwLelVchsyV1mJpi5WlUleNhQ0lc0bfV7efC52mnCStYbOSkkaRsscmoYhBUtjQ5WKnIODWbdi0f/Z"
+        "image": "images/placeholder-4x5.svg",
+        "width": 1600,
+        "height": 2000,
+        "alt": "Platzhalter – hier ein eigenes Foto einsetzen",
+        "placeholder": ""
       },
       {
-        "image": "images/p09.jpg",
-        "width": 1400,
-        "height": 958,
-        "alt": "Junger Mann lächelt entspannt im warmen Gegenlicht",
-        "placeholder": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEABIMDRANCxIQDhAUExIVGywdGxgYGzYnKSAsQDlEQz85Pj1HUGZXR0thTT0+WXlaYWltcnNyRVV9hnxvhWZwcm4BExQUGxcbNB0dNG5JPklubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubv/AABEIABAAGAMBEQACEQEDEQH/xAGiAAABBQEBAQEBAQAAAAAAAAAAAQIDBAUGBwgJCgsQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+gEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoLEQACAQIEBAMEBwUEBAABAncAAQIDEQQFITEGEkFRB2FxEyIygQgUQpGhscEJIzNS8BVictEKFiQ04SXxFxgZGiYnKCkqNTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqCg4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2dri4+Tl5ufo6ery8/T19vf4+fr/2gAMAwEAAhEDEQA/ANMatmAuSOa5dbnTpYgm15o4AVxitomcu42y8QbpRvOFNVYzuZscEiW7KeRU21LvoY89zvby+eDitkjJvoPe2lWMMCaVwsf/2Q=="
+        "image": "images/placeholder-3x2.svg",
+        "width": 1600,
+        "height": 1067,
+        "alt": "Platzhalter – hier ein eigenes Foto einsetzen",
+        "placeholder": ""
       },
       {
-        "image": "images/p05.jpg",
-        "width": 1400,
-        "height": 2100,
-        "alt": "Frau mit direktem, klarem Blick vor einer Wand",
-        "placeholder": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEABIMDRANCxIQDhAUExIVGywdGxgYGzYnKSAsQDlEQz85Pj1HUGZXR0thTT0+WXlaYWltcnNyRVV9hnxvhWZwcm4BExQUGxcbNB0dNG5JPklubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubv/AABEIACQAGAMBEQACEQEDEQH/xAGiAAABBQEBAQEBAQAAAAAAAAAAAQIDBAUGBwgJCgsQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+gEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoLEQACAQIEBAMEBwUEBAABAncAAQIDEQQFITEGEkFRB2FxEyIygQgUQpGhscEJIzNS8BVictEKFiQ04SXxFxgZGiYnKCkqNTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqCg4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2dri4+Tl5ufo6ery8/T19vf4+fr/2gAMAwEAAhEDEQA/AOouXMUDOOoFZm5yp8VtHd7JF+UHHFOxHOdPZ3Ud5brLGcg0i07kOtsy6bLs6kYpks4ibS1+xGTJMvU0ufUHT0Ol8HMTpu1s8GmxR2NLUZomj8ssD6ihptFXSZiXdxHFERsGKws72N7q1zW0N4fsY8vAJ6ittjDRnPWty77XkJOfWuto4VJ3NPUraH7EJCOSK5Iw947ZT9wxYbuS0O6IkAV1cqZx87TuR2zt5SDNaLYye5sak5bT4ATwazilc2k3ymDdMRFgdM1oYn//2Q=="
+        "image": "images/placeholder-2x3.svg",
+        "width": 1600,
+        "height": 2400,
+        "alt": "Platzhalter – hier ein eigenes Foto einsetzen",
+        "placeholder": ""
       },
       {
-        "image": "images/p10.jpg",
-        "width": 1400,
-        "height": 2100,
-        "alt": "Nachdenkliches Porträt eines Mannes vor dunklem Hintergrund",
-        "placeholder": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEABIMDRANCxIQDhAUExIVGywdGxgYGzYnKSAsQDlEQz85Pj1HUGZXR0thTT0+WXlaYWltcnNyRVV9hnxvhWZwcm4BExQUGxcbNB0dNG5JPklubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubv/AABEIACQAGAMBEQACEQEDEQH/xAGiAAABBQEBAQEBAQAAAAAAAAAAAQIDBAUGBwgJCgsQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+gEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoLEQACAQIEBAMEBwUEBAABAncAAQIDEQQFITEGEkFRB2FxEyIygQgUQpGhscEJIzNS8BVictEKFiQ04SXxFxgZGiYnKCkqNTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqCg4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2dri4+Tl5ufo6ery8/T19vf4+fr/2gAMAwEAAhEDEQA/AOKjXe4X1pAjUl0uWK33lPlxUcxpymSwwxrQzJrNlFyhfpmk9hx3Oo1KVfsSAOSpFYnQ9jk5SDIdvStkc7JoYcMCe1AjTuJhJagZ5Has7amrkrGU0DNyBWhkTRtmgCXr1oAbJLsHFAEEB4oAsDpQBVnJLUAf/9k="
+        "image": "images/placeholder-4x5.svg",
+        "width": 1600,
+        "height": 2000,
+        "alt": "Platzhalter – hier ein eigenes Foto einsetzen",
+        "placeholder": ""
       },
       {
-        "image": "images/p08.jpg",
-        "width": 1400,
-        "height": 2100,
-        "alt": "Elegante Aufnahme einer Frau mit wehendem Haar im Studio",
-        "placeholder": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEABIMDRANCxIQDhAUExIVGywdGxgYGzYnKSAsQDlEQz85Pj1HUGZXR0thTT0+WXlaYWltcnNyRVV9hnxvhWZwcm4BExQUGxcbNB0dNG5JPklubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubv/AABEIACQAGAMBEQACEQEDEQH/xAGiAAABBQEBAQEBAQAAAAAAAAAAAQIDBAUGBwgJCgsQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+gEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoLEQACAQIEBAMEBwUEBAABAncAAQIDEQQFITEGEkFRB2FxEyIygQgUQpGhscEJIzNS8BVictEKFiQ04SXxFxgZGiYnKCkqNTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqCg4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2dri4+Tl5ufo6ery8/T19vf4+fr/2gAMAwEAAhEDEQA/AOZC0wJPLYDJU4pXCw0rTEKOopMpGvJ5b2iqCM4rJM2aujPli8s1qncxasUp32gYoYkSR3WGUE8VDiXcu3AwFOeoqoikZM53LTJIs9DQBq+eJYUA6gUIbZnnmgRLdRIkMZUYJqUU0MtSeRVoln//2Q=="
+        "image": "images/placeholder-2x3.svg",
+        "width": 1600,
+        "height": 2400,
+        "alt": "Platzhalter – hier ein eigenes Foto einsetzen",
+        "placeholder": ""
       }
     ]
   },
@@ -102,25 +102,25 @@
       "Kein steriles Studio, sondern ein ruhiger, warmer Rahmen, in dem du den Mantel ablegen und durchatmen kannst. Oft beginnt genau hier das, was später im Porträt sichtbar wird."
     ],
     "image_detail": {
-      "image": "images/p14.jpg",
-      "width": 1400,
-      "height": 1400,
-      "alt": "Stilles Detail im Atelier, warmes Sonnenlicht fällt über eine ruhige Ecke"
+      "image": "images/placeholder-1x1.svg",
+      "width": 1600,
+      "height": 1600,
+      "alt": "Platzhalter – hier ein eigenes Foto einsetzen"
     },
     "image_main": {
-      "image": "images/p13.jpg",
-      "width": 1500,
-      "height": 2238,
-      "alt": "Ruhiger Raum, in dem weiches Tageslicht in sanften Mustern über den Holzboden fällt"
+      "image": "images/placeholder-2x3.svg",
+      "width": 1600,
+      "height": 2400,
+      "alt": "Platzhalter – hier ein eigenes Foto einsetzen"
     }
   },
   "about": {
     "eyebrow": "Über mich",
     "title": "Lilja Belz",
-    "image": "images/lilja.jpg",
-    "image_width": 204,
-    "image_height": 192,
-    "image_alt": "Lilja Belz, Porträtfotografin",
+    "image": "images/placeholder-4x5.svg",
+    "image_width": 1600,
+    "image_height": 2000,
+    "image_alt": "Platzhalter – hier ein eigenes Foto einsetzen",
     "paragraphs": [
       "Ich fotografiere Menschen, weil mich interessiert, wer sie wirklich sind, nicht, wie sie auszusehen haben. Mich berührt der Moment, in dem jemand die Schultern senkt, kurz vergisst, beobachtet zu werden, und einfach da ist.",
       "Ich arbeite ruhig, aufmerksam und ohne Wertung. Viele sagen mir hinterher, sie hätten sich selten so wohl und so gesehen gefühlt. Genau dafür mache ich das."
@@ -160,6 +160,6 @@
   "footer": {
     "impressum_html": "<p class=\"legal-note\">Platzhalter-Gerüst nach deutschem Recht (§ 5 DDG, DSGVO). Vor Veröffentlichung alle [eckigen Klammern] mit echten Angaben ersetzen, nicht zutreffende Absätze entfernen und das Ergebnis rechtlich prüfen lassen — diese Vorlage ist keine Rechtsberatung.</p>\n<h3>Impressum</h3>\n<p><strong>Angaben gemäß § 5 DDG</strong><br />\nLilja Belz<br />\n[Straße und Hausnummer]<br />\n[PLZ Ort]<br />\nDeutschland</p>\n<p><strong>Kontakt</strong><br />\nE-Mail: [E-Mail-Adresse]<br />\nTelefon: [optional]</p>\n<p><strong>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</strong><br />\nLilja Belz (Anschrift wie oben)</p>\n<p><strong>Umsatzsteuer</strong><br />\n[USt-IdNr. gemäß § 27 a UStG, falls vorhanden — andernfalls diesen Absatz löschen]</p>\n<p><strong>EU-Streitschlichtung</strong><br />\nPlattform der EU-Kommission zur Online-Streitbeilegung: <a href=\"https://ec.europa.eu/consumers/odr/\" target=\"_blank\" rel=\"noopener\">ec.europa.eu/consumers/odr</a>. Wir sind nicht verpflichtet und nicht bereit, an einem Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>\n<h3>Datenschutzerklärung</h3>\n<p><strong>Verantwortliche Stelle</strong><br />\nVerantwortlich im Sinne der DSGVO ist die im Impressum genannte Stelle.</p>\n<p><strong>Hosting und Server-Logfiles</strong><br />\nDiese Website wird bei [Hosting-Anbieter, z. B. Vercel Inc., 340 S Lemon Ave #4133, Walnut, CA 91789, USA] gehostet. Beim Seitenaufruf verarbeitet der Anbieter technisch notwendige Zugriffsdaten (u. a. IP-Adresse, Datum und Uhrzeit, abgerufene Datei) in Server-Logfiles. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (stabiler und sicherer Betrieb der Website).</p>\n<p><strong>Web-Schriftarten</strong><br />\nDie verwendeten Schriftarten werden lokal von diesem Server ausgeliefert (selbst gehostet). Es werden dabei keine Daten an Dritte wie Google Fonts übertragen.</p>\n<p><strong>Kontaktaufnahme</strong><br />\nNimmst du per E-Mail Kontakt auf, werden deine Angaben zur Bearbeitung der Anfrage gespeichert (Art. 6 Abs. 1 lit. b und f DSGVO) und gelöscht, sobald sie nicht mehr erforderlich sind.</p>\n<p><strong>Cookies und Tracking</strong><br />\nDiese Seite setzt keine Cookies und verwendet keine Analyse- oder Tracking-Dienste.</p>\n<p><strong>Deine Rechte</strong><br />\nDu hast das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit und Widerspruch sowie auf Beschwerde bei einer Datenschutz-Aufsichtsbehörde.</p>\n<p><strong>SSL/TLS-Verschlüsselung</strong><br />\nDiese Seite nutzt aus Sicherheitsgründen eine TLS-Verschlüsselung (erkennbar an https:// in der Adresszeile).</p>\n<p class=\"legal-note\">Stand: [Monat Jahr]. Dieses Gerüst ist ein Ausgangspunkt und ersetzt keine individuelle Rechtsberatung.</p>",
     "copyright": "&copy; 2026",
-    "credit": "Portfoliobilder: Platzhalter (Unsplash)."
+    "credit": ""
   }
 }
