@@ -34,10 +34,10 @@ permalink: /index.html
   <!-- Preload the hero portrait, the largest contentful paint, for a calmer first load -->
   <link rel="preload" as="image" href="{{ site.hero.image }}" fetchpriority="high" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..500;1,9..144,300..400&family=Hanken+Grotesk:wght@300;400;500;600&display=swap" media="print" onload="this.media='all'" />
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..500;1,9..144,300..400&family=Hanken+Grotesk:wght@300;400;500;600&display=swap" /></noscript>
+  <!-- Self-hosted fonts (declared in styles.css). Preload the two faces used
+       above the fold so the hero text renders without a flash. -->
+  <link rel="preload" as="font" type="font/woff2" href="fonts/fraunces-normal-latin.woff2" crossorigin />
+  <link rel="preload" as="font" type="font/woff2" href="fonts/hanken-normal-latin.woff2" crossorigin />
 
   <link rel="stylesheet" href="styles.css" />
 
@@ -46,7 +46,7 @@ permalink: /index.html
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
     "name": "{{ site.brand.name }}, {{ site.brand.tagline }}",
-    "description": "Feinfühlige Porträtfotografie. Soul Portraits sind eine Begegnung vor der Kamera, in der Menschen sich selbst wieder näherkommen.",
+    "description": "{{ site.meta.description }}",
     "image": "{{ site.meta.site_url }}/{{ site.hero.image }}",
     "url": "{{ site.meta.site_url }}/",
     "areaServed": "DE",
