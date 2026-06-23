@@ -655,6 +655,7 @@ a { color: inherit; }
 .footer-legal details[open] summary::before { content: "\2212 "; }
 .legal-body { margin-top: 1rem; line-height: 1.6; }
 .legal-body p { margin: 0 0 0.9rem; }
+.legal-body h3 { margin: 1.8rem 0 0.7rem; font-size: 0.95rem; letter-spacing: 0.02em; }
 .legal-note { font-style: italic; color: var(--night-soft); opacity: 0.8; }
 .copyright {
   margin: 1.75rem 0 0;
