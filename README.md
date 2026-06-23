@@ -11,7 +11,7 @@ someone in person, so they can feel what a session is about and get in touch.
 ## Stack
 Static site built with [Eleventy](https://www.11ty.dev/) from a single content file.
 CSS and a small progressive-enhancement script, no front-end framework. Fonts: Fraunces
-and Hanken Grotesk via Google Fonts.
+and Hanken Grotesk, self-hosted (WOFF2 in `src/fonts/`), so no visitor data is sent to Google.
 
 Content lives in **one place**: `src/_data/site.json`. The Eleventy template renders it
 into static HTML. A custom editing backend (in progress) will write to this content; for

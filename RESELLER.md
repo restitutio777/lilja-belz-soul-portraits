@@ -37,8 +37,11 @@ own repo and deployed branch. Redeploy once after setting the variables.
 - **Colours & fonts:** `src/styles.css` `:root` tokens — adjust `--paper*`
   (background), `--ink*` (text), `--clay*` (accent), and `--font-display` /
   `--font-body`. (Colours are OKLCH.)
-- **Fonts (loading):** update the Google Fonts `<link>` in `src/index.njk` to
-  match the chosen typefaces.
+- **Fonts (loading):** fonts are **self-hosted** (WOFF2 in `src/fonts/`,
+  `@font-face` at the top of `src/styles.css`, mirrored in `src/admin/admin.css`)
+  so no visitor data goes to Google. To swap typefaces, replace the WOFF2 files
+  and those `@font-face` blocks plus the `<link rel="preload">` in
+  `src/index.njk` (see `src/fonts/README.txt` for how to fetch them).
 - **Wordmark, copy, images, email:** all in `/admin` (or `src/_data/site.json`).
 - **Favicon / social image:** replace `src/favicon.svg`,
   `src/apple-touch-icon.png`, `src/og.jpg`.

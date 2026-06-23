@@ -8,6 +8,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/apple-touch-icon.png");
   eleventyConfig.addPassthroughCopy("src/og.jpg");
   eleventyConfig.addPassthroughCopy("src/images");
+  eleventyConfig.addPassthroughCopy("src/fonts");
   // robots.txt and sitemap.xml are rendered from templates (src/robots.njk,
   // src/sitemap.njk) so their URLs follow site.meta.site_url per deployment.
 
