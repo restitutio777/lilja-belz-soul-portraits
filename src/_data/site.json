@@ -38,11 +38,11 @@
     "flow_intro": "Sieh, was in solchen Momenten entsteht",
     "items": [
       {
-        "image": "images/demo-portrait-4x5.webp",
+        "image": "images/placeholder-4x5.svg",
         "width": 1600,
         "height": 2000,
-        "alt": "Demo-Porträt – zeigt den weichen Blur-Platzhalter beim Laden",
-        "placeholder": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAoACADASIAAhEBAxEB/8QAGgAAAwADAQAAAAAAAAAAAAAAAAQGAQIFA//EAB8QAAEEAgIDAAAAAAAAAAAAAAIAAQQRAxIxQQUiYf/EABcBAQADAAAAAAAAAAAAAAAAAAABAgP/xAAXEQADAQAAAAAAAAAAAAAAAAAAAQIR/9oADAMBAAIRAxEAPwCeFrT2CJs1ulcDWbKlgRhIGI++GWVPDVI4meJq1skSalUz4wiDkHXLKaztRukvQ0YxlqTOqPxsocmFgv2Hr4pgXTUGU0eQxHelU9JS0iXh3fJShx4XC/YuvinMhbE7r2nSmkSHIL0qmtKk6SsJp6ajwtkIVioLUuEIQH//2Q=="
+        "alt": "Platzhalter – hier ein eigenes Foto einsetzen",
+        "placeholder": ""
       },
       {
         "image": "images/placeholder-3x2.svg",
