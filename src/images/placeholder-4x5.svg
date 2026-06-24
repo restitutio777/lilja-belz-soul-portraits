@@ -1,13 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 2000" role="img" aria-label="Platzhalter">
   <defs>
     <linearGradient id="g45" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#f1e8db"/>
-      <stop offset="0.55" stop-color="#e7d2c2"/>
-      <stop offset="1" stop-color="#d8b6a1"/>
+      <stop offset="0" stop-color="#edeeec"/>
+      <stop offset="0.55" stop-color="#d6dbda"/>
+      <stop offset="1" stop-color="#bcc6c6"/>
     </linearGradient>
     <radialGradient id="b45" cx="0.32" cy="0.26" r="0.7">
-      <stop offset="0" stop-color="#fbf3e8" stop-opacity="0.85"/>
-      <stop offset="1" stop-color="#fbf3e8" stop-opacity="0"/>
+      <stop offset="0" stop-color="#f4f6f4" stop-opacity="0.85"/>
+      <stop offset="1" stop-color="#f4f6f4" stop-opacity="0"/>
     </radialGradient>
   </defs>
   <rect width="1600" height="2000" fill="url(#g45)"/>
