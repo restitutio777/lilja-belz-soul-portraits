@@ -465,6 +465,13 @@ async function onSave() {
 
 async function onLogout() { await fetch("/api/logout", { method: "POST" }); location.reload(); }
 
+// Back-to-top: the editor can get long, so offer a quick way up. Only show
+// the button once the page is scrolled down a bit.
+const toTop = $("to-top");
+function updateToTop() { toTop.hidden = window.scrollY < 400; }
+toTop.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+window.addEventListener("scroll", updateToTop, { passive: true });
+
 $("login-form").addEventListener("submit", onLogin);
 $("save").addEventListener("click", onSave);
 $("logout").addEventListener("click", onLogout);
