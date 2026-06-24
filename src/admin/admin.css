@@ -70,6 +70,21 @@ body {
   margin-bottom: 28px;
   border-bottom: 1px solid var(--line);
 }
+.bar-actions { display: flex; align-items: center; gap: 10px; }
+.view-site {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font: inherit;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  padding: 10px 18px;
+  text-decoration: none;
+  line-height: 1;
+  transition: background .15s ease, color .15s ease, border-color .15s ease;
+}
+.view-site:hover { border-color: var(--clay); color: var(--clay); }
+.view-site svg { flex: none; }
 .brand-name {
   display: block;
   font-family: "Fraunces", Georgia, serif;
