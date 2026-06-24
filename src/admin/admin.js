@@ -99,6 +99,18 @@ const SCHEMA = [
 const state = { content: null, sha: null };
 const $ = (id) => document.getElementById(id);
 
+// Freshly uploaded images are committed to the repo but only become reachable
+// under /images/<name> after the next deploy (1–2 min). Until then that path
+// 404s, so a just-uploaded thumbnail would stay blank. Cache the local data URL
+// per uploaded path for this session so previews show instantly, including
+// across re-renders (e.g. reordering portfolio items right after uploading).
+const uploadedThumbs = {};
+function thumbSrc(path) {
+  const p = String(path || "");
+  if (!p) return "";
+  return uploadedThumbs[p] || "/" + p.replace(/^\//, "");
+}
+
 function el(tag, cls, text) {
   const e = document.createElement(tag);
   if (cls) e.className = cls;
@@ -182,7 +194,7 @@ function renderField(spec, obj, parent) {
       if (imgSpec && item[imgSpec.key]) {
         const th = el("img", "obj-thumb");
         th.alt = "";
-        th.src = "/" + String(item[imgSpec.key]).replace(/^\//, "");
+        th.src = thumbSrc(item[imgSpec.key]);
         head.appendChild(th);
       } else if (imgSpec) {
         head.appendChild(el("span", "obj-thumb empty"));
@@ -230,7 +242,7 @@ function renderImage(spec, obj, parent) {
   const row = el("div", "image-row");
   const thumb = el("img", "thumb");
   thumb.alt = "";
-  if (obj[spec.key]) thumb.src = "/" + String(obj[spec.key]).replace(/^\//, "");
+  if (obj[spec.key]) thumb.src = thumbSrc(obj[spec.key]);
   else thumb.classList.add("empty");
   const right = el("div", "image-meta");
   const path = el("div", "image-path", obj[spec.key] || "— kein Bild —");
@@ -374,7 +386,9 @@ async function handleImage(fileInput, spec, obj, ui) {
     if (spec.widthKey) obj[spec.widthKey] = up.width;
     if (spec.heightKey) obj[spec.heightKey] = up.height;
 
-    ui.thumb.src = "/" + out.path;
+    // Show the local image right away — /images/<name> isn't deployed yet.
+    uploadedThumbs[out.path] = up.dataURL;
+    ui.thumb.src = up.dataURL;
     ui.thumb.classList.remove("empty");
     ui.path.textContent = out.path;
 
@@ -398,9 +412,9 @@ async function handleImage(fileInput, spec, obj, ui) {
 }
 
 // --- views -----------------------------------------------------------------
-function showLogin() { $("boot").hidden = true; $("editor").hidden = true; $("logout").hidden = true; $("login").hidden = false; }
+function showLogin() { $("boot").hidden = true; $("editor").hidden = true; $("logout").hidden = true; $("view-site").hidden = true; $("login").hidden = false; }
 function showEditor() {
-  $("boot").hidden = true; $("login").hidden = true; $("logout").hidden = false;
+  $("boot").hidden = true; $("login").hidden = true; $("logout").hidden = false; $("view-site").hidden = false;
   const name = state.content && state.content.brand && state.content.brand.name;
   if (name) { $("brand-name").textContent = name; document.title = "Inhalte verwalten · " + name; }
   renderAll();
@@ -450,6 +464,13 @@ async function onSave() {
 }
 
 async function onLogout() { await fetch("/api/logout", { method: "POST" }); location.reload(); }
+
+// Back-to-top: the editor can get long, so offer a quick way up. Only show
+// the button once the page is scrolled down a bit.
+const toTop = $("to-top");
+function updateToTop() { toTop.hidden = window.scrollY < 400; }
+toTop.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+window.addEventListener("scroll", updateToTop, { passive: true });
 
 $("login-form").addEventListener("submit", onLogin);
 $("save").addEventListener("click", onSave);
