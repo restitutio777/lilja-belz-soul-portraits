@@ -140,7 +140,7 @@ permalink: /index.html
 
         <div class="gallery">
 {%- for item in site.portfolio.items %}
-          <figure class="gallery-item reveal"{% if item.placeholder %} style="background-image:url('{{ item.placeholder }}')"{% endif %}><img loading="lazy" decoding="async" width="{{ item.width }}" height="{{ item.height }}" src="{{ item.image }}" alt="{{ item.alt }}" /></figure>
+          <figure class="gallery-item reveal{% if item.placeholder %} has-lqip{% endif %}"{% if item.placeholder %} style="--lqip:url('{{ item.placeholder }}')"{% endif %}><img loading="lazy" decoding="async" width="{{ item.width }}" height="{{ item.height }}" src="{{ item.image }}" alt="{{ item.alt }}" /></figure>
 {%- endfor %}
         </div>
       </div>

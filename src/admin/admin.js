@@ -312,7 +312,7 @@ function loadImage(src) {
 
 // ~24px wide blurred LQIP as a JPEG data URL (the front-end blur-up source).
 function dataURLtoSmall(img) {
-  const w = 24, h = Math.max(1, Math.round((img.naturalHeight / img.naturalWidth) * w));
+  const w = 32, h = Math.max(1, Math.round((img.naturalHeight / img.naturalWidth) * w));
   const c = document.createElement("canvas");
   c.width = w; c.height = h;
   c.getContext("2d").drawImage(img, 0, 0, w, h);
