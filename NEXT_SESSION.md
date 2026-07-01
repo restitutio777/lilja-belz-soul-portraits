@@ -33,9 +33,20 @@ PR each. Being executed in order.
   Shipped with the plan's 5 draft Q&As as real, live content (unlike Phase 2's
   testimonials, these are ordinary FAQ copy in Lilja's own voice, not
   attributed customer statements, so there's no fabrication concern).
-- Phases 4–6 (Kontakt threshold, craft polish, responsive images) — see
-  `IMPROVEMENT_PLAN.md` for scope, not started yet unless a later entry in
-  this file says otherwise.
+- **Phase 4 — Kontakt threshold lowering: shipped.** A JS-gated
+  "E-Mail-Adresse kopieren" button next to the mailto CTA (Clipboard API with
+  an `execCommand` fallback, inline "Kopiert."/"Kopieren fehlgeschlagen."
+  feedback that clears after 2s); hidden entirely without JS (`.js
+  .copy-email` gate, same pattern as the gallery blur-up). Optional
+  `brand.phone` (tel: link) and `kontakt.channels` (array of
+  `{label, url}`, e.g. Signal/WhatsApp) render as quiet underlined text
+  links under the hint, separated by a CSS `a + a::before` dot — only if
+  present, nothing renders for absent fields. `ProfessionalService` JSON-LD
+  now includes `email` (always) and `telephone` (if `brand.phone` set).
+  Admin: phone field in "Marke", channels list editor in "Kontakt".
+- Phases 5–6 (craft polish, responsive images) — see `IMPROVEMENT_PLAN.md`
+  for scope, not started yet unless a later entry in this file says
+  otherwise.
 
 ## What exists and works (verified)
 - **Live site (production, branch `main`):** https://soulportraits-six.vercel.app

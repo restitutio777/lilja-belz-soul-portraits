@@ -735,6 +735,41 @@ a { color: inherit; }
 .kontakt-text { color: var(--ink-soft); max-width: 46ch; margin: 0 0 2rem; }
 .kontakt-hint { margin: 1.25rem 0 0; font-size: 0.85rem; color: var(--ink-faint); letter-spacing: 0.02em; }
 
+/* Hidden until JS confirms a copy mechanism can run (progressive enhancement) */
+.copy-email {
+  display: none;
+  align-items: center;
+  gap: 0.55rem;
+  margin-top: 0.9rem;
+  padding: 0;
+  background: none;
+  border: none;
+  font: inherit;
+  font-size: 0.88rem;
+  color: var(--ink-soft);
+  text-decoration: underline;
+  text-decoration-color: var(--line);
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+.js .copy-email { display: inline-flex; }
+.copy-email:hover { color: var(--clay-deep); text-decoration-color: var(--clay); }
+.copy-email-status { text-decoration: none; color: var(--clay-deep); font-weight: 500; }
+
+.kontakt-channels {
+  margin: 0.9rem 0 0;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+.kontakt-channels a {
+  color: var(--ink-soft);
+  text-decoration: underline;
+  text-decoration-color: var(--line);
+  text-underline-offset: 3px;
+}
+.kontakt-channels a:hover { color: var(--clay-deep); text-decoration-color: var(--clay); }
+.kontakt-channels a + a::before { content: " · "; text-decoration: none; }
+
 /* ---------- Flow connectors (the thread through the journey) ---------- */
 /* Soft visual bridges between sections. A hairline draws downward on scroll,
    meets a small clay node, and a quiet italic phrase leads the eye onward. */

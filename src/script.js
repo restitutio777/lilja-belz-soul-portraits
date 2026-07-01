@@ -192,4 +192,45 @@
       }
     });
   }
+
+  /* ---- Kontakt: "E-Mail-Adresse kopieren" (Clipboard API, execCommand fallback) ---- */
+  var copyEmailBtn = document.querySelector(".copy-email");
+  if (copyEmailBtn) {
+    var copyEmailStatus = copyEmailBtn.querySelector(".copy-email-status");
+    var copyEmailTimer = null;
+    function copyPlainText(text) {
+      if (navigator.clipboard && window.isSecureContext) {
+        return navigator.clipboard.writeText(text);
+      }
+      return new Promise(function (resolve, reject) {
+        var ta = document.createElement("textarea");
+        ta.value = text;
+        ta.style.position = "fixed";
+        ta.style.opacity = "0";
+        document.body.appendChild(ta);
+        ta.focus();
+        ta.select();
+        var ok = false;
+        try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+        document.body.removeChild(ta);
+        if (ok) resolve(); else reject();
+      });
+    }
+    copyEmailBtn.addEventListener("click", function () {
+      var email = copyEmailBtn.getAttribute("data-email") || "";
+      if (!email) return;
+      copyPlainText(email).then(
+        function () {
+          copyEmailStatus.textContent = "Kopiert.";
+          window.clearTimeout(copyEmailTimer);
+          copyEmailTimer = window.setTimeout(function () { copyEmailStatus.textContent = ""; }, 2000);
+        },
+        function () {
+          copyEmailStatus.textContent = "Kopieren fehlgeschlagen.";
+          window.clearTimeout(copyEmailTimer);
+          copyEmailTimer = window.setTimeout(function () { copyEmailStatus.textContent = ""; }, 2000);
+        }
+      );
+    });
+  }
 })();

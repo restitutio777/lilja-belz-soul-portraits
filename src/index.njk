@@ -49,7 +49,9 @@ permalink: /index.html
     "description": "{{ site.meta.description }}",
     "image": "{{ site.meta.site_url }}/{{ site.hero.image }}",
     "url": "{{ site.meta.site_url }}/",
-    "areaServed": "DE",
+    "email": "{{ site.brand.email }}",
+    {% if site.brand.phone %}"telephone": "{{ site.brand.phone }}",
+    {% endif %}"areaServed": "DE",
     "priceRange": "auf Anfrage",
     "founder": { "@type": "Person", "name": "{{ site.brand.name }}", "jobTitle": "Porträtfotografin" }
   }
@@ -321,7 +323,17 @@ permalink: /index.html
         <h2 class="section-title" id="kontakt-title">{{ site.kontakt.title }}</h2>
         <p class="kontakt-text">{{ site.kontakt.text }}</p>
         <a class="btn btn-primary btn-lg" href="mailto:{{ site.brand.email }}?subject=Soul%20Portrait%20Anfrage">{{ site.brand.email }}</a>
+        <button type="button" class="copy-email" data-email="{{ site.brand.email }}">
+          <span class="copy-email-label">E-Mail-Adresse kopieren</span>
+          <span class="copy-email-status" aria-live="polite"></span>
+        </button>
         <p class="kontakt-hint">{{ site.kontakt.hint }}</p>
+        {% if site.brand.phone or (site.kontakt.channels and site.kontakt.channels.length) %}
+        <p class="kontakt-channels">
+{%- if site.brand.phone %}<a href="tel:{{ site.brand.phone }}">{{ site.brand.phone }}</a>{% endif -%}
+{%- for ch in site.kontakt.channels %}<a href="{{ ch.url }}" target="_blank" rel="noopener">{{ ch.label }}</a>{% endfor -%}
+        </p>
+        {% endif %}
       </div>
     </section>
   </main>

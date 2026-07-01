@@ -11,6 +11,7 @@ const SCHEMA = [
     { key: "name", label: "Name", type: "text" },
     { key: "tagline", label: "Untertitel", type: "text" },
     { key: "email", label: "E-Mail", type: "text" },
+    { key: "phone", label: "Telefon (optional)", type: "text" },
   ]},
   { title: "Meta & SEO", key: "meta", fields: [
     { key: "title", label: "Seitentitel", type: "text" },
@@ -111,6 +112,10 @@ const SCHEMA = [
     { key: "flow_intro", label: "Übergangstext (davor)", type: "text" },
     { key: "text", label: "Text", type: "textarea" },
     { key: "hint", label: "Hinweis", type: "text" },
+    { key: "channels", label: "Weitere Kontaktwege (optional)", type: "objectList", itemLabel: "label", item: [
+      { key: "label", label: "Beschriftung, z. B. Signal", type: "text" },
+      { key: "url", label: "Link", type: "text" },
+    ]},
   ]},
   { title: "Fußzeile & Recht", key: "footer", fields: [
     { key: "impressum_html", label: "Impressum & Datenschutz (HTML)", type: "textarea" },
