@@ -203,6 +203,33 @@ permalink: /index.html
       </div>
     </section>
 
+    {% if site.stimmen and site.stimmen.items and site.stimmen.items.length %}
+    <!-- FLOW, Raum zu Stimmen -->
+    <div class="flow reveal">
+      <span class="flow-line" aria-hidden="true"></span>
+      <span class="flow-node" aria-hidden="true"></span>
+      <span class="flow-word">{{ site.stimmen.flow_intro }}</span>
+    </div>
+
+    <!-- STIMMEN -->
+    <section class="stimmen" id="stimmen" aria-labelledby="stimmen-title">
+      <div class="shell">
+        <div class="section-head reveal">
+          <p class="eyebrow">{{ site.stimmen.eyebrow }}</p>
+          <h2 class="section-title" id="stimmen-title">{{ site.stimmen.title }}</h2>
+        </div>
+        <div class="stimmen-list">
+{%- for item in site.stimmen.items %}
+          <figure class="stimme reveal">
+            <blockquote class="stimme-quote">{{ item.quote }}</blockquote>
+            <figcaption class="stimme-attribution">{{ item.name }}{% if item.context %} <span class="stimme-context">— {{ item.context }}</span>{% endif %}</figcaption>
+          </figure>
+{%- endfor %}
+        </div>
+      </div>
+    </section>
+    {% endif %}
+
     <!-- ÜBER MICH (deep band) -->
     <section class="about" id="ueber" aria-labelledby="about-title">
       <div class="shell about-grid">

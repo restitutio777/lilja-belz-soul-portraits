@@ -13,9 +13,19 @@ PR each. Being executed in order.
   photographer turns it on in `/admin`). Sanitization (Unicode letters only,
   max 30 chars, `textContent` insertion) and admin round-trip (checkbox,
   template field, "Persönlichen Link kopieren" helper) verified on preview.
-- Phases 2–6 (Stimmen, Fragen/FAQ JSON-LD, Kontakt threshold, craft polish,
-  responsive images) — see `IMPROVEMENT_PLAN.md` for scope, not started yet
-  unless a later entry in this file says otherwise.
+- **Phase 2 — Stimmen (quiet testimonials): shipped, but no content yet.**
+  Optional `site.json` `stimmen` block (eyebrow/title/flow_intro/items) renders
+  a section between Raum and Über mich, guarded on `site.stimmen.items.length`
+  so it stays fully invisible until real quotes exist (`stimmen` key is absent
+  in `site.json` today — the plan's draft quotes were **not** seeded in, since
+  attributing fabricated testimonials to named people on the live production
+  site would be deceptive). Admin has a list editor under "Stimmen" with an
+  explicit consent reminder in the field label. **Open: Lilja needs to collect
+  real testimonials with written consent and add them via `/admin` to activate
+  the section.**
+- Phases 3–6 (Fragen/FAQ JSON-LD, Kontakt threshold, craft polish, responsive
+  images) — see `IMPROVEMENT_PLAN.md` for scope, not started yet unless a
+  later entry in this file says otherwise.
 
 ## What exists and works (verified)
 - **Live site (production, branch `main`):** https://soulportraits-six.vercel.app

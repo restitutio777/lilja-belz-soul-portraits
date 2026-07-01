@@ -70,6 +70,16 @@ const SCHEMA = [
       { key: "alt", label: "Alt-Text", type: "text" },
     ]},
   ]},
+  { title: "Stimmen", key: "stimmen", fields: [
+    { key: "eyebrow", label: "Eyebrow", type: "text" },
+    { key: "title", label: "Titel", type: "text" },
+    { key: "flow_intro", label: "Übergangstext (davor)", type: "text" },
+    { key: "items", label: "Stimmen (nur mit schriftlichem Einverständnis veröffentlichen)", type: "objectList", itemLabel: "name", item: [
+      { key: "quote", label: "Zitat", type: "textarea" },
+      { key: "name", label: "Name (Vorname genügt)", type: "text" },
+      { key: "context", label: "Kontext (optional)", type: "text" },
+    ]},
+  ]},
   { title: "Über mich", key: "about", fields: [
     { key: "eyebrow", label: "Eyebrow", type: "text" },
     { key: "title", label: "Titel", type: "text" },
