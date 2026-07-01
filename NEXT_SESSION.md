@@ -2,6 +2,21 @@
 
 State as of the last session, so a fresh session can continue cleanly.
 
+## In progress: "Unique & amazing" Ausbauplan (IMPROVEMENT_PLAN.md)
+
+`IMPROVEMENT_PLAN.md` (merged via PR #17) lays out 6 independent phases, one
+PR each. Being executed in order.
+
+- **Phase 1 — personalized greeting: shipped.** `?für=Name` (also `fuer`,
+  `name`) greets in the hero from `hero.greeting_template`, gated by
+  `hero.greeting_enabled` (default `false`, so behavior is unchanged until a
+  photographer turns it on in `/admin`). Sanitization (Unicode letters only,
+  max 30 chars, `textContent` insertion) and admin round-trip (checkbox,
+  template field, "Persönlichen Link kopieren" helper) verified on preview.
+- Phases 2–6 (Stimmen, Fragen/FAQ JSON-LD, Kontakt threshold, craft polish,
+  responsive images) — see `IMPROVEMENT_PLAN.md` for scope, not started yet
+  unless a later entry in this file says otherwise.
+
 ## What exists and works (verified)
 - **Live site (production, branch `main`):** https://soulportraits-six.vercel.app
   Rendered by **Eleventy** from a single content file `src/_data/site.json`.

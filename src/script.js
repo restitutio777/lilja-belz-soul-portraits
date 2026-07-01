@@ -4,8 +4,27 @@
 
   var prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  /* ---- Gallery blur-up: fade each portrait in over its LQIP placeholder ---- */
   document.documentElement.classList.add("js");
+
+  /* ---- Personalized greeting: ?für=/?fuer=/?name= in the hero ----
+     Runs before the reveal-on-scroll setup below so an unhidden slot is
+     picked up by the same IntersectionObserver as the rest of the hero. */
+  (function () {
+    var slot = document.querySelector(".hero-greeting");
+    if (!slot || !window.URLSearchParams) return;
+    var template = slot.getAttribute("data-greeting-template");
+    if (!template) return;
+    var params = new URLSearchParams(window.location.search);
+    var raw = params.get("für") || params.get("fuer") || params.get("name");
+    if (!raw) return;
+    var name = raw.trim();
+    if (!name || name.length > 30 || !/^[\p{L}][\p{L}\s'-]*$/u.test(name)) return;
+    name = name.charAt(0).toUpperCase() + name.slice(1);
+    slot.textContent = template.replace("{name}", name);
+    slot.hidden = false;
+  })();
+
+  /* ---- Gallery blur-up: fade each portrait in over its LQIP placeholder ---- */
   Array.prototype.slice.call(document.querySelectorAll(".gallery-item img")).forEach(function (img) {
     if (img.complete && img.naturalWidth > 0) {
       img.classList.add("is-loaded");
