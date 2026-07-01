@@ -35,6 +35,12 @@ State as of the last session, so a fresh session can continue cleanly.
 - `main` — live production (latest: PR #10).
 - PRs #6–#10 are merged. Older feature branches can be ignored/deleted.
 
+## Feature roadmap
+
+`IMPROVEMENT_PLAN.md` holds a phased plan (personal greeting, Stimmen, Fragen,
+Kontakt polish, craft details, responsive images) written for a fresh session to
+execute one phase per PR. Start there for feature work.
+
 ## Open points (need the user / real content)
 
 1. **Real photos** instead of the Unsplash placeholders — hero, about, the OG
