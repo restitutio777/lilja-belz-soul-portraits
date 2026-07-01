@@ -23,9 +23,19 @@ PR each. Being executed in order.
   explicit consent reminder in the field label. **Open: Lilja needs to collect
   real testimonials with written consent and add them via `/admin` to activate
   the section.**
-- Phases 3–6 (Fragen/FAQ JSON-LD, Kontakt threshold, craft polish, responsive
-  images) — see `IMPROVEMENT_PLAN.md` for scope, not started yet unless a
-  later entry in this file says otherwise.
+- **Phase 3 — Fragen (gentle FAQ + JSON-LD): shipped, with real content.**
+  Optional `site.json` `fragen` block (eyebrow/title/items with
+  question/answer), rendered as `<details>/<summary>` hairline rows between
+  Beratung and the closing flow (no nav entry, same as Stimmen). A `FAQPage`
+  JSON-LD block is emitted in `<head>` from the same data (via Nunjucks'
+  `dump` filter for safe JSON string escaping — don't switch that back to
+  plain `{{ }}` interpolation, it'll HTML-escape quotes into the JSON).
+  Shipped with the plan's 5 draft Q&As as real, live content (unlike Phase 2's
+  testimonials, these are ordinary FAQ copy in Lilja's own voice, not
+  attributed customer statements, so there's no fabrication concern).
+- Phases 4–6 (Kontakt threshold, craft polish, responsive images) — see
+  `IMPROVEMENT_PLAN.md` for scope, not started yet unless a later entry in
+  this file says otherwise.
 
 ## What exists and works (verified)
 - **Live site (production, branch `main`):** https://soulportraits-six.vercel.app
