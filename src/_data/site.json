@@ -152,6 +152,32 @@
       }
     ]
   },
+  "fragen": {
+    "eyebrow": "Fragen",
+    "title": "Was du vielleicht gerade denkst",
+    "items": [
+      {
+        "question": "„Ich bin überhaupt nicht fotogen.“",
+        "answer": "Niemand muss das sein; ein Soul Portrait sucht keinen perfekten Winkel, sondern einen wahren Moment."
+      },
+      {
+        "question": "„Was soll ich anziehen?“",
+        "answer": "Etwas, worin du dich zu Hause fühlst; wir besprechen es im Vorgespräch."
+      },
+      {
+        "question": "„Ich weiß nicht, ob ich mich vor der Kamera entspannen kann.“",
+        "answer": "Genau dafür ist die Begegnung da; wir haben Zeit, und nichts muss."
+      },
+      {
+        "question": "„Wie lange dauert es, bis ich meine Bilder sehe?“",
+        "answer": "In der Regel zwei bis drei Wochen; sorgfältig ausgewählt und behutsam bearbeitet."
+      },
+      {
+        "question": "„Muss ich mich vorher festlegen?“",
+        "answer": "Nein, das Vorgespräch ist unverbindlich."
+      }
+    ]
+  },
   "kontakt": {
     "eyebrow": "Kontakt",
     "title": "Lass uns beginnen",

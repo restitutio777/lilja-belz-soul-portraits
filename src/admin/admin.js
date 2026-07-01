@@ -97,6 +97,14 @@ const SCHEMA = [
       { key: "description", label: "Beschreibung", type: "textarea" },
     ]},
   ]},
+  { title: "Fragen", key: "fragen", fields: [
+    { key: "eyebrow", label: "Eyebrow", type: "text" },
+    { key: "title", label: "Titel", type: "text" },
+    { key: "items", label: "Fragen & Antworten", type: "objectList", itemLabel: "question", item: [
+      { key: "question", label: "Frage", type: "text" },
+      { key: "answer", label: "Antwort", type: "textarea" },
+    ]},
+  ]},
   { title: "Kontakt", key: "kontakt", fields: [
     { key: "eyebrow", label: "Eyebrow", type: "text" },
     { key: "title", label: "Titel", type: "text" },

@@ -54,6 +54,24 @@ permalink: /index.html
     "founder": { "@type": "Person", "name": "{{ site.brand.name }}", "jobTitle": "Porträtfotografin" }
   }
   </script>
+
+  {% if site.fragen and site.fragen.items and site.fragen.items.length %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {%- for item in site.fragen.items %}
+      {
+        "@type": "Question",
+        "name": {{ item.question | dump | safe }},
+        "acceptedAnswer": { "@type": "Answer", "text": {{ item.answer | dump | safe }} }
+      }{% if not loop.last %},{% endif %}
+      {%- endfor %}
+    ]
+  }
+  </script>
+  {% endif %}
 </head>
 <body>
   <a class="skip-link" href="#main">Zum Inhalt springen</a>
@@ -265,6 +283,29 @@ permalink: /index.html
         </dl>
       </div>
     </section>
+
+    {% if site.fragen and site.fragen.items and site.fragen.items.length %}
+    <!-- FRAGEN -->
+    <section class="fragen" id="fragen" aria-labelledby="fragen-title">
+      <div class="shell">
+        <div class="section-head reveal">
+          <p class="eyebrow">{{ site.fragen.eyebrow }}</p>
+          <h2 class="section-title" id="fragen-title">{{ site.fragen.title }}</h2>
+        </div>
+        <div class="fragen-list">
+{%- for item in site.fragen.items %}
+          <details class="frage reveal">
+            <summary>
+              <span class="frage-q">{{ item.question }}</span>
+              <span class="frage-icon" aria-hidden="true"></span>
+            </summary>
+            <p class="frage-a">{{ item.answer }}</p>
+          </details>
+{%- endfor %}
+        </div>
+      </div>
+    </section>
+    {% endif %}
 
     <!-- FLOW, Beratung zu Kontakt (Closing) -->
     <div class="flow flow-close reveal">
