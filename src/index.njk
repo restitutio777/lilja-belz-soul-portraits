@@ -97,6 +97,9 @@ permalink: /index.html
     <section class="hero" aria-labelledby="hero-title">
       <div class="shell hero-grid">
         <div class="hero-copy">
+          {% if site.hero.greeting_enabled %}
+          <p class="hero-greeting reveal" data-greeting-template="{{ site.hero.greeting_template }}" hidden></p>
+          {% endif %}
           <p class="eyebrow reveal">{{ site.hero.eyebrow }}</p>
           <h1 class="hero-title reveal" id="hero-title">{{ site.hero.title_line1 }}<br class="hero-br" /> {{ site.hero.title_line2 }}</h1>
           <p class="hero-lead reveal">{{ site.hero.lead }}</p>

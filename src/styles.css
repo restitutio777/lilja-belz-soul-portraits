@@ -349,6 +349,15 @@ a { color: inherit; }
   align-items: center;
 }
 .hero-copy { max-width: 48ch; }
+.hero-greeting {
+  margin: 0 0 0.85rem;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 350;
+  font-size: 1.05rem;
+  color: var(--clay-deep);
+  min-height: 1.4em;
+}
 .hero-title {
   font-family: var(--font-display);
   font-weight: 300;

@@ -1,9 +1,11 @@
 // Custom editing backend, client side. Schema-driven editor for the whole
 // site.json. Talks to /api/login, /api/logout, /api/content, /api/upload.
 
-// Field types: text, textarea, listText (array of strings),
+// Field types: text, textarea, checkbox, listText (array of strings),
 // objectList (array of objects), object (nested), image (path + auto
-// width/height/placeholder via widthKey/heightKey/placeholderKey).
+// width/height/placeholder via widthKey/heightKey/placeholderKey),
+// greetingLinkTool (standalone helper, builds/copies a personalized link;
+// not itself persisted).
 const SCHEMA = [
   { title: "Marke", key: "brand", fields: [
     { key: "name", label: "Name", type: "text" },
@@ -27,6 +29,9 @@ const SCHEMA = [
     { key: "lead", label: "Einleitung", type: "textarea" },
     { key: "image", label: "Bild", type: "image", widthKey: "image_width", heightKey: "image_height" },
     { key: "image_alt", label: "Bild Alt-Text", type: "text" },
+    { key: "greeting_enabled", label: "Persönliche Begrüßung per Link aktivieren", type: "checkbox" },
+    { key: "greeting_template", label: "Begrüßungs-Vorlage ({name} wird ersetzt)", type: "text" },
+    { key: "greeting_link_tool", label: "Persönlicher Link", type: "greetingLinkTool" },
   ]},
   { title: "Worum es geht", key: "intro", fields: [
     { key: "eyebrow", label: "Eyebrow", type: "text" },
@@ -149,6 +154,20 @@ function renderField(spec, obj, parent) {
     parent.appendChild(wrap);
     return;
   }
+  if (t === "checkbox") {
+    const wrap = el("div", "field field-checkbox");
+    const label = el("label", "checkbox-label");
+    const input = el("input");
+    input.type = "checkbox";
+    input.checked = !!obj[spec.key];
+    input.addEventListener("change", () => { obj[spec.key] = input.checked; });
+    label.appendChild(input);
+    label.appendChild(document.createTextNode(spec.label));
+    wrap.appendChild(label);
+    parent.appendChild(wrap);
+    return;
+  }
+  if (t === "greetingLinkTool") { renderGreetingLinkTool(spec, parent); return; }
   if (t === "image") { renderImage(spec, obj, parent); return; }
   if (t === "object") {
     if (obj[spec.key] == null || typeof obj[spec.key] !== "object") obj[spec.key] = {};
@@ -274,6 +293,61 @@ function currentDims(obj, spec) {
   const w = spec.widthKey && obj[spec.widthKey];
   const h = spec.heightKey && obj[spec.heightKey];
   return (w && h) ? `${w} × ${h} px` : "";
+}
+
+async function copyText(text) {
+  if (navigator.clipboard && window.isSecureContext) {
+    await navigator.clipboard.writeText(text);
+    return;
+  }
+  const ta = document.createElement("textarea");
+  ta.value = text;
+  ta.style.position = "fixed";
+  ta.style.opacity = "0";
+  document.body.appendChild(ta);
+  ta.focus();
+  ta.select();
+  const ok = document.execCommand("copy");
+  document.body.removeChild(ta);
+  if (!ok) throw new Error("Kopieren nicht möglich");
+}
+
+// Standalone helper (Hero panel): builds a personalized "?für=Name" link from
+// the current site_url and copies it, so Lilja can hand one out in seconds.
+function renderGreetingLinkTool(spec, parent) {
+  const wrap = el("div", "field greeting-tool");
+  wrap.appendChild(el("div", "greeting-tool-label", spec.label));
+  const row = el("div", "greeting-tool-row");
+  const input = el("input");
+  input.type = "text";
+  input.placeholder = "Name, z. B. Anna";
+  input.setAttribute("aria-label", spec.label);
+  const btn = el("button", "mini", "Persönlichen Link kopieren");
+  btn.type = "button";
+  const status = el("span", "greeting-tool-status");
+  btn.addEventListener("click", async () => {
+    const name = input.value.trim();
+    if (!name) {
+      status.textContent = "Bitte zuerst einen Namen eingeben.";
+      status.className = "greeting-tool-status err";
+      return;
+    }
+    const base = (state.content.meta && state.content.meta.site_url) || "";
+    const link = base.replace(/\/+$/, "") + "/?für=" + encodeURIComponent(name);
+    try {
+      await copyText(link);
+      status.textContent = "Kopiert: " + link;
+      status.className = "greeting-tool-status ok";
+    } catch {
+      status.textContent = "Kopieren fehlgeschlagen — Link: " + link;
+      status.className = "greeting-tool-status err";
+    }
+  });
+  row.appendChild(input);
+  row.appendChild(btn);
+  wrap.appendChild(row);
+  wrap.appendChild(status);
+  parent.appendChild(wrap);
 }
 
 // --- image processing ------------------------------------------------------

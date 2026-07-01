@@ -254,6 +254,51 @@ button.mini:hover { border-color: var(--clay); color: var(--clay); }
 button.mini.danger { color: var(--error); border-color: #e7cdc8; }
 button.mini.danger:hover { background: #fbeae7; border-color: var(--error); }
 
+/* checkbox field */
+.field-checkbox { margin-bottom: 14px; }
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: .92rem;
+  letter-spacing: normal;
+  text-transform: none;
+  color: var(--ink);
+  cursor: pointer;
+}
+.checkbox-label input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: #fff;
+  accent-color: var(--clay);
+  cursor: pointer;
+  flex: none;
+}
+
+/* personalized-link tool (Hero panel) */
+.greeting-tool { margin-bottom: 16px; }
+.greeting-tool-label {
+  font-size: .82rem;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+.greeting-tool-row { display: flex; gap: 8px; }
+.greeting-tool-row input { flex: 1; }
+.greeting-tool-status {
+  display: block;
+  margin-top: 6px;
+  font-size: .82rem;
+  color: var(--muted);
+  word-break: break-all;
+}
+.greeting-tool-status.ok { color: #4a7a4a; }
+.greeting-tool-status.err { color: var(--error); }
+
 /* image field */
 .image-field { margin-bottom: 16px; }
 .image-label {

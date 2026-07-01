@@ -22,7 +22,9 @@
     "image": "images/averie-woodard-4nulm-juyfo-unsplash-522f61.webp",
     "image_width": 1920,
     "image_height": 1280,
-    "image_alt": "Platzhalter – hier ein eigenes Foto einsetzen"
+    "image_alt": "Platzhalter – hier ein eigenes Foto einsetzen",
+    "greeting_enabled": false,
+    "greeting_template": "Schön, dass du hier bist, {name}."
   },
   "intro": {
     "eyebrow": "Worum es geht",
