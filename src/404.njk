@@ -1,0 +1,27 @@
+---
+permalink: /404.html
+---
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{{ site.notfound.title or "Diese Seite gibt es nicht." }} · {{ site.brand.name }}</title>
+  <meta name="robots" content="noindex" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+
+  <link rel="preload" as="font" type="font/woff2" href="fonts/fraunces-normal-latin.woff2" crossorigin />
+  <link rel="preload" as="font" type="font/woff2" href="fonts/hanken-normal-latin.woff2" crossorigin />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="notfound">
+    <div class="shell notfound-inner">
+      <p class="eyebrow">404</p>
+      <h1 class="section-title">{{ site.notfound.title or "Diese Seite gibt es nicht." }}</h1>
+      <p class="notfound-text">{{ site.notfound.text or "Aber dich gibt es." }}</p>
+      <a class="btn btn-primary btn-lg" href="/">{{ site.notfound.link_label or "Zur Startseite" }}</a>
+    </div>
+  </main>
+</body>
+</html>
