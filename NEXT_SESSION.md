@@ -55,8 +55,18 @@ PR each. Being executed in order.
   Skipped as already present before this phase: paper-grain overlay
   (`body::after`, opacity 0.035) and clay `::selection` — both already existed
   on `main`, re-implementing would have duplicated/conflicted with them.
-- Phase 6 (responsive images) — see `IMPROVEMENT_PLAN.md` for scope, not
-  started yet unless a later entry in this file says otherwise.
+- **Phase 6 — Responsive images: shipped.** `@11ty/eleventy-img` added as a
+  dependency. A `respImg` async shortcode in `.eleventy.js` generates 480/800/1200/1600 px
+  WebP variants at build time into `_site/images/` (filename pattern:
+  `<original-name>-<width>w.webp`). All four image slots (hero, gallery items,
+  raum detail/main, about) now emit `srcset` + `sizes`. Hero uses
+  `fetchpriority="high"` (not lazy) and the `<link rel="preload">` has been
+  upgraded to `imagesrcset`/`imagesizes`. Gallery: `(min-width: 1024px) 33vw,
+  (min-width: 860px) 50vw, 100vw`. Raum: `(min-width: 860px) 50vw, 100vw`.
+  About: `(min-width: 1024px) 45vw, 100vw`. Hero: `(min-width: 860px) 30vw,
+  100vw`. Fallback gracefully renders a plain `<img>` if a source file is
+  missing. `.cache/` added to `.gitignore`. Verified on preview: browser
+  requested 800w hero and 1200w gallery variants instead of full 1600w files.
 
 ## What exists and works (verified)
 - **Live site (production, branch `main`):** https://soulportraits-six.vercel.app
@@ -93,9 +103,9 @@ PR each. Being executed in order.
 
 ## Feature roadmap
 
-`IMPROVEMENT_PLAN.md` holds a phased plan (personal greeting, Stimmen, Fragen,
-Kontakt polish, craft details, responsive images) written for a fresh session to
-execute one phase per PR. Start there for feature work.
+All 6 phases from `IMPROVEMENT_PLAN.md` are now shipped. No further planned
+phases remain. Future work is content-driven (real photos, Impressum, domain)
+or new ideas.
 
 ## Open points (need the user / real content)
 
