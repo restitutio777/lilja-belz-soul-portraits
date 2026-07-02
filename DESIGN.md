@@ -54,3 +54,7 @@ but drops the hover scale.
 ## Bans honored
 No side-stripe borders, no gradient text, no decorative glassmorphism, no hero-metric
 template, no identical icon-card grids, no modals, no em dashes in copy.
+One sanctioned exception (owner decision): the gallery lightbox — a quiet,
+warm-paper fullscreen view of a clicked portrait (JS-only enhancement, Esc/
+arrow keys, focus trapped, background inert). It keeps the paper palette; no
+black overlay, no chrome beyond three hairline round buttons and a counter.
