@@ -605,7 +605,9 @@ a { color: inherit; }
   font-size: clamp(1.1rem, 0.98rem + 0.4vw, 1.35rem);
   letter-spacing: -0.005em;
   color: var(--ink);
+  transition: color 0.4s var(--ease-out);
 }
+.frage summary:hover .frage-q { color: var(--clay-deep); }
 .frage-icon { position: relative; flex: none; width: 1rem; height: 1rem; }
 .frage-icon::before,
 .frage-icon::after {
@@ -623,6 +625,12 @@ a { color: inherit; }
 }
 .frage[open] .frage-icon::after { transform: rotate(90deg); }
 .frage-a { margin: 0.85rem 0 0; max-width: 58ch; color: var(--ink-soft); }
+/* Soft entrance for the answer; the global reduced-motion block collapses it */
+.frage[open] .frage-a { animation: frage-open 0.5s var(--ease-out); }
+@keyframes frage-open {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: none; }
+}
 
 /* ---------- Stimmen ---------- */
 .stimmen { padding-block: clamp(4.5rem, 10vh, 8rem); }
