@@ -3,6 +3,26 @@
 Orientation for an AI session working in this repo. Read this first, then the
 doc it points you to for the task at hand.
 
+## Temporary workflow directive: model strategy (valid until 2026-07-09)
+
+The owner is trialling a per-model workflow for one week. Until the date above,
+**every plan you produce must follow this**; afterwards, remove this section.
+
+1. **Annotate each plan phase with the best-suited model:**
+   - **Fable** — planning, task breakdown, strategy.
+   - **Opus** — architecture and complex implementation work.
+   - **Sonnet** — follow-ups, small fixes, copy/content changes.
+2. **Insert an explicit pause checkpoint** between phases that call for a
+   different model, so the owner can switch models (e.g. via `/model`) before
+   the next phase starts. Phrase it as: "⏸️ Modellwechsel: ab hier <Modell>".
+3. **Automatic alternative:** in sessions where subagents are available, you
+   may instead delegate a phase to a subagent with the matching `model`
+   override (sonnet/opus/haiku) and say so in the plan — then no pause is
+   needed for that phase.
+
+This is a personal workflow note for the owner's sessions, not part of the
+reseller template product. Do not copy it into client onboarding docs.
+
 ## What this repo is (read this carefully)
 
 It plays **two roles at once**:
