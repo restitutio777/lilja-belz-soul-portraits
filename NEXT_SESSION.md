@@ -68,6 +68,17 @@ PR each. Being executed in order.
   missing. `.cache/` added to `.gitignore`. Verified on preview: browser
   requested 800w hero and 1200w gallery variants instead of full 1600w files.
 
+## After the plan: gallery lightbox (owner-requested)
+
+Gallery images are click-to-enlarge (a standard lightbox), added on explicit
+owner request even though the plan had rejected modals — the exception is
+documented in `DESIGN.md` ("Bans honored") and `IMPROVEMENT_PLAN.md`. Built
+entirely in `src/script.js` (no template change, page unchanged without JS):
+warm-paper backdrop (no black overlay), close/prev/next round hairline
+buttons, counter, Esc + arrow keys, focus trap, `inert` background, reduced
+motion honored. The enlarged image reuses the gallery `srcset` with
+`sizes="100vw"` so the browser upgrades to the 1600w variant only on open.
+
 ## What exists and works (verified)
 - **Live site (production, branch `main`):** https://soulportraits-six.vercel.app
   Rendered by **Eleventy** from a single content file `src/_data/site.json`.

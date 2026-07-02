@@ -198,8 +198,10 @@ improves or holds; `BACKEND.md`/`DESIGN.md` updated.
 
 ## Explicitly rejected (do not add)
 
-- **Lightbox/modal gallery** — DESIGN.md bans modals; the masonry IS the viewing
-  experience.
+- ~~**Lightbox/modal gallery**~~ — originally rejected (DESIGN.md banned
+  modals), later added by explicit owner decision: gallery images open in a
+  quiet warm-paper lightbox (JS-only, keyboard/focus accessible, no black
+  overlay). The general modal ban stays for everything else.
 - **Pricing tables, packages, booking calendar widgets** — against the brand
   (one action: get in touch).
 - **Contact form with backend mailer** — adds env vars/secrets per client and a
