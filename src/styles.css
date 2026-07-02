@@ -397,6 +397,12 @@ a { color: inherit; }
   object-fit: cover;
   object-position: center 28%;
   filter: grayscale(0.12) contrast(1.02) saturate(0.96);
+  /* Barely-there breathing motion, not a "Ken Burns" pan */
+  animation: hero-breath 46s ease-in-out infinite alternate;
+}
+@keyframes hero-breath {
+  from { transform: scale(1); }
+  to { transform: scale(1.03); }
 }
 
 /* Scroll cue, the start of the journey thread. Mirrors the flow connectors:
@@ -688,6 +694,7 @@ a { color: inherit; }
   padding-top: 1.75rem;
   border-top: 1px solid oklch(0.93 0.012 75 / 0.18);
   letter-spacing: -0.01em;
+  hanging-punctuation: first;
 }
 
 /* ---------- Beratung ---------- */
@@ -959,4 +966,23 @@ a { color: inherit; }
   .gallery-item:hover img { transform: none; }
   .scroll-cue-line { animation: none; transform: scaleY(1); opacity: 1; }
   .flow-line, .flow-node { transform: none !important; transition: none; }
+  .hero-media img { animation: none; transform: none; }
+}
+
+/* ---------- 404 ---------- */
+.notfound {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 4rem 0;
+}
+.notfound-inner { max-width: 32rem; }
+.notfound .eyebrow { margin-bottom: 0.75rem; }
+.notfound-text { color: var(--ink-soft); margin: 1rem 0 2.25rem; font-size: 1.05rem; }
+
+/* ---------- Print: a small portfolio sheet, not the browsing chrome ---------- */
+@media print {
+  .site-header, .mobile-nav, .flow, .scroll-cue, .skip-link { display: none !important; }
 }

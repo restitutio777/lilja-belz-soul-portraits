@@ -44,9 +44,19 @@ PR each. Being executed in order.
   present, nothing renders for absent fields. `ProfessionalService` JSON-LD
   now includes `email` (always) and `telephone` (if `brand.phone` set).
   Admin: phone field in "Marke", channels list editor in "Kontakt".
-- Phases 5–6 (craft polish, responsive images) — see `IMPROVEMENT_PLAN.md`
-  for scope, not started yet unless a later entry in this file says
-  otherwise.
+- **Phase 5 — Craft polish: shipped.** New: hero image now has a very slow
+  (46s, alternate, ±3% scale) "breathing" zoom, frozen via the existing
+  reduced-motion block; `hanging-punctuation: first` on `.about-quote`
+  (Safari-only, no fallback needed); a custom `src/404.njk` → `/404.html`
+  (Vercel serves it automatically for unmatched routes) with copy from a new
+  optional `site.json` `notfound` block (title/text/link_label, defaulted via
+  Nunjucks `or` so old forks without the key still render something sane);
+  a minimal print stylesheet hiding header/mobile-nav/flow/scroll-cue/skip-link.
+  Skipped as already present before this phase: paper-grain overlay
+  (`body::after`, opacity 0.035) and clay `::selection` — both already existed
+  on `main`, re-implementing would have duplicated/conflicted with them.
+- Phase 6 (responsive images) — see `IMPROVEMENT_PLAN.md` for scope, not
+  started yet unless a later entry in this file says otherwise.
 
 ## What exists and works (verified)
 - **Live site (production, branch `main`):** https://soulportraits-six.vercel.app

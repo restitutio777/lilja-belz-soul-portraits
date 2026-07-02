@@ -122,6 +122,11 @@ const SCHEMA = [
     { key: "copyright", label: "Copyright", type: "text" },
     { key: "credit", label: "Bildnachweis", type: "text" },
   ]},
+  { title: "404-Seite", key: "notfound", fields: [
+    { key: "title", label: "Titel", type: "text" },
+    { key: "text", label: "Text", type: "text" },
+    { key: "link_label", label: "Link-Beschriftung", type: "text" },
+  ]},
 ];
 
 const state = { content: null, sha: null };
