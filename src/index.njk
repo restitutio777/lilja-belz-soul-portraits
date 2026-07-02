@@ -31,8 +31,8 @@ permalink: /index.html
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="apple-touch-icon.png" />
 
-  <!-- Preload the hero portrait, the largest contentful paint, for a calmer first load -->
-  <link rel="preload" as="image" href="{{ site.hero.image }}" fetchpriority="high" />
+  <!-- Preload the hero portrait across all srcset variants for a calmer first load -->
+  <link rel="preload" as="image" imagesrcset="{{ site.hero.image | srcsetFor }}" imagesizes="(min-width: 860px) 30vw, 100vw" fetchpriority="high" />
 
   <!-- Self-hosted fonts (declared in styles.css). Preload the two faces used
        above the fold so the hero text renders without a flash. -->
@@ -125,7 +125,7 @@ permalink: /index.html
           <p class="hero-lead reveal">{{ site.hero.lead }}</p>
         </div>
         <figure class="hero-media reveal">
-          <img src="{{ site.hero.image }}" width="{{ site.hero.image_width }}" height="{{ site.hero.image_height }}" alt="{{ site.hero.image_alt }}" fetchpriority="high" decoding="async" />
+          {% respImg site.hero.image, site.hero.image_alt, "(min-width: 860px) 30vw, 100vw", false, "high" %}
         </figure>
       </div>
       <a class="scroll-cue" href="#intro" aria-label="Weiter nach unten, zur Einführung">
@@ -163,7 +163,7 @@ permalink: /index.html
 
         <div class="gallery">
 {%- for item in site.portfolio.items %}
-          <figure class="gallery-item reveal{% if item.placeholder %} has-lqip{% endif %}"{% if item.placeholder %} style="--lqip:url('{{ item.placeholder }}')"{% endif %}><img loading="lazy" decoding="async" width="{{ item.width }}" height="{{ item.height }}" src="{{ item.image }}" alt="{{ item.alt }}" /></figure>
+          <figure class="gallery-item reveal{% if item.placeholder %} has-lqip{% endif %}"{% if item.placeholder %} style="--lqip:url('{{ item.placeholder }}')"{% endif %}>{% respImg item.image, item.alt, "(min-width: 1024px) 33vw, (min-width: 860px) 50vw, 100vw" %}</figure>
 {%- endfor %}
         </div>
       </div>
@@ -215,10 +215,10 @@ permalink: /index.html
           <p>{{ site.raum.paragraphs[1] }}</p>
         </div>
         <figure class="raum-media raum-detail reveal">
-          <img loading="lazy" decoding="async" width="{{ site.raum.image_detail.width }}" height="{{ site.raum.image_detail.height }}" src="{{ site.raum.image_detail.image }}" alt="{{ site.raum.image_detail.alt }}" />
+          {% respImg site.raum.image_detail.image, site.raum.image_detail.alt, "(min-width: 860px) 50vw, 100vw" %}
         </figure>
         <figure class="raum-media raum-main reveal">
-          <img loading="lazy" decoding="async" width="{{ site.raum.image_main.width }}" height="{{ site.raum.image_main.height }}" src="{{ site.raum.image_main.image }}" alt="{{ site.raum.image_main.alt }}" />
+          {% respImg site.raum.image_main.image, site.raum.image_main.alt, "(min-width: 860px) 50vw, 100vw" %}
         </figure>
       </div>
     </section>
@@ -254,7 +254,7 @@ permalink: /index.html
     <section class="about" id="ueber" aria-labelledby="about-title">
       <div class="shell about-grid">
         <figure class="about-media reveal">
-          <img loading="lazy" decoding="async" src="{{ site.about.image }}" width="{{ site.about.image_width }}" height="{{ site.about.image_height }}" alt="{{ site.about.image_alt }}" />
+          {% respImg site.about.image, site.about.image_alt, "(min-width: 1024px) 45vw, 100vw" %}
         </figure>
         <div class="about-copy">
           <p class="eyebrow eyebrow-light reveal">{{ site.about.eyebrow }}</p>
