@@ -526,6 +526,11 @@ a { color: inherit; }
   transition: opacity 0.35s var(--ease-out);
 }
 .lightbox.open { opacity: 1; }
+/* The `display: flex` above overrides the UA `[hidden] { display:none }`, so the
+   closed (opacity:0) overlay would otherwise stay in the layer at z-index 120 and
+   swallow every click on the page below it — breaking the nav and all links.
+   Honour the hidden attribute so it's only hit-testable while open. */
+.lightbox[hidden] { display: none; }
 .lightbox-stage {
   margin: 0;
   display: flex;
