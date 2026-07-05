@@ -221,7 +221,7 @@ a { color: inherit; }
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 4.75rem;
+  height: 5.25rem;
 }
 .wordmark {
   display: inline-flex;
@@ -233,12 +233,12 @@ a { color: inherit; }
 .wordmark-name {
   font-family: var(--font-display);
   font-weight: 400;
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   letter-spacing: 0.01em;
 }
 .wordmark-sub {
-  margin-top: 0.32rem;
-  font-size: 0.62rem;
+  margin-top: 0.34rem;
+  font-size: 0.66rem;
   font-weight: 600;
   letter-spacing: 0.28em;
   text-transform: uppercase;
@@ -253,7 +253,7 @@ a { color: inherit; }
   position: relative;
   text-decoration: none;
   color: var(--ink-soft);
-  font-size: 0.92rem;
+  font-size: 1.02rem;
   font-weight: 500;
   letter-spacing: 0.02em;
   transition: color 0.3s var(--ease-out);
@@ -279,7 +279,7 @@ a { color: inherit; }
   background: var(--clay-deep);
 }
 .nav-cta {
-  padding: 0.6rem 1.2rem;
+  padding: 0.65rem 1.4rem;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   color: var(--ink);
@@ -339,16 +339,16 @@ a { color: inherit; }
 /* ---------- Hero ---------- */
 .hero {
   position: relative;
-  padding-top: clamp(7rem, 14vh, 11rem);
-  padding-bottom: clamp(3rem, 7vh, 6rem);
+  padding-top: clamp(7.5rem, 15vh, 11.5rem);
+  padding-bottom: clamp(2.5rem, 5vh, 4.5rem);
 }
 .hero-grid {
   display: grid;
-  grid-template-columns: 1.4fr 0.62fr;
-  gap: clamp(1.75rem, 3.5vw, 4rem);
+  grid-template-columns: 1.35fr 0.78fr;
+  gap: clamp(2rem, 4vw, 4.5rem);
   align-items: center;
 }
-.hero-copy { max-width: 48ch; }
+.hero-copy { max-width: 52ch; }
 .hero-greeting {
   margin: 0 0 0.85rem;
   font-family: var(--font-display);
@@ -362,7 +362,7 @@ a { color: inherit; }
   font-family: var(--font-display);
   font-weight: 300;
   font-optical-sizing: auto;
-  font-size: clamp(2.6rem, 1.9rem + 2.8vw, 4.2rem);
+  font-size: clamp(2.7rem, 1.9rem + 3.2vw, 4.7rem);
   line-height: 1.06;
   letter-spacing: -0.025em;
   margin: 1.1rem 0 0;
@@ -379,10 +379,11 @@ a { color: inherit; }
   .hero-title { white-space: nowrap; }
 }
 .hero-lead {
-  margin: 1.7rem 0 0;
-  font-size: clamp(1.05rem, 1rem + 0.4vw, 1.2rem);
+  margin: 1.9rem 0 0;
+  font-size: clamp(1.1rem, 1rem + 0.55vw, 1.35rem);
+  line-height: 1.6;
   color: var(--ink-soft);
-  max-width: 42ch;
+  max-width: 44ch;
 }
 .hero-media {
   margin: 0;
