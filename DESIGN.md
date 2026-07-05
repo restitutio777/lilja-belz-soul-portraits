@@ -51,6 +51,16 @@ blurred JPEG data URI) as its background; the full image fades in over it once l
 Gated on a .js class so images stay visible without scripts. Reduced motion keeps the fade
 but drops the hover scale.
 
+Responsive images (hero, gallery, raum) are generated at build time by `@11ty/eleventy-img`
+via the `respimg` / `respimgPreload` Nunjucks shortcodes in `.eleventy.js`: each source is
+re-encoded to 480/800/1200/1600px WebP variants (never upscaled past the original) and
+emitted as a plain `<img srcset sizes>` — no `<picture>` wrapper, so the existing `.foo img`
+CSS and the LQIP blur-up are untouched. Stored width/height stay authoritative for the
+aspect-ratio boxes. Originals in `src/images/` are left in place (admin previews and the
+og:image reference the stored path directly). The hero also gets a matching
+`<link rel=preload imagesrcset>` so the LCP fetch picks the right size. SVG/GIF uploads skip
+processing and fall back to the original file.
+
 ## Bans honored
 No side-stripe borders, no gradient text, no decorative glassmorphism, no hero-metric
 template, no identical icon-card grids, no modals, no em dashes in copy.

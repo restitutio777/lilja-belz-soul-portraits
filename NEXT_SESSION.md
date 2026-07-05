@@ -55,8 +55,20 @@ PR each. Being executed in order.
   Skipped as already present before this phase: paper-grain overlay
   (`body::after`, opacity 0.035) and clay `::selection` — both already existed
   on `main`, re-implementing would have duplicated/conflicted with them.
-- Phase 6 (responsive images) — see `IMPROVEMENT_PLAN.md` for scope, not
-  started yet unless a later entry in this file says otherwise.
+- **Phase 6 — responsive images: shipped (Variante A, build-time).** Added
+  `@11ty/eleventy-img` (devDependency) and two Nunjucks async shortcodes in
+  `.eleventy.js`: `respimg` (renders a plain `<img srcset sizes>`, no
+  `<picture>`, so `.foo img` CSS + LQIP blur-up are untouched) and
+  `respimgPreload` (matching `<link rel=preload imagesrcset>` for the hero
+  LCP). Hero, all gallery items, and both raum images now emit 480/800/1200/
+  1600px WebP variants (never upscaled); stored width/height stay authoritative
+  for the aspect-ratio boxes. Originals in `src/images/` are left untouched, so
+  admin previews and og:image still resolve. SVG/GIF skip processing (fall back
+  to the original). No new env vars — forks stay zero-config. **Verified:** on a
+  375px viewport the hero downloads the 800w variant (~21KB vs 155KB original)
+  and a gallery 480w variant is ~11KB vs ~84KB; desktop output visually
+  identical; local build ~3s (was ~0.2s — the expected eleventy-img cost, still
+  well within Vercel limits). `DESIGN.md` image-treatment section updated.
 
 ## What exists and works (verified)
 - **Live site (production, branch `main`):** https://soulportraits-six.vercel.app

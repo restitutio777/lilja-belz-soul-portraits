@@ -31,8 +31,10 @@ permalink: /index.html
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="apple-touch-icon.png" />
 
-  <!-- Preload the hero portrait, the largest contentful paint, for a calmer first load -->
-  <link rel="preload" as="image" href="{{ site.hero.image }}" fetchpriority="high" />
+  <!-- Preload the hero portrait, the largest contentful paint, for a calmer first load.
+       imagesrcset/imagesizes match the <img>'s srcset below so the preload fetches the
+       size the browser will actually use, not the full-resolution original. -->
+  {% respimgPreload site.hero.image, { sizes: "(min-width: 861px) 32vw, 100vw" } %}
 
   <!-- Self-hosted fonts (declared in styles.css). Preload the two faces used
        above the fold so the hero text renders without a flash. -->
@@ -125,7 +127,7 @@ permalink: /index.html
           <p class="hero-lead reveal">{{ site.hero.lead }}</p>
         </div>
         <figure class="hero-media reveal">
-          <img src="{{ site.hero.image }}" width="{{ site.hero.image_width }}" height="{{ site.hero.image_height }}" alt="{{ site.hero.image_alt }}" fetchpriority="high" decoding="async" />
+          {% respimg site.hero.image, site.hero.image_alt, { width: site.hero.image_width, height: site.hero.image_height, sizes: "(min-width: 861px) 32vw, 100vw", loading: false, fetchpriority: "high" } %}
         </figure>
       </div>
       <a class="scroll-cue" href="#intro" aria-label="Weiter nach unten, zur Einführung">
@@ -163,7 +165,7 @@ permalink: /index.html
 
         <div class="gallery">
 {%- for item in site.portfolio.items %}
-          <figure class="gallery-item reveal{% if item.placeholder %} has-lqip{% endif %}"{% if item.placeholder %} style="--lqip:url('{{ item.placeholder }}')"{% endif %}><img loading="lazy" decoding="async" width="{{ item.width }}" height="{{ item.height }}" src="{{ item.image }}" alt="{{ item.alt }}" /></figure>
+          <figure class="gallery-item reveal{% if item.placeholder %} has-lqip{% endif %}"{% if item.placeholder %} style="--lqip:url('{{ item.placeholder }}')"{% endif %}>{% respimg item.image, item.alt, { width: item.width, height: item.height, sizes: "(min-width: 981px) 33vw, (min-width: 461px) 50vw, 100vw" } %}</figure>
 {%- endfor %}
         </div>
       </div>
@@ -215,10 +217,10 @@ permalink: /index.html
           <p>{{ site.raum.paragraphs[1] }}</p>
         </div>
         <figure class="raum-media raum-detail reveal">
-          <img loading="lazy" decoding="async" width="{{ site.raum.image_detail.width }}" height="{{ site.raum.image_detail.height }}" src="{{ site.raum.image_detail.image }}" alt="{{ site.raum.image_detail.alt }}" />
+          {% respimg site.raum.image_detail.image, site.raum.image_detail.alt, { width: site.raum.image_detail.width, height: site.raum.image_detail.height, sizes: "(min-width: 861px) 45vw, 100vw" } %}
         </figure>
         <figure class="raum-media raum-main reveal">
-          <img loading="lazy" decoding="async" width="{{ site.raum.image_main.width }}" height="{{ site.raum.image_main.height }}" src="{{ site.raum.image_main.image }}" alt="{{ site.raum.image_main.alt }}" />
+          {% respimg site.raum.image_main.image, site.raum.image_main.alt, { width: site.raum.image_main.width, height: site.raum.image_main.height, sizes: "(min-width: 861px) 45vw, 100vw" } %}
         </figure>
       </div>
     </section>
