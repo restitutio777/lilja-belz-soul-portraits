@@ -5,17 +5,17 @@
     "email": "hallo@liljabelz.de"
   },
   "meta": {
-    "title": "Lilja Belz | Soul Portraits",
-    "description": "Soul Portraits von Lilja Belz. Keine gewöhnliche Fotosession, sondern eine Begegnung, in der du dir selbst wieder näherkommst. Feinfühlige, ehrliche Porträtfotografie.",
+    "title": "Lilia Belz | Soul Portraits",
+    "description": "Soul Portraits von Lilia Belz. Keine gewöhnliche Fotosession, sondern eine Begegnung, in der du dir selbst wieder näherkommst. Feinfühlige, ehrliche Porträtfotografie.",
     "site_url": "https://soulportraits-six.vercel.app",
     "theme_color": "#f4efe7",
-    "og_title": "Lilja Belz | Soul Portraits",
-    "og_description": "Eine Begegnung vor der Kamera, in der du dich noch einmal neu siehst. Feinfühlige Porträtfotografie von Lilja Belz.",
-    "og_image_alt": "Soul Portrait von Lilja Belz",
+    "og_title": "Lilia Belz | Soul Portraits",
+    "og_description": "Eine Begegnung vor der Kamera, in der du dich noch einmal neu siehst. Feinfühlige Porträtfotografie von Lilia Belz.",
+    "og_image_alt": "Soul Portrait von Lilia Belz",
     "twitter_description": "Eine Begegnung vor der Kamera, in der du dich noch einmal neu siehst."
   },
   "hero": {
-    "eyebrow": "Soul Portraits, Fotografie von Lilja Belz",
+    "eyebrow": "Soul Portraits, Fotografie von Lilia Belz",
     "title_line1": "Gesehen werden,",
     "title_line2": "wie du wirklich bist.",
     "lead": "Ein Soul Portrait ist keine gewöhnliche Fotosession. Es ist eine Begegnung, in der du dir selbst wieder näherkommst, ehrlich, ruhig und ohne Eile.",
@@ -118,7 +118,7 @@
   },
   "about": {
     "eyebrow": "Über mich",
-    "title": "Lilja Belz",
+    "title": "Lilia Belz",
     "image": "images/31b29d7d5607ff90fa07221c0e421cd2-923e21.webp",
     "image_width": 280,
     "image_height": 280,
@@ -187,7 +187,7 @@
     "channels": []
   },
   "footer": {
-    "impressum_html": "<p class=\"legal-note\">Platzhalter-Gerüst nach deutschem Recht (§ 5 DDG, DSGVO). Vor Veröffentlichung alle [eckigen Klammern] mit echten Angaben ersetzen, nicht zutreffende Absätze entfernen und das Ergebnis rechtlich prüfen lassen — diese Vorlage ist keine Rechtsberatung.</p>\n<h3>Impressum</h3>\n<p><strong>Angaben gemäß § 5 DDG</strong><br />\nLilja Belz<br />\n[Straße und Hausnummer]<br />\n[PLZ Ort]<br />\nDeutschland</p>\n<p><strong>Kontakt</strong><br />\nE-Mail: [E-Mail-Adresse]<br />\nTelefon: [optional]</p>\n<p><strong>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</strong><br />\nLilja Belz (Anschrift wie oben)</p>\n<p><strong>Umsatzsteuer</strong><br />\n[USt-IdNr. gemäß § 27 a UStG, falls vorhanden — andernfalls diesen Absatz löschen]</p>\n<p><strong>EU-Streitschlichtung</strong><br />\nPlattform der EU-Kommission zur Online-Streitbeilegung: <a href=\"https://ec.europa.eu/consumers/odr/\" target=\"_blank\" rel=\"noopener\">ec.europa.eu/consumers/odr</a>. Wir sind nicht verpflichtet und nicht bereit, an einem Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>\n<h3>Datenschutzerklärung</h3>\n<p><strong>Verantwortliche Stelle</strong><br />\nVerantwortlich im Sinne der DSGVO ist die im Impressum genannte Stelle.</p>\n<p><strong>Hosting und Server-Logfiles</strong><br />\nDiese Website wird bei [Hosting-Anbieter, z. B. Vercel Inc., 340 S Lemon Ave #4133, Walnut, CA 91789, USA] gehostet. Beim Seitenaufruf verarbeitet der Anbieter technisch notwendige Zugriffsdaten (u. a. IP-Adresse, Datum und Uhrzeit, abgerufene Datei) in Server-Logfiles. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (stabiler und sicherer Betrieb der Website).</p>\n<p><strong>Web-Schriftarten</strong><br />\nDie verwendeten Schriftarten werden lokal von diesem Server ausgeliefert (selbst gehostet). Es werden dabei keine Daten an Dritte wie Google Fonts übertragen.</p>\n<p><strong>Kontaktaufnahme</strong><br />\nNimmst du per E-Mail Kontakt auf, werden deine Angaben zur Bearbeitung der Anfrage gespeichert (Art. 6 Abs. 1 lit. b und f DSGVO) und gelöscht, sobald sie nicht mehr erforderlich sind.</p>\n<p><strong>Cookies und Tracking</strong><br />\nDiese Seite setzt keine Cookies und verwendet keine Analyse- oder Tracking-Dienste.</p>\n<p><strong>Deine Rechte</strong><br />\nDu hast das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit und Widerspruch sowie auf Beschwerde bei einer Datenschutz-Aufsichtsbehörde.</p>\n<p><strong>SSL/TLS-Verschlüsselung</strong><br />\nDiese Seite nutzt aus Sicherheitsgründen eine TLS-Verschlüsselung (erkennbar an https:// in der Adresszeile).</p>\n<p class=\"legal-note\">Stand: [Monat Jahr]. Dieses Gerüst ist ein Ausgangspunkt und ersetzt keine individuelle Rechtsberatung.</p>",
+    "impressum_html": "<p class=\"legal-note\">Platzhalter-Gerüst nach deutschem Recht (§ 5 DDG, DSGVO). Vor Veröffentlichung alle [eckigen Klammern] mit echten Angaben ersetzen, nicht zutreffende Absätze entfernen und das Ergebnis rechtlich prüfen lassen — diese Vorlage ist keine Rechtsberatung.</p>\n<h3>Impressum</h3>\n<p><strong>Angaben gemäß § 5 DDG</strong><br />\nLilia Belz<br />\n[Straße und Hausnummer]<br />\n[PLZ Ort]<br />\nDeutschland</p>\n<p><strong>Kontakt</strong><br />\nE-Mail: [E-Mail-Adresse]<br />\nTelefon: [optional]</p>\n<p><strong>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</strong><br />\nLilia Belz (Anschrift wie oben)</p>\n<p><strong>Umsatzsteuer</strong><br />\n[USt-IdNr. gemäß § 27 a UStG, falls vorhanden — andernfalls diesen Absatz löschen]</p>\n<p><strong>EU-Streitschlichtung</strong><br />\nPlattform der EU-Kommission zur Online-Streitbeilegung: <a href=\"https://ec.europa.eu/consumers/odr/\" target=\"_blank\" rel=\"noopener\">ec.europa.eu/consumers/odr</a>. Wir sind nicht verpflichtet und nicht bereit, an einem Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>\n<h3>Datenschutzerklärung</h3>\n<p><strong>Verantwortliche Stelle</strong><br />\nVerantwortlich im Sinne der DSGVO ist die im Impressum genannte Stelle.</p>\n<p><strong>Hosting und Server-Logfiles</strong><br />\nDiese Website wird bei [Hosting-Anbieter, z. B. Vercel Inc., 340 S Lemon Ave #4133, Walnut, CA 91789, USA] gehostet. Beim Seitenaufruf verarbeitet der Anbieter technisch notwendige Zugriffsdaten (u. a. IP-Adresse, Datum und Uhrzeit, abgerufene Datei) in Server-Logfiles. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (stabiler und sicherer Betrieb der Website).</p>\n<p><strong>Web-Schriftarten</strong><br />\nDie verwendeten Schriftarten werden lokal von diesem Server ausgeliefert (selbst gehostet). Es werden dabei keine Daten an Dritte wie Google Fonts übertragen.</p>\n<p><strong>Kontaktaufnahme</strong><br />\nNimmst du per E-Mail Kontakt auf, werden deine Angaben zur Bearbeitung der Anfrage gespeichert (Art. 6 Abs. 1 lit. b und f DSGVO) und gelöscht, sobald sie nicht mehr erforderlich sind.</p>\n<p><strong>Cookies und Tracking</strong><br />\nDiese Seite setzt keine Cookies und verwendet keine Analyse- oder Tracking-Dienste.</p>\n<p><strong>Deine Rechte</strong><br />\nDu hast das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit und Widerspruch sowie auf Beschwerde bei einer Datenschutz-Aufsichtsbehörde.</p>\n<p><strong>SSL/TLS-Verschlüsselung</strong><br />\nDiese Seite nutzt aus Sicherheitsgründen eine TLS-Verschlüsselung (erkennbar an https:// in der Adresszeile).</p>\n<p class=\"legal-note\">Stand: [Monat Jahr]. Dieses Gerüst ist ein Ausgangspunkt und ersetzt keine individuelle Rechtsberatung.</p>",
     "copyright": "&copy; 2026",
     "credit": ""
   },

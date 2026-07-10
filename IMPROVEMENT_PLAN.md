@@ -9,7 +9,7 @@ execute it phase by phase without further briefing.
 ## Non-negotiable constraints (apply to every phase)
 
 1. **Engine stays generic** (reseller template). All new content lives in
-   `src/_data/site.json`; no "Lilja" hardcoded in `src/index.njk`, `src/styles.css`,
+   `src/_data/site.json`; no "Lilia" hardcoded in `src/index.njk`, `src/styles.css`,
    `src/script.js`, `api/`, or `src/admin/`. New sections must degrade gracefully
    (render nothing) when their `site.json` key is absent, so old client copies and
    fresh template copies both work.
@@ -35,12 +35,12 @@ execute it phase by phase without further briefing.
 ## Phase 1 — Signature feature: personalized greeting (the "being seen" moment)
 
 **Why this is the differentiator.** The link is sent one-to-one after a personal
-encounter (PRODUCT.md). No template competitor does this: Lilja appends a name to
+encounter (PRODUCT.md). No template competitor does this: Lilia appends a name to
 the URL and the page greets that person. The site's promise ("Gesehen werden, wie
 du wirklich bist") starts before the first scroll.
 
 **Behavior**
-- Lilja shares e.g. `https://…/?für=Anna` (also accept `fuer` and `name` as keys).
+- Lilia shares e.g. `https://…/?für=Anna` (also accept `fuer` and `name` as keys).
 - With a valid name, a quiet greeting line appears in the hero above the eyebrow,
   e.g. rendered from a template string: `"Schön, dass du hier bist, {name}."`
 - No/invalid param → nothing renders, zero layout shift for normal visitors.
@@ -60,7 +60,7 @@ du wirklich bist") starts before the first scroll.
 - Admin: toggle + template text field in the Hero panel, plus a small
   **link helper**: a name input + "Persönlichen Link kopieren" button that builds
   `site_url + '/?für=' + encodeURIComponent(name)` and copies it to the clipboard.
-  This is the feature's real UX — Lilja creates the links in 5 seconds.
+  This is the feature's real UX — Lilia creates the links in 5 seconds.
 
 **Acceptance**
 - `?für=Änne-Marie` greets correctly; `?für=<script>` renders nothing;
@@ -81,7 +81,7 @@ type is reusable for every future client photographer.
     "title": "Was Menschen nach einer Begegnung sagen",
     "flow_intro": "Und was davon bleibt",
     "items": [
-      { "quote": "Ich bin nicht gern vor der Kamera. Bei Lilja habe ich das nach zehn Minuten vergessen.", "name": "Anna", "context": "Soul Portrait, Frühjahr 2026" },
+      { "quote": "Ich bin nicht gern vor der Kamera. Bei Lilia habe ich das nach zehn Minuten vergessen.", "name": "Anna", "context": "Soul Portrait, Frühjahr 2026" },
       { "quote": "Ich habe zum ersten Mal ein Foto von mir, das sich nach mir anfühlt.", "name": "Miriam", "context": "Soul Portrait" },
       { "quote": "Es war weniger ein Fototermin als ein sehr ruhiges, ehrliches Gespräch. Die Bilder erzählen genau davon.", "name": "Jonas", "context": "Soul Portrait" }
     ]

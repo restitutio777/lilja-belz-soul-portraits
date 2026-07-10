@@ -1,4 +1,4 @@
-/* Lilja Belz, Soul Portraits, progressive enhancement only */
+/* Lilia Belz, Soul Portraits, progressive enhancement only */
 (function () {
   "use strict";
 
