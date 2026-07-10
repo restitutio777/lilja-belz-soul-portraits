@@ -7,7 +7,7 @@ doc it points you to for the task at hand.
 
 It plays **two roles at once**:
 
-1. **A live production site** — the portfolio of portrait photographer Lilja
+1. **A live production site** — the portfolio of portrait photographer Lilia
    Belz ("Soul Portraits"), at https://soulportraits-six.vercel.app.
 2. **A reseller template** — the same code is marked as a GitHub *template*, so
    each new client photographer gets an isolated copy (own repo, Vercel project,
@@ -15,7 +15,7 @@ It plays **two roles at once**:
 
 Because of role 2, keep the **engine** (Eleventy build, `api/` backend, admin
 UI) generic and configurable; only `src/_data/site.json`, branding tokens, and
-a few assets are client-specific. Don't hardcode "Lilja Belz" into the engine.
+a few assets are client-specific. Don't hardcode "Lilia Belz" into the engine.
 
 ### Template vs. clients — how changes propagate
 

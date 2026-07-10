@@ -1,4 +1,4 @@
-# DESIGN.md, Lilja Belz, Soul Portraits
+# DESIGN.md, Lilia Belz, Soul Portraits
 
 ## Theme
 Warm paper light theme. Scene: a person in soft daylight by a window, unhurried, gently

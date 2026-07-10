@@ -341,7 +341,7 @@ async function copyText(text) {
 }
 
 // Standalone helper (Hero panel): builds a personalized "?für=Name" link from
-// the current site_url and copies it, so Lilja can hand one out in seconds.
+// the current site_url and copies it, so Lilia can hand one out in seconds.
 function renderGreetingLinkTool(spec, parent) {
   const wrap = el("div", "field greeting-tool");
   wrap.appendChild(el("div", "greeting-tool-label", spec.label));

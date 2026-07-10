@@ -1,11 +1,11 @@
-# Lilja Belz, Soul Portraits
+# Lilia Belz, Soul Portraits
 
-A one-page portfolio and landing page for portrait photographer Lilja Belz. Static site,
+A one-page portfolio and landing page for portrait photographer Lilia Belz. Static site,
 no build step, deployed on Vercel.
 
 ## What this is
 Soul Portraits are process focused portrait sessions: the encounter and the experience of
-being truly seen, not just the resulting photos. Lilja shares the link after meeting
+being truly seen, not just the resulting photos. Lilia shares the link after meeting
 someone in person, so they can feel what a session is about and get in touch.
 
 ## Stack
@@ -42,11 +42,11 @@ PRODUCT.md, DESIGN.md  brand and design context
 ## Before going fully live, replace the placeholders
 Edit these in `src/_data/site.json`.
 1. **Images.** Everything in `src/images/` is a licensed Unsplash placeholder. Swap in
-   Lilja's own work. Keep similar aspect ratios; for gallery images set width/height to the
+   Lilia's own work. Keep similar aspect ratios; for gallery images set width/height to the
    new pixel ratios to prevent layout shift.
    - Hero: `src/images/p07.jpg`. About: `src/images/lilja.jpg`. Social preview: `src/og.jpg` (1200x630).
    - The gallery applies a subtle unifying filter (`grayscale .22 sepia .06`) so the mixed
-     placeholders feel cohesive. Once Lilja's own color-graded work is in, dial this down
+     placeholders feel cohesive. Once Lilia's own color-graded work is in, dial this down
      in `src/styles.css` (`.gallery-item img` and `.about-media img`) so her palette shows.
 2. **Email.** `brand.email` (used by the contact button and Impressum).
 3. **Impressum and Datenschutz.** `footer.impressum_html`. German sites require a complete

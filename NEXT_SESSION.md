@@ -20,7 +20,7 @@ PR each. Being executed in order.
   in `site.json` today — the plan's draft quotes were **not** seeded in, since
   attributing fabricated testimonials to named people on the live production
   site would be deceptive). Admin has a list editor under "Stimmen" with an
-  explicit consent reminder in the field label. **Open: Lilja needs to collect
+  explicit consent reminder in the field label. **Open: Lilia needs to collect
   real testimonials with written consent and add them via `/admin` to activate
   the section.**
 - **Phase 3 — Fragen (gentle FAQ + JSON-LD): shipped, with real content.**
@@ -31,7 +31,7 @@ PR each. Being executed in order.
   `dump` filter for safe JSON string escaping — don't switch that back to
   plain `{{ }}` interpolation, it'll HTML-escape quotes into the JSON).
   Shipped with the plan's 5 draft Q&As as real, live content (unlike Phase 2's
-  testimonials, these are ordinary FAQ copy in Lilja's own voice, not
+  testimonials, these are ordinary FAQ copy in Lilia's own voice, not
   attributed customer statements, so there's no fabrication concern).
 - **Phase 4 — Kontakt threshold lowering: shipped.** A JS-gated
   "E-Mail-Adresse kopieren" button next to the mailto CTA (Clipboard API with
@@ -133,7 +133,7 @@ or new ideas.
    (robots.txt/sitemap.xml follow it automatically; no other edits needed).
 5. **Optional — global login throttle:** add a Vercel KV / Upstash store and set
    `KV_REST_API_URL` + `KV_REST_API_TOKEN` (Production), then redeploy.
-6. **Optional — colour-grading filter:** if Lilja's own colour-graded images go
+6. **Optional — colour-grading filter:** if Lilia's own colour-graded images go
    in, revisit any image filters in `styles.css` (`.gallery-item img` /
    `.about-media img`) so they don't double-process her grade.
 
