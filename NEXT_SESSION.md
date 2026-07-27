@@ -105,8 +105,11 @@ motion honored. The enlarged image reuses the gallery `srcset` with
 - **Impressum/Datenschutz scaffold** (§ 5 DDG, DSGVO) in
   `footer.impressum_html` with `[bracketed]` placeholders — structure only,
   must be filled with real data (see open point 2).
-- **Self-hosted fonts**: Fraunces + Hanken Grotesk served from `src/fonts/`
-  (subsetted variable WOFF2); no Google Fonts request anywhere (site + admin).
+- **Self-hosted fonts**: Acheria (headings) + Fraunces (serif text) + Hanken
+  Grotesk (body) served from `src/fonts/`; no Google Fonts request anywhere
+  (site + admin). Acheria's webfont licence is unresolved — see
+  `src/fonts/README.txt` and the Fonts section in `CLAUDE.md` before a
+  commercial client copy goes live.
 
 ## Branches / PRs
 - `main` — live production (latest: PR #10).

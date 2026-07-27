@@ -34,8 +34,9 @@ permalink: /index.html
   <!-- Preload the hero portrait across all srcset variants for a calmer first load -->
   <link rel="preload" as="image" imagesrcset="{{ site.hero.image | srcsetFor }}" imagesizes="(min-width: 860px) 30vw, 100vw" fetchpriority="high" />
 
-  <!-- Self-hosted fonts (declared in styles.css). Preload the two faces used
+  <!-- Self-hosted fonts (declared in styles.css). Preload the three faces used
        above the fold so the hero text renders without a flash. -->
+  <link rel="preload" as="font" type="font/woff2" href="fonts/acheria-regular.woff2" crossorigin />
   <link rel="preload" as="font" type="font/woff2" href="fonts/fraunces-normal-latin.woff2" crossorigin />
   <link rel="preload" as="font" type="font/woff2" href="fonts/hanken-normal-latin.woff2" crossorigin />
 
