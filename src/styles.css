@@ -245,11 +245,14 @@ a { color: inherit; }
   text-decoration: none;
   color: var(--ink);
 }
+/* Wordmark in the display face, one weight. Acheria has no bold — a synthetic
+   700 fills the counters and flattens the thin/thick contrast, so presence
+   comes from a touch more size and open tracking instead. */
 .wordmark-name {
-  font-family: var(--font-serif);
+  font-family: var(--font-display);
   font-weight: 400;
-  font-size: 1.5rem;
-  letter-spacing: 0.01em;
+  font-size: 1.62rem;
+  letter-spacing: 0.045em;
 }
 .wordmark-sub {
   margin-top: 0.34rem;

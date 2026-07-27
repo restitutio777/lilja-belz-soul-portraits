@@ -46,6 +46,9 @@ npm install
 npm run dev      # Eleventy dev server on http://localhost:8080 (site only)
 npm run build    # build to _site/
 node --check <file.js>   # syntax-check a function/admin script (no test suite)
+
+# Link-Preview-Bild neu bauen (nach Font- oder Textwechsel), braucht fonttools:
+python3 tools/build-og-image.py
 ```
 
 > The `api/` functions only run on Vercel, **not** under `npm run dev`. To
@@ -106,7 +109,7 @@ Tokens in `:root`:
 
 | Token | Font | Einsatz |
 |---|---|---|
-| `--font-display` | Acheria (400, kein Italic) | nur Überschriften: h1/h2, Ablauf-Ziffern und -Titel, Fakten-Begriffe |
+| `--font-display` | Acheria (400, kein Italic) | Überschriften (h1/h2, Ablauf-Ziffern und -Titel, Fakten-Begriffe) und die Wortmarke |
 | `--font-serif` | Fraunces (variabel, 300–400) | Serifentext: Leads, Zitate, Italics, Wortmarke, Mobile-Nav, FAQ-Fragen |
 | `--font-body` | Hanken Grotesk (300–600) | Fließtext, Labels, Buttons |
 
@@ -117,6 +120,15 @@ Die Trennung display/serif ist Absicht: Acheria hat kein Italic (sonst
 Faux-Oblique) und wird unter ~1,4 rem schlecht lesbar. Alles, was ein ganzer
 Satz ist, bleibt deshalb auf `--font-serif`. Beim Fontwechsel nur `@font-face`
 und die Tokens anfassen — nicht die Regeln darunter.
+
+Die Wortmarke bekommt kein Bold: ein synthetisches 700 füllt bei Acheria die
+Punzen und plättet den Strichkontrast. Präsenz kommt stattdessen aus etwas mehr
+Größe (1,62 rem) und offener Laufweite (0,045 em).
+
+Das Link-Preview-Bild `src/og.jpg` ist typografisch und wird aus denselben
+Fonts erzeugt (`tools/build-og-image.py`, setzt jede Glyphe als SVG-Pfad).
+Nach einem Fontwechsel neu bauen, sonst bleibt die Karte auf der alten
+Schrift stehen.
 
 Weitere Schriften liegen zentral in `~/Desktop/Sanity-Websites/Organic-fonts/`
 (`webfonts/*.woff2`, `webfonts/fonts.css` als `@font-face`-Vorlage,
