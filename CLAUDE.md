@@ -128,14 +128,35 @@ GitHub-Template: jede Client-Kopie liefert die Font-Datei an ihre eigenen
 Besucher aus, also auf kommerziellen Kundenseiten. Fraunces und Hanken sind
 OFL (`src/fonts/OFL.txt`) und deshalb unproblematisch.
 
-⚠️ **Acheria: Webfont-Lizenz ungeklärt.** Im Download (Muflieart) lag keine
-Lizenzdatei bei, entsprechend liegt auch keine in `src/fonts/`. Vor dem Launch
-einer kommerziellen Client-Kopie die EULA der Quellseite prüfen, Stichwort
-„Webfont / @font-face embedding". Falls die EULA Webfont-Einbettung nicht
-abdeckt, gibt es zwei Auswege: Webfont-Lizenz kaufen, oder die betroffenen
-Headlines in Pfade umwandeln und als SVG ausliefern (dann wird keine
-Font-Datei ausgeliefert). Rückbau ist billig — `--font-display` in
-`src/styles.css` wieder auf Fraunces zeigen lassen.
+⚠️ **Acheria ist die kostenlose Demo — „ONLY for PERSONAL USE. NO COMMERCIAL
+USE ALLOWED!"** (Muflieart / Nur Habib Muflihin; Stand der Recherche
+2026-07-27, Quelle: fontspace.com/acheria-font-f152843 und muflieart.com).
+Die Datei in `src/fonts/` stammt aus diesem Gratis-Download, deshalb liegt
+auch keine Lizenzdatei dabei.
+
+Für den aktuellen Vorschau-Deploy (nicht beworben, kein Kundenbetrieb) läuft
+das mit. **Vor jedem kommerziellen Live-Gang muss eine Lizenz gekauft werden.**
+Preise bei muflieart.com/product/acheria-modern-soft-serif/:
+
+| Tier | Preis | Deckt |
+|---|---|---|
+| Standard | 19 $ | 1 Brand, Websites — Webfont-Einbettung *nicht* ausdrücklich genannt, vorher beim Foundry nachfragen |
+| Logo | 250 $ | nur Logo / Brand Identity |
+| Extended | 500 $ | „Web & app embedding" + „paid digital templates", multi-project — **das ist der Tier, den das Reseller-Template braucht** |
+| Corporate | 2.500 $ | unbegrenzte Brands |
+
+Enthalten sind OTF/TTF/WOFF; WOFF2 selbst konvertieren mit `convert-fonts.py`.
+
+Solange nicht gekauft ist, gibt es zwei Rückwege:
+
+1. **Fallback auf Fraunces** (Ein-Zeilen-Rückbau, keine weiteren Änderungen —
+   Fraunces steht schon im Fallback-Stack). In `src/styles.css`:
+   `--font-display: "Fraunces", Georgia, "Times New Roman", serif;`
+   Danach den Acheria-`@font-face`-Block, `src/fonts/acheria-regular.woff2`
+   und den Preload in `src/index.njk` entfernen.
+2. Headlines in Pfade umwandeln und als SVG ausliefern — dann wird keine
+   Font-Datei ausgeliefert. Die Demo-EULA deckt aber auch das nicht
+   ausdrücklich ab.
 
 Aus der Organic-fonts-Sammlung sind **Ambar Pearl** (non-commercial) und
 **Aylia** (Demo) hier ausgeschlossen; bei Natacha, Rollandio und Antesa lag

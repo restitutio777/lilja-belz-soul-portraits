@@ -107,9 +107,11 @@ motion honored. The enlarged image reuses the gallery `srcset` with
   must be filled with real data (see open point 2).
 - **Self-hosted fonts**: Acheria (headings) + Fraunces (serif text) + Hanken
   Grotesk (body) served from `src/fonts/`; no Google Fonts request anywhere
-  (site + admin). Acheria's webfont licence is unresolved — see
-  `src/fonts/README.txt` and the Fonts section in `CLAUDE.md` before a
-  commercial client copy goes live.
+  (site + admin). **Acheria ist die Gratis-Demo: „personal use only", keine
+  kommerzielle Nutzung.** Für den Vorschau-Deploy okay, vor jedem
+  kommerziellen Live-Gang Lizenz kaufen (Extended, 500 $, deckt Web-Embedding
+  + Templates) oder auf Fraunces zurück — Ein-Zeilen-Rückbau, siehe
+  `src/fonts/README.txt` und Fonts-Abschnitt in `CLAUDE.md`.
 
 ## Branches / PRs
 - `main` — live production (latest: PR #10).
