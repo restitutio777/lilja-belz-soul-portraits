@@ -20,8 +20,12 @@ Strategy: restrained, warm tinted neutrals plus one earthy clay accent. One deep
 (About) for rhythm and intimacy. Never pure #000 or #fff.
 
 ## Typography
-- Display: Fraunces (variable, optical sizing), weights 300 to 400, tight tracking.
-- Body and labels: Hanken Grotesk, 300 to 600.
+- Headings: Acheria (`--font-display`), single weight 400, tracking near zero. Used for
+  h1/h2, Ablauf step numbers and step headings, and the Fakten terms.
+- Serif text: Fraunces (`--font-serif`, variable), 300 to 400 — leads, pull quotes,
+  italics, wordmark, mobile nav, FAQ questions. Acheria has no italic and gets hard to
+  read below ~1.4rem, so everything sentence-length stays here.
+- Body and labels: Hanken Grotesk (`--font-body`), 300 to 600.
 - Eyebrows: 0.74rem, uppercase, 0.22em tracking, clay-deep.
 - Body measure capped near 60ch. Fluid scale via clamp(), contrast >= 1.25 between steps.
 

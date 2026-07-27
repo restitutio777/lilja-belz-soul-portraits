@@ -1,6 +1,6 @@
 /* =========================================================
    Lilia Belz, Soul Portraits
-   Warm paper light theme. Fraunces + Hanken Grotesk. OKLCH.
+   Warm paper light theme. Acheria + Fraunces + Hanken Grotesk. OKLCH.
    ========================================================= */
 
 /* Self-hosted fonts (no Google Fonts request → no visitor data to Google).
@@ -53,6 +53,16 @@
   src: url(fonts/hanken-normal-latin.woff2) format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
+/* Acheria: display face for headings only. One static weight (400), no italic —
+   so italic/quote text stays on Fraunces (--font-serif), which would otherwise
+   get a faux-oblique. 173 glyphs incl. full German umlauts and ß. */
+@font-face {
+  font-family: 'Acheria';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(fonts/acheria-regular.woff2) format('woff2');
+}
 
 :root {
   --paper:        oklch(0.972 0.008 75);
@@ -76,7 +86,11 @@
 
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 
-  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+  /* Headings only. Fraunces stays first fallback so a missing glyph lands in
+     the second serif, not in Times New Roman. */
+  --font-display: "Acheria", "Fraunces", Georgia, "Times New Roman", serif;
+  /* Serif text: leads, quotes, italics, wordmark, nav. */
+  --font-serif: "Fraunces", Georgia, "Times New Roman", serif;
   --font-body: "Hanken Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 
@@ -143,11 +157,12 @@ a { color: inherit; }
 
 .section-title {
   font-family: var(--font-display);
-  font-weight: 350;
-  font-optical-sizing: auto;
+  font-weight: 400;
   font-size: clamp(2rem, 1.3rem + 3vw, 3.4rem);
-  line-height: 1.06;
-  letter-spacing: -0.015em;
+  line-height: 1.12;
+  /* Acheria is a narrow display face; the old negative tracking was tuned for
+     Fraunces' optical sizes and closes the counters up here. */
+  letter-spacing: 0.005em;
   margin: 0.5rem 0 0;
   color: var(--ink);
   text-wrap: balance;
@@ -155,7 +170,7 @@ a { color: inherit; }
 .section-title-light { color: var(--night-paper); }
 
 .lead {
-  font-family: var(--font-display);
+  font-family: var(--font-serif);
   font-weight: 350;
   font-size: clamp(1.35rem, 1.05rem + 1.4vw, 2.05rem);
   line-height: 1.32;
@@ -231,7 +246,7 @@ a { color: inherit; }
   color: var(--ink);
 }
 .wordmark-name {
-  font-family: var(--font-display);
+  font-family: var(--font-serif);
   font-weight: 400;
   font-size: 1.5rem;
   letter-spacing: 0.01em;
@@ -327,7 +342,7 @@ a { color: inherit; }
 .mobile-nav.open { opacity: 1; }
 .mobile-nav nav { display: flex; flex-direction: column; gap: 1.5rem; text-align: center; }
 .mobile-nav a {
-  font-family: var(--font-display);
+  font-family: var(--font-serif);
   font-weight: 350;
   font-size: 2rem;
   text-decoration: none;
@@ -351,7 +366,7 @@ a { color: inherit; }
 .hero-copy { max-width: 52ch; }
 .hero-greeting {
   margin: 0 0 0.85rem;
-  font-family: var(--font-display);
+  font-family: var(--font-serif);
   font-style: italic;
   font-weight: 350;
   font-size: 1.05rem;
@@ -360,11 +375,10 @@ a { color: inherit; }
 }
 .hero-title {
   font-family: var(--font-display);
-  font-weight: 300;
-  font-optical-sizing: auto;
+  font-weight: 400;
   font-size: clamp(2.7rem, 1.9rem + 3.2vw, 4.7rem);
-  line-height: 1.06;
-  letter-spacing: -0.025em;
+  line-height: 1.12;
+  letter-spacing: 0.005em;
   margin: 1.1rem 0 0;
   color: var(--ink);
   /* "pretty" avoids orphans without the aggressive re-flow of "balance",
@@ -418,7 +432,7 @@ a { color: inherit; }
   text-decoration: none;
 }
 .scroll-cue-word {
-  font-family: var(--font-display);
+  font-family: var(--font-serif);
   font-style: italic;
   font-weight: 350;
   font-size: 0.98rem;
@@ -609,20 +623,20 @@ a { color: inherit; }
 .step + .step { border-top: 1px solid var(--line); }
 .step-num {
   font-family: var(--font-display);
-  font-weight: 300;
+  font-weight: 400;
   font-size: clamp(2.2rem, 1.4rem + 2.5vw, 3.6rem);
   line-height: 1;
   color: var(--clay);
-  letter-spacing: -0.02em;
+  letter-spacing: 0;
 }
 .step-body { max-width: 56ch; }
 .step-body h3 {
   font-family: var(--font-display);
   font-weight: 400;
   font-size: clamp(1.35rem, 1.1rem + 1vw, 1.9rem);
-  line-height: 1.15;
+  line-height: 1.2;
   margin: 0.15rem 0 0.6rem;
-  letter-spacing: -0.01em;
+  letter-spacing: 0.005em;
 }
 .step-body p { margin: 0; color: var(--ink-soft); }
 
@@ -685,8 +699,10 @@ a { color: inherit; }
   list-style: none;
 }
 .frage summary::-webkit-details-marker { display: none; }
+/* Stays on the text serif: these are full sentences at ~1.1rem, where Acheria's
+   display forms cost more legibility than they add character. */
 .frage-q {
-  font-family: var(--font-display);
+  font-family: var(--font-serif);
   font-weight: 400;
   font-size: clamp(1.1rem, 0.98rem + 0.4vw, 1.35rem);
   letter-spacing: -0.005em;
@@ -726,7 +742,7 @@ a { color: inherit; }
 .stimme + .stimme { border-top: 1px solid var(--line); }
 .stimme-quote {
   margin: 0;
-  font-family: var(--font-display);
+  font-family: var(--font-serif);
   font-weight: 350;
   font-style: italic;
   font-size: clamp(1.3rem, 1.05rem + 1vw, 1.75rem);
@@ -778,7 +794,7 @@ a { color: inherit; }
 .about-copy p + p { margin-top: 1.2rem; }
 .about-copy .section-title { margin-bottom: 1.5rem; }
 .about-quote {
-  font-family: var(--font-display);
+  font-family: var(--font-serif);
   font-weight: 350;
   font-style: italic;
   font-size: clamp(1.3rem, 1.05rem + 1vw, 1.75rem);
@@ -902,7 +918,7 @@ a { color: inherit; }
 }
 .flow.is-visible .flow-node { transform: scale(1); }
 .flow-word {
-  font-family: var(--font-display);
+  font-family: var(--font-serif);
   font-style: italic;
   font-weight: 350;
   font-size: clamp(1.1rem, 0.98rem + 0.6vw, 1.45rem);

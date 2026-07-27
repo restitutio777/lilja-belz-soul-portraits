@@ -100,12 +100,23 @@ starts cleanly.
 
 ## Fonts
 
-Aktuell: **Fraunces** (Display) und **Hanken Grotesk** (Body), beide lokal als
-WOFF2 in `src/fonts/`, per `@font-face` in `src/styles.css` mit
-`unicode-range`-Split (latin / latin-ext) eingebunden. Im CSS wird nie der
-Fontname benutzt, sondern die Tokens `--font-display` / `--font-body`
-(`src/styles.css`, `:root`). Beim Fontwechsel nur `@font-face` und die beiden
-Tokens anfassen — nicht die Regeln darunter.
+Aktuell drei Schnitte, alle lokal als WOFF2 in `src/fonts/`, per `@font-face` in
+`src/styles.css` eingebunden. Im CSS wird nie der Fontname benutzt, sondern die
+Tokens in `:root`:
+
+| Token | Font | Einsatz |
+|---|---|---|
+| `--font-display` | Acheria (400, kein Italic) | nur Überschriften: h1/h2, Ablauf-Ziffern und -Titel, Fakten-Begriffe |
+| `--font-serif` | Fraunces (variabel, 300–400) | Serifentext: Leads, Zitate, Italics, Wortmarke, Mobile-Nav, FAQ-Fragen |
+| `--font-body` | Hanken Grotesk (300–600) | Fließtext, Labels, Buttons |
+
+Fraunces und Hanken haben einen `unicode-range`-Split (latin / latin-ext);
+Acheria ist eine einzelne Datei (173 Glyphen, 26 KB) und braucht keinen.
+
+Die Trennung display/serif ist Absicht: Acheria hat kein Italic (sonst
+Faux-Oblique) und wird unter ~1,4 rem schlecht lesbar. Alles, was ein ganzer
+Satz ist, bleibt deshalb auf `--font-serif`. Beim Fontwechsel nur `@font-face`
+und die Tokens anfassen — nicht die Regeln darunter.
 
 Weitere Schriften liegen zentral in `~/Desktop/Sanity-Websites/Organic-fonts/`
 (`webfonts/*.woff2`, `webfonts/fonts.css` als `@font-face`-Vorlage,
@@ -115,11 +126,21 @@ neue OTF/TTF). Nur WOFF2, kein WOFF/TTF-Fallback.
 **Lizenz ist hier kritischer als in anderen Projekten.** Dieses Repo ist ein
 GitHub-Template: jede Client-Kopie liefert die Font-Datei an ihre eigenen
 Besucher aus, also auf kommerziellen Kundenseiten. Fraunces und Hanken sind
-OFL (`src/fonts/OFL.txt`) und deshalb unproblematisch. Aus der
-Organic-fonts-Sammlung sind **Ambar Pearl** (non-commercial) und **Aylia**
-(Demo) hier ausgeschlossen; bei Acheria, Natacha, Rollandio und Antesa lag
-keine Lizenzdatei bei — vor dem Einbau EULA prüfen, Stichwort „Webfont /
-@font-face embedding". Im Zweifel Google Fonts, Fontshare oder Velvetyne.
+OFL (`src/fonts/OFL.txt`) und deshalb unproblematisch.
+
+⚠️ **Acheria: Webfont-Lizenz ungeklärt.** Im Download (Muflieart) lag keine
+Lizenzdatei bei, entsprechend liegt auch keine in `src/fonts/`. Vor dem Launch
+einer kommerziellen Client-Kopie die EULA der Quellseite prüfen, Stichwort
+„Webfont / @font-face embedding". Falls die EULA Webfont-Einbettung nicht
+abdeckt, gibt es zwei Auswege: Webfont-Lizenz kaufen, oder die betroffenen
+Headlines in Pfade umwandeln und als SVG ausliefern (dann wird keine
+Font-Datei ausgeliefert). Rückbau ist billig — `--font-display` in
+`src/styles.css` wieder auf Fraunces zeigen lassen.
+
+Aus der Organic-fonts-Sammlung sind **Ambar Pearl** (non-commercial) und
+**Aylia** (Demo) hier ausgeschlossen; bei Natacha, Rollandio und Antesa lag
+ebenfalls keine Lizenzdatei bei. Im Zweifel Google Fonts, Fontshare oder
+Velvetyne.
 
 Zeichensatz prüfen: Natacha und Rollandio haben kein ß, Antesa und Aylia keine
 Umlaute. Fehlt ein Zeichen, mischt der Browser wortlos eine Ersatzschrift dazu.
