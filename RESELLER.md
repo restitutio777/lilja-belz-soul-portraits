@@ -43,8 +43,12 @@ own repo and deployed branch. Redeploy once after setting the variables.
   and those `@font-face` blocks plus the `<link rel="preload">` in
   `src/index.njk` (see `src/fonts/README.txt` for how to fetch them).
 - **Wordmark, copy, images, email:** all in `/admin` (or `src/_data/site.json`).
-- **Favicon / social image:** replace `src/favicon.svg`,
-  `src/apple-touch-icon.png`, `src/og.jpg`.
+- **Favicon:** replace `src/favicon.svg`, `src/apple-touch-icon.png`.
+- **Social image:** `src/og.jpg` is generated, not photographed — edit the
+  `CONTENT` block in `tools/build-og-image.py` (claim, name, sub line) and run
+  `python3 tools/build-og-image.py`. It sets every glyph as an SVG outline from
+  the fonts in `src/fonts/`, so the card always matches the client's typeface
+  without a design tool. Also update `meta.og_image_alt` in the admin.
 
 ### 5. Domain
 Add the client’s custom domain in Vercel (free). Update `meta.site_url` in the

@@ -4,3 +4,6 @@ node_modules
 _site
 *.log
 .cache
+
+# Intermediate from tools/build-og-image.py
+tools/og.svg
