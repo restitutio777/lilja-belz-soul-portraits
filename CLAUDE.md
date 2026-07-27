@@ -98,6 +98,35 @@ starts cleanly.
   Vercel's Git system vars so forked client copies need no `CONTENT_REPO`/
   `CONTENT_BRANCH`. Preserve this zero-config behaviour.
 
+## Fonts
+
+Aktuell: **Fraunces** (Display) und **Hanken Grotesk** (Body), beide lokal als
+WOFF2 in `src/fonts/`, per `@font-face` in `src/styles.css` mit
+`unicode-range`-Split (latin / latin-ext) eingebunden. Im CSS wird nie der
+Fontname benutzt, sondern die Tokens `--font-display` / `--font-body`
+(`src/styles.css`, `:root`). Beim Fontwechsel nur `@font-face` und die beiden
+Tokens anfassen — nicht die Regeln darunter.
+
+Weitere Schriften liegen zentral in `~/Desktop/Sanity-Websites/Organic-fonts/`
+(`webfonts/*.woff2`, `webfonts/fonts.css` als `@font-face`-Vorlage,
+`README-Webfonts.md` mit Zeichensatz- und Lizenzstatus, `convert-fonts.py` für
+neue OTF/TTF). Nur WOFF2, kein WOFF/TTF-Fallback.
+
+**Lizenz ist hier kritischer als in anderen Projekten.** Dieses Repo ist ein
+GitHub-Template: jede Client-Kopie liefert die Font-Datei an ihre eigenen
+Besucher aus, also auf kommerziellen Kundenseiten. Fraunces und Hanken sind
+OFL (`src/fonts/OFL.txt`) und deshalb unproblematisch. Aus der
+Organic-fonts-Sammlung sind **Ambar Pearl** (non-commercial) und **Aylia**
+(Demo) hier ausgeschlossen; bei Acheria, Natacha, Rollandio und Antesa lag
+keine Lizenzdatei bei — vor dem Einbau EULA prüfen, Stichwort „Webfont /
+@font-face embedding". Im Zweifel Google Fonts, Fontshare oder Velvetyne.
+
+Zeichensatz prüfen: Natacha und Rollandio haben kein ß, Antesa und Aylia keine
+Umlaute. Fehlt ein Zeichen, mischt der Browser wortlos eine Ersatzschrift dazu.
+Da die UI-Texte deutsch sind, betrifft das hier fast jede Headline.
+
+Wird eine Schrift getauscht, diesen Abschnitt mitpflegen.
+
 <!-- cloud-local-sync -->
 ## Cloud ↔ Local: immer überall up to date
 
