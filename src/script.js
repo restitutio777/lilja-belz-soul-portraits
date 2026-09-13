@@ -319,6 +319,24 @@
     });
   }
 
+  /* ---- Kontakt: Anfrage-Formular als vorbefuellte E-Mail ---- */
+  var anfrage = document.querySelector(".anfrage");
+  if (anfrage) {
+    anfrage.addEventListener("submit", function (e) {
+      if (!anfrage.checkValidity()) return;
+      e.preventDefault();
+      var lines = [];
+      Array.prototype.forEach.call(anfrage.elements, function (el) {
+        if (el.name && el.value.trim()) lines.push(el.name + ": " + el.value.trim());
+      });
+      var name = anfrage.elements["Name"].value.trim();
+      var subject = "Soul Portrait Anfrage" + (name ? ", " + name : "");
+      window.location.href = "mailto:" + anfrage.getAttribute("data-email") +
+        "?subject=" + encodeURIComponent(subject) +
+        "&body=" + encodeURIComponent(lines.join("\n\n"));
+    });
+  }
+
   /* ---- Kontakt: "E-Mail-Adresse kopieren" (Clipboard API, execCommand fallback) ---- */
   var copyEmailBtn = document.querySelector(".copy-email");
   if (copyEmailBtn) {

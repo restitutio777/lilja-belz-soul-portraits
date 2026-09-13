@@ -89,10 +89,9 @@ permalink: /index.html
       <nav class="nav" aria-label="Hauptnavigation">
         <a href="#portfolio">Portfolio</a>
         <a href="#ablauf">Ablauf</a>
-        <a href="#raum">Raum</a>
+        <a href="#fragen">Fragen</a>
         <a href="#ueber">Über mich</a>
-        <a href="#beratung">Begleitung</a>
-        <a href="#kontakt" class="nav-cta">Kontakt</a>
+        <a href="#kontakt" class="nav-cta">{{ site.hero.cta_label or "Vorgespräch anfragen" }}</a>
       </nav>
 
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Menü öffnen">
@@ -105,9 +104,8 @@ permalink: /index.html
     <nav aria-label="Mobile Navigation">
       <a href="#portfolio">Portfolio</a>
       <a href="#ablauf">Ablauf</a>
-      <a href="#raum">Raum</a>
+      <a href="#fragen">Fragen</a>
       <a href="#ueber">Über mich</a>
-      <a href="#beratung">Begleitung</a>
       <a href="#kontakt">Kontakt</a>
     </nav>
   </div>
@@ -124,15 +122,15 @@ permalink: /index.html
           <p class="eyebrow reveal">{{ site.hero.eyebrow }}</p>
           <h1 class="hero-title reveal" id="hero-title">{{ site.hero.title_line1 }}<br class="hero-br" /> {{ site.hero.title_line2 }}</h1>
           <p class="hero-lead reveal">{{ site.hero.lead }}</p>
+          <div class="hero-actions reveal">
+            <a class="btn btn-primary btn-lg" href="#kontakt">{{ site.hero.cta_label or "Vorgespräch anfragen" }}</a>
+            {% if site.hero.cta_note %}<p class="hero-cta-note">{{ site.hero.cta_note }}</p>{% endif %}
+          </div>
         </div>
         <figure class="hero-media reveal">
           {% respImg site.hero.image, site.hero.image_alt, "(min-width: 860px) 30vw, 100vw", false, "high" %}
         </figure>
       </div>
-      <a class="scroll-cue" href="#intro" aria-label="Weiter nach unten, zur Einführung">
-        <span class="scroll-cue-word">Beginne hier</span>
-        <span class="scroll-cue-line" aria-hidden="true"></span>
-      </a>
     </section>
 
     <!-- INTRO / PHILOSOPHIE -->
@@ -198,6 +196,30 @@ permalink: /index.html
         </ol>
       </div>
     </section>
+
+    {% if site.fragen and site.fragen.items and site.fragen.items.length %}
+    <!-- FRAGEN -->
+    <section class="fragen" id="fragen" aria-labelledby="fragen-title">
+      <div class="shell">
+        <div class="section-head reveal">
+          <p class="eyebrow">{{ site.fragen.eyebrow }}</p>
+          <h2 class="section-title" id="fragen-title">{{ site.fragen.title }}</h2>
+        </div>
+        <div class="fragen-list">
+{%- for item in site.fragen.items %}
+          <details class="frage reveal">
+            <summary>
+              <span class="frage-q">{{ item.question }}</span>
+              <span class="frage-icon" aria-hidden="true"></span>
+            </summary>
+            <p class="frage-a">{{ item.answer }}</p>
+          </details>
+{%- endfor %}
+        </div>
+        <p class="section-cta reveal"><a class="btn btn-ghost" href="#kontakt">{{ site.hero.cta_label or "Vorgespräch anfragen" }}</a></p>
+      </div>
+    </section>
+    {% endif %}
 
     <!-- FLOW, Ablauf zu Raum -->
     <div class="flow reveal">
@@ -287,28 +309,6 @@ permalink: /index.html
       </div>
     </section>
 
-    {% if site.fragen and site.fragen.items and site.fragen.items.length %}
-    <!-- FRAGEN -->
-    <section class="fragen" id="fragen" aria-labelledby="fragen-title">
-      <div class="shell">
-        <div class="section-head reveal">
-          <p class="eyebrow">{{ site.fragen.eyebrow }}</p>
-          <h2 class="section-title" id="fragen-title">{{ site.fragen.title }}</h2>
-        </div>
-        <div class="fragen-list">
-{%- for item in site.fragen.items %}
-          <details class="frage reveal">
-            <summary>
-              <span class="frage-q">{{ item.question }}</span>
-              <span class="frage-icon" aria-hidden="true"></span>
-            </summary>
-            <p class="frage-a">{{ item.answer }}</p>
-          </details>
-{%- endfor %}
-        </div>
-      </div>
-    </section>
-    {% endif %}
 
     <!-- FLOW, Beratung zu Kontakt (Closing) -->
     <div class="flow flow-close reveal">
@@ -323,7 +323,18 @@ permalink: /index.html
         <p class="eyebrow">{{ site.kontakt.eyebrow }}</p>
         <h2 class="section-title" id="kontakt-title">{{ site.kontakt.title }}</h2>
         <p class="kontakt-text">{{ site.kontakt.text }}</p>
-        <a class="btn btn-primary btn-lg" href="mailto:{{ site.brand.email }}?subject=Soul%20Portrait%20Anfrage">{{ site.brand.email }}</a>
+        <form class="anfrage" action="mailto:{{ site.brand.email }}?subject=Soul%20Portrait%20Anfrage" method="post" enctype="text/plain" data-email="{{ site.brand.email }}">
+          <div class="anfrage-row">
+            <label class="anfrage-field"><span>Dein Name</span><input name="Name" type="text" autocomplete="name" required /></label>
+            <label class="anfrage-field"><span>E-Mail</span><input name="E-Mail" type="email" autocomplete="email" required /></label>
+          </div>
+          <label class="anfrage-field"><span>Anlass</span><input name="Anlass" type="text" placeholder="z. B. Neubeginn, Geburtstag, für mich" required /></label>
+          <label class="anfrage-field"><span>Wunschzeitraum <em>(optional)</em></span><input name="Wunschzeitraum" type="text" placeholder="z. B. im Frühjahr" /></label>
+          <label class="anfrage-field"><span>Was dich herführt <em>(optional)</em></span><textarea name="Nachricht" rows="4"></textarea></label>
+          <button class="btn btn-primary btn-lg" type="submit">{{ site.hero.cta_label or "Vorgespräch anfragen" }}</button>
+          <p class="anfrage-note">Deine Angaben öffnen sich als E-Mail in deinem Mailprogramm. Nichts wird auf dieser Seite gespeichert.</p>
+        </form>
+        <p class="kontakt-alt">Lieber direkt schreiben: <a href="mailto:{{ site.brand.email }}?subject=Soul%20Portrait%20Anfrage">{{ site.brand.email }}</a></p>
         <button type="button" class="copy-email" data-email="{{ site.brand.email }}">
           <span class="copy-email-label">E-Mail-Adresse kopieren</span>
           <span class="copy-email-status" aria-live="polite"></span>

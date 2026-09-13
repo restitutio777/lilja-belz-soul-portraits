@@ -28,6 +28,8 @@ const SCHEMA = [
     { key: "title_line1", label: "Titel, Zeile 1", type: "text" },
     { key: "title_line2", label: "Titel, Zeile 2", type: "text" },
     { key: "lead", label: "Einleitung", type: "textarea" },
+    { key: "cta_label", label: "Knopf-Text (Anfrage)", type: "text" },
+    { key: "cta_note", label: "Zeile unter dem Knopf", type: "text" },
     { key: "image", label: "Bild", type: "image", widthKey: "image_width", heightKey: "image_height" },
     { key: "image_alt", label: "Bild Alt-Text", type: "text" },
     { key: "greeting_enabled", label: "Persönliche Begrüßung per Link aktivieren", type: "checkbox" },
