@@ -11,7 +11,7 @@
     "theme_color": "#f4efe7",
     "og_title": "Lilia Belz | Soul Portraits",
     "og_description": "Eine Begegnung vor der Kamera, in der du dich noch einmal neu siehst. Feinfühlige Porträtfotografie von Lilia Belz.",
-    "og_image_alt": "Schriftbild auf hellem Papier: \u201eGesehen werden, wie du wirklich bist.\u201c \u2014 Soul Portraits, Lilia Belz",
+    "og_image_alt": "Schriftbild auf hellem Papier: „Gesehen werden, wie du wirklich bist.“ — Soul Portraits, Lilia Belz",
     "twitter_description": "Eine Begegnung vor der Kamera, in der du dich noch einmal neu siehst."
   },
   "hero": {
@@ -19,6 +19,8 @@
     "title_line1": "Gesehen werden,",
     "title_line2": "wie du wirklich bist.",
     "lead": "Ein Soul Portrait ist keine gewöhnliche Fotosession. Es ist eine Begegnung, in der du dir selbst wieder näherkommst, ehrlich, ruhig und ohne Eile.",
+    "cta_label": "Vorgespräch anfragen",
+    "cta_note": "Unverbindlich, persönlich oder per Telefon.",
     "image": "images/averie-woodard-4nulm-juyfo-unsplash-522f61.webp",
     "image_width": 1920,
     "image_height": 1280,

@@ -2,6 +2,19 @@
 
 State as of the last session, so a fresh session can continue cleanly.
 
+## Anfrage-Umbau (2026-09-13, Branch feat/anfrage-conversion)
+
+Nach Audit gegen den Skill "webseiten-aufbau":
+- Hero: Knopf "Vorgespräch anfragen" + Zeile darunter (`hero.cta_label`,
+  `hero.cta_note`, im Admin editierbar). Scroll-Cue "Beginne hier" entfernt.
+- Nav auf Portfolio/Ablauf/Fragen/Über mich + CTA gekürzt; Fragen stehen jetzt
+  direkt nach dem Ablauf, mit zweitem Anfrage-Knopf.
+- Kontakt: Formular (Name, E-Mail, Anlass, Wunschzeitraum, Nachricht) baut
+  per JS eine vorbefüllte E-Mail (mailto), kein Backend, nichts gespeichert.
+- **Offen:** Adresse `hallo@liljabelz.de` ("lilja") vs. Name "Lilia" klären.
+  Preis-Einwand ("Konditionen individuell") und echte Stimmen fehlen weiter,
+  beides nur mit Angaben von Lilia.
+
 ## In progress: "Unique & amazing" Ausbauplan (IMPROVEMENT_PLAN.md)
 
 `IMPROVEMENT_PLAN.md` (merged via PR #17) lays out 6 independent phases, one

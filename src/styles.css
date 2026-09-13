@@ -853,6 +853,38 @@ a { color: inherit; }
 }
 .kontakt .section-title { margin-bottom: 1.25rem; }
 .kontakt-text { color: var(--ink-soft); max-width: 46ch; margin: 0 0 2rem; }
+/* Anfrage-Formular: baut eine E-Mail zusammen, kein Backend */
+.anfrage { width: 100%; display: grid; gap: 1rem; text-align: left; }
+.anfrage-row { display: grid; gap: 1rem; }
+@media (min-width: 560px) { .anfrage-row { grid-template-columns: 1fr 1fr; } }
+.anfrage-field { display: grid; gap: 0.4rem; font-size: 0.88rem; color: var(--ink-soft); }
+.anfrage-field em { font-style: normal; color: var(--ink-faint); }
+.anfrage-field input,
+.anfrage-field textarea {
+  width: 100%;
+  padding: 0.8rem 0.9rem;
+  font: inherit;
+  font-size: 1rem;
+  color: var(--ink);
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  transition: border-color 0.3s var(--ease-out);
+}
+.anfrage-field textarea { resize: vertical; min-height: 6rem; }
+.anfrage-field input:focus-visible,
+.anfrage-field textarea:focus-visible { outline: 2px solid var(--clay); outline-offset: 1px; border-color: var(--clay); }
+.anfrage .btn { justify-self: start; margin-top: 0.5rem; }
+.anfrage-note { margin: 0; font-size: 0.8rem; color: var(--ink-faint); }
+.kontakt-alt { margin: 2rem 0 0; font-size: 0.9rem; color: var(--ink-soft); }
+.kontakt-alt a { color: var(--ink-soft); text-underline-offset: 3px; text-decoration-color: var(--line); }
+.kontakt-alt a:hover { color: var(--clay-deep); }
+
+/* Anfrage-Knopf im Hero und nach den Fragen */
+.hero-actions { margin-top: 2.25rem; display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem 1.25rem; }
+.hero-cta-note { margin: 0; font-size: 0.88rem; color: var(--ink-faint); }
+.section-cta { margin: 2.5rem 0 0; text-align: center; }
+
 .kontakt-hint { margin: 1.25rem 0 0; font-size: 0.85rem; color: var(--ink-faint); letter-spacing: 0.02em; }
 
 /* Hidden until JS confirms a copy mechanism can run (progressive enhancement) */
